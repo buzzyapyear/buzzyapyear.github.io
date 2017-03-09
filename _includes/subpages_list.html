@@ -1,9 +1,0 @@
-{% for subnode in subpages_list %}
-    {% if subgroup == null or subgroup == subnode.group %}
-        <li>
-            <a href="{{ subnode.url }}">{{ subnode.title }}</a>
-        </li>
-    {% endif %}
-{% endfor %}
-{% assign subpages_list = nil %}
-{% assign subgroup = nil %}

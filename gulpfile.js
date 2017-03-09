@@ -13,7 +13,7 @@ const jsFiles = '_assets/**/*.js';
 gulp.task('js', () => {
     gulp.src(jsFiles)
         .pipe(sourcemaps.init())
-        .pipe(concat('nvns.min.js'))
+        .pipe(concat('buzz.min.js'))
         .pipe(uglify())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('dist/js'))

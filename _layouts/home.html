@@ -1,60 +1,11 @@
 <!DOCTYPE html>
-<html ng-app="nvnsApp">
+<html ng-app="buzzApp">
     
     {% include head.html %}
 
     <body ng-controller="HomeCtrl" ng-init="init()" class="home">
 
-        <div
-            ng-class="{
-                'scrolled': vars.scrolled
-            }"  
-            id="main" 
-            class="container">
-
-            <header>
-
-                {% include nav_global.html %}
-
-            </header>
-            
-            <div id="content">
-
-                <div class="row">
-                    <div class="col-md-12">
-
-                        {{ content }}
-
-                    </div>
-                </div>
-
-            </div>
-
-            <div 
-                ng-class="{
-                    'ready': vars.video_ready
-                }" 
-                class="fullscreen-bg">
-                <!--<iframe 
-                    id="home-hero-video" 
-                    class="fullscreen-bg-video" 
-                    width="640" 
-                    height="360" 
-                    src="https://www.youtube.com/embed/X2C8gbqzv2Q?enablejsapi=1&autoplay=1&loop=1&controls=0&showinfo=0&playlist=X2C8gbqzv2Q&modestbranding=1&autohide=1&origin=http://localhost:4000" 
-                    frameborder="0" 
-                    allowfullscreen>
-                </iframe>-->
-                <youtube-video 
-                    id="home-hero-video" 
-                    class="fullscreen-bg-video" 
-                    data-player="vars.video.player" 
-                    data-video-id="vars.video.id" 
-                    data-player-vars="vars.video.params">
-                </youtube-video>
-            </div>
-            <div id="home-hero-video-screen" class="fullscreen-bg-video-overlay"></div>
-
-        </div>
+        {{ content }}
         
         {% include javascript.html %}
     
