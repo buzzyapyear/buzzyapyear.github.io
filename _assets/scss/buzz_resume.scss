@@ -5,15 +5,31 @@ body {
 	font-family: 'Source Sans Pro', 'Arial', 'Helvetica', sans-serif;
 	padding-bottom: 40px;
 
-	.page-header {
-		margin-top: 0px;
-	}
-
-	h1 {
-		background: url('/img/logo/logo.png') top left no-repeat;
-		background-size: 36px 36px;
-		height: 36px;
-		padding: 0px 0px 0px 52px;
+	header {
+		border-bottom: 1px dotted #ccc;
+		padding-bottom: 20px;
+		.masthead {
+			background: url('/img/logo/logo.png') top left no-repeat;
+			background-size: 64px 64px;
+			height: 64px;
+			padding: 0px 0px 0px 84px;
+			h1 {
+				margin-bottom: 0px;
+			}
+			.contact {
+				li {
+					display: inline-block;
+					margin-left: 10px;
+					&:nth-child(1) {
+						margin-left: 5px;
+					}
+					i.fa {
+						margin-right: 5px;
+					}
+				}
+			}
+			
+		}
 	}
 
 	h2 {
@@ -54,6 +70,12 @@ body {
 						font-size: 1.1em;
 					}
 				}
+			}
+		}
+
+		&#education {
+			h2 {
+				margin-bottom: 30px;
 			}
 		}
 	}
