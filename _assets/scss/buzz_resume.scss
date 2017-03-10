@@ -5,6 +5,10 @@ body {
 	font-family: 'Source Sans Pro', 'Arial', 'Helvetica', sans-serif;
 	padding-bottom: 40px;
 
+	.page-header {
+		margin-top: 0px;
+	}
+
 	h1 {
 		background: url('/img/logo/logo.png') top left no-repeat;
 		background-size: 36px 36px;
