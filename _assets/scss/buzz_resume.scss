@@ -21,6 +21,7 @@ body {
 
 	h3 {
 		font-size: 1.3em;
+		font-weight: bold;
 	}
 
 	section {
@@ -29,10 +30,8 @@ body {
 		&#experience {
 			.job {
 				h3 {
-					.company {
-						font-weight: bold;
-					}
 					.title {
+						font-weight: normal;
 						color: #666;
 					}
 				}
