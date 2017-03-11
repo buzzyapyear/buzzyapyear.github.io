@@ -3,7 +3,13 @@
 
     {% include head.html %}
 
-    <body ng-controller="ResumeCtrl" ng-init="init()" class="resume">
+    <body 
+        ng-controller="ResumeCtrl" 
+        ng-init="init()" 
+        ng-class="{
+            'scrolled': vars.scrolled
+        }" 
+        class="resume">
 
         {{ content }}
 

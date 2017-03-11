@@ -2,13 +2,27 @@
 buzz.buzzApp.controller('ResumeCtrl', ['$scope', '$timeout', function($scope, $timeout){
 
     $scope.vars = {
-        
+        scrolled: false
     }
 
     $scope.init = function() {
         console.log('welcome to the resume');
 
+        $(window).scroll(function(){
+            $scope.setScrolledState();
+        });
+
         $scope.initProfileChart();
+    }
+
+    $scope.setScrolledState = function() {
+        var scroll = $(window).scrollTop();
+
+        $timeout(function(){
+            $scope.$apply(function(){
+                $scope.vars.scrolled = (scroll > 0) ? true : false;
+            });
+        });
     }
 
     $scope.initProfileChart = function() {
