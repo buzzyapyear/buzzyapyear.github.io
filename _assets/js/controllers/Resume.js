@@ -44,7 +44,7 @@ buzz.buzzApp.controller('ResumeCtrl', ['$scope', '$timeout', function($scope, $t
                         '#3498DB',
                         '#E74C3C',
                         '#2C3E50',
-                        '#EB7F00'
+                        '#ACF0F2'
                     ],
                     hoverBackgroundColor: [
                         '#666666',
@@ -55,7 +55,6 @@ buzz.buzzApp.controller('ResumeCtrl', ['$scope', '$timeout', function($scope, $t
                 }
             ]
         };
-
 
         var myPieChart = new Chart(ctx, {
             type: 'pie',
