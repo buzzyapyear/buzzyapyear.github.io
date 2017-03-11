@@ -119,3 +119,17 @@ body.resume {
 		}
 	}
 }
+
+@media(max-width:767px){
+	body.resume {
+		header {
+			h1 {
+				font-size: 28px;
+				padding-top: 0px;
+				small {
+					display: block;
+				}
+			}
+		}
+	}
+}
