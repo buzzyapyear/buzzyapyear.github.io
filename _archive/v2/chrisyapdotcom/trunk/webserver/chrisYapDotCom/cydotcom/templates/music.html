@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Music{% endblock %}
+{% block styles %}{% endblock %}
+{% block bodyClass %} class="music"{% endblock %}
+{% block content %}
+	<ul>
+		<li class="module hero">
+			<h1>Music</h1>
+			<p>Here is a small selection of projects I've been involved with recently.</p>
+			<p>I've also recommended projects involving others, be it friends, acquaintances or complete strangers, that I find compelling.</p>
+			<p>Enjoy!</p>
+		</li>
+	</ul>
+	{% for category in categories %}
+		<ul>
+			<li class="module marker"><h1 class="blackBG">{% if category.nickname %}{{ category.nickname }}{% else %}{{ category.title }}{% endif %}</h1><img src="{{ CY_MEDIA_URL }}cydotcom/images/music/{{ category.markerImage }}" alt="{% if category.nickname %}{{ category.nickname }}{% else %}{{ category.title }}{% endif %}" title="{% if category.nickname %}{{ category.nickname }}{% else %}{{ category.title }}{% endif %}" border="0" /></li>
+			{% for item in category.music_set|dictsort:"rank" %}
+				<li class="module">
+					<a href="{{ item.url }}" target="_blank"><img src="{{ CY_MEDIA_URL }}cydotcom/images/music/{{ item.thumbFilename }}" alt="{{ item.title }}" title="{{ item.title }}" border="0" /></a><br/>
+					<p><a href="{{ item.url }}" class="launch" target="_blank">{{ item.title }}</a></p>
+				</li>
+			{% endfor %}
+		</ul>
+	{% endfor %}
+{% endblock %}
+{% block jsSRC %}{% endblock %}
+{% block js %}
+
+{% endblock %}

@@ -1,0 +1,451 @@
+<html>
+
+<head>
+
+<title>beatpusher</title>
+
+
+
+<script type="text/javascript" language="JavaScript">
+
+// OPEN IN A NEW SIZED WINDOW
+
+
+
+                function openWindow(url) {
+
+                popupWin = window.open(url, 'mainwindow',
+
+'scrollbars=yes,resizable=yes,toolbar=yes,width=400,height=400,left=10,top=10,screenX=10,screenY=10')
+
+                }
+
+
+
+
+
+
+
+// PRELOAD ROLLOVER IMAGES 
+
+var base = "../images/";
+
+        if (document.images) {
+
+
+
+//  home nav links
+
+				home_on = new Image(); home_on.src = base + "home_on.gif";
+
+                home_off = new Image(); home_off.src = base + "home_off.gif";
+
+                
+
+                audio_on = new Image(); audio_on.src = base + "audio_on.gif";
+
+                audio_off = new Image(); audio_off.src = base + "audio_off.gif";
+
+                
+
+                visual_on = new Image(); visual_on.src = base + "visual_on.gif";
+
+                visual_off = new Image(); visual_off.src = base + "visual_off.gif";
+
+                
+
+                contact_on = new Image(); contact_on.src = base + "contact_on.gif";
+
+                contact_off = new Image(); contact_off.src = base + "contact_off.gif";
+
+
+
+}
+
+
+
+//  SHOWS CURRENT ROLLOVER
+
+function imgOn(imgName) {
+
+        if (document.images) {
+
+        document[imgName].src = eval(imgName + "_on.src");
+
+        }
+
+}
+
+
+
+// HIDES ROLLOVER
+
+function imgOff(imgName) {
+
+if (document.images) {
+
+        document[imgName].src = eval(imgName + "_off.src");
+
+        }
+
+}
+
+
+
+</script>
+
+<LINK REL="stylesheet" HREF="../bp_style.css" TYPE="text/css" MEDIA="screen">
+
+
+
+</head>
+
+<body bgcolor="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+
+
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+
+<!-- Start Header/Nav Row -->
+
+<tr>
+
+<td>
+
+	<table cellpadding="0" cellspacing="0" border="0">
+
+	<tr>
+
+	
+
+	<td width="47" height="103"><img src="../images/spacer.gif" width="47" height="103"></td>
+
+	
+
+	<td width="7" height="103" bgcolor="#cccccc"><img src="../images/spacer.gif" width="7" height="103"></td>
+
+	
+
+	<td width="431" height="103" bgcolor="#666666">
+
+		
+
+		<table cellpadding="0" cellspacing="0" border="0">
+
+		
+
+			<tr>
+
+			<td width="431" height="33"><img src="../images/spacer.gif" width="431" height="33"></td>
+
+			</tr>
+
+			
+
+			<tr>
+
+			<td width="431" height="26"><img src="../images/beatpusher_h.gif" width="431" height="26" border="0"></td>
+
+			</tr>
+
+			
+
+			<tr>
+
+			<td width="431" height="21">
+
+				
+
+				<table cellpadding="0" cellspacing="0" border="0">
+
+				<tr>
+
+				<td width="167" height="21"><img src="../images/spacer.gif" width="167" height="21" border="0"></td>
+
+				<!-- begin top navigation -->
+
+				<td width="" height="21" align="left"><a href="../index.shtml" onMouseOver="imgOn('home')" onMouseOut="imgOff('home')"><img src="../images/home_off.gif" name="home" width="51" height="21" border="0"></a><img src="../images/nav_dash.gif" width="11" height="21"><a href="index.html"><img src="../images/audio_on.gif" name="audio" width="45" height="21" border="0"></a><img src="../images/nav_dash.gif" width="11" height="21"><a href="../visual/index.html" onMouseOver="imgOn('visual')" onMouseOut="imgOff('visual')"><img src="../images/visual_off.gif" name="visual" width="47" height="21" border="0"></a><img src="../images/nav_dash.gif" width="11" height="21"><a href="../contact/index.html" onMouseOver="imgOn('contact')" onMouseOut="imgOff('contact')"><img src="../images/contact_off.gif" name="contact" width="62" height="21" border="0"></a></td>
+
+				<!-- end top navigation -->
+
+				</tr>
+
+				</table>
+
+				
+
+			</td>
+
+			</tr>
+
+			
+
+			<tr>
+
+			<td width="431" height="24"><img src="../images/spacer.gif" width="431" height="24" border="0"></td>
+
+			</tr>
+
+		
+
+		</table>
+
+		
+
+	</td>
+
+	
+
+	<td width="235" height="103"><img src="../images/carnation.gif" width="235" height="103" border="0"></td>
+
+	
+
+	</tr>
+
+	
+
+	
+
+	<tr>
+
+	<td width="47" height="52"><img src="../images/spacer.gif" width="47" height="52" border="0"></td>
+
+	<td width="438" height="52" colspan="2"><img src="../images/lines.gif" width="438" height="52" border="0"></td>
+
+	<td width="235" height="52"><img src="../images/spacer.gif" width="235" height="52" border="0"></td>
+
+	</tr>
+
+	
+
+	</table>
+
+</td>
+
+</tr>
+
+<!-- End Header/Nav Row -->
+
+
+
+<!-- Start Main Body Row -->
+
+<tr>
+
+<td height="330" bgcolor="#006699">
+
+	<table cellpadding="0" cellspacing="0" border="0">
+
+
+
+	<tr>
+
+	<td width="8" height="330" bgcolor="#cccccc"><img src="../images/spacer.gif" width="8" height="330"></td>
+
+	<td width="40" height="330" bgcolor="#006699"><img src="../images/spacer.gif" width="40" height="330"></td>
+
+	<td width="715" height="330" bgcolor="#006699" align="left">
+
+		<table cellpadding="0" cellspacing="0" border="0">
+
+		<tr>
+
+		<td width="715" height="6" colspan="5"><img src="../images/spacer.gif" width="715" height="6" border="0"></td>
+
+		</tr>
+
+		
+
+		<tr>
+
+		<td width="187" height="317"><img src="../images/box_left_dj.gif" width="187" height="317" border="0"></td>
+
+		
+
+		<td width="5" height="317" bgcolor="#666666"><img src="../images/spacer.gif" width="5" height="317"></td>
+
+		<!-- begin content window -->
+
+		<td width="331" height="317" bgcolor="#666666" valign="top">
+
+			<table cellpadding="0" cellspacing="0" border="0">
+
+			<tr>
+
+			<td width="331" height="5"><img src="../images/spacer.gif" width="331" height="5"></td>
+
+			</tr>
+
+			<tr>
+
+			<td>
+
+			<p><b>DJ Sets</b><br>
+
+			<a href="djyap-yearone.ram">Year One</a> : <b>DJ Yap</b> : Downtempo.Drum n' Bass : 10.29.00<br>
+
+			<a href="djstathis-mix2.ram">Beatpusher 003</a> : <b>DJM</b> : Drum n' Bass.Downtempo : 9.00<br>
+
+			<a href="DJSTATHIS-BEATPUSHER002.ram">Beatpusher 002</a> : <b>DJM</b> : Drum n' Bass.Downtempo : 6.00
+
+			</p>
+
+			
+
+			<p><b>Original Tracks</b><br>
+
+			<a href="breastfed-different.ram">Different Strokes</a> : <b>Breastfed</b> : Downtempo : 10.00<br>
+
+			<a href="raja-tribute.ram">Tribute</a> : <b>Raja</b> : Downtempo
+
+			</p>
+
+			
+
+			<p>Last update: 11.6.01</a></p>
+
+			</td>
+
+			</tr>	
+
+			</table>
+
+		</td>
+
+		<!-- end content window -->
+
+		<td width="5" height="317" bgcolor="#666666"><img src="../images/spacer.gif" width="5" height="317"></td>
+
+		
+
+		<!-- begin 2ndary nav -->
+
+		<td width="187" height="317" valign="top">
+
+			<table cellpadding="0" cellspacing="0" border="0">
+
+			<tr>
+
+			<td width="7" height="317"><img src="../images/box_right_dots.gif" width="7" height="317"></td>
+
+			<td width="180" height="317">
+
+				<table cellpadding="0" cellspacing="0" border="0">
+
+				<tr>
+
+				<td width="180" height="84"><img src="../images/box_right_top.gif" width="180" height="84" border="0"></td>
+
+				</tr>
+
+				
+
+				<tr>
+
+				<td width="180" height="233" bgcolor="#cccccc" valign="top">
+
+					<table cellpadding="0" cellspacing="0" border="0">
+
+					<tr>
+
+					<td>
+
+					<!--<p class="rightnav"><b>Audio by DJ/artist</b></p>
+
+					<p class="rightnav"><a href="audio_yap.html" class="rightnavlink">Yap</a><br>
+
+					<a href="audio_breastfed.html" class="rightnavlink">Breastfed</a></p>-->
+
+					<p class="rightnav"><b>Audio by genre</b></p>
+
+					<p><a href="audio_techno.html" class="rightnavlink">Techno</a><br>
+
+					<a href="audio_dnb.html" class="rightnavlink">Drum n' Bass</a><br>
+
+					<a href="audio_house.html" class="rightnavlink">House</a><br>
+
+					<a href="audio_trance.html" class="rightnavlink">Trance</a><br>
+
+					<span class="rightnavselect">Downtempo/Abstract</span><br>
+
+					</p>
+
+					</td>
+
+					</tr>
+
+					</table>
+
+				</td>
+
+				</tr>
+
+				</table>
+
+			</td>
+
+			</tr>
+
+			</table>
+
+		</td>
+
+		<!-- end 2ndary nav -->
+
+		</tr>
+
+		
+
+		<tr>
+
+		<td width="715" height="7" colspan="5"><img src="../images/spacer.gif" width="715" height="7" border="0"></td>
+
+		</tr>
+
+		</table>
+
+	</td>
+
+	
+
+	
+
+	
+
+	</tr>
+
+	</table>
+
+</td>
+
+
+
+
+
+</tr>
+
+<!-- End Main Body Row -->
+
+
+
+<tr>
+
+<td width="1" height="10"><img src="images/spacer.gif" width="1" height="10" border="0"></td>
+
+</tr>
+
+<tr>
+
+<td><p>Site design by <a href="mailto:yap@freebeats.org">Yap</a> 11.2001</p></td>
+
+</tr>
+
+</table>
+
+
+
+</body>
+
+
+
+</html>

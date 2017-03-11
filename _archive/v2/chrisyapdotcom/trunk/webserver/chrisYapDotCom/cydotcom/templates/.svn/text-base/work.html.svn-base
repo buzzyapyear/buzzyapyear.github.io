@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}Work{% endblock %}
+{% block styles %}{% endblock %}
+{% block bodyClass %} class="work"{% endblock %}
+{% block content %}
+
+
+
+<ul>
+	<li class="module hero">
+		<h1>Work</h1>
+		<p>This is a limited sampling of my professional work in the last few years.</p>
+		<p>You can also check out my <a href="/standalone/resume/" class="launch" target=_"blank">resum&#233;</a>, which has a clean printable version for your reference.</p>
+		<p>I enjoy many of the challenges found across the spectrum of the development cycle and have striven to be as much of an "end-to-end" developer as I can be. Please feel free to <a href="/contact/">get in touch</a> if you see opportunities for us to work together.</p>
+	</li>
+	{% for item in portfolio %}
+		<li class="module item">
+			{% for screenshot in item.screenshot_set %}
+				{% if screenshot.main %}
+					<img src="{{ CY_MEDIA_URL }}cydotcom/images/work/{{ screenshot.thumbFilename }}" alt="{{ screenshot.title }}" border="0" />
+				{% endif %}
+			{% endfor %}
+			<h1>{{ item.title }}</h1>
+			<strong>Role</strong> &raquo; {{ item.role }}<br/>
+			<strong>Tech</strong> &raquo; {{ item.tech }}<br/>
+			{% for screenshot in item.screenshot_set %}
+				{% if screenshot.main %}
+					<a href="{{ CY_MEDIA_URL }}cydotcom/images/work/{{ screenshot.largeFilename }}" rel="lightbox[{{ item.lightboxID }}]" title="{{ screenshot.title }}">Screenshot{{ item.screenshot_set|pluralize:"s" }}</a>
+				{% else %}
+					<a href="{{ CY_MEDIA_URL }}cydotcom/images/work/{{ screenshot.largeFilename }}" rel="lightbox[{{ item.lightboxID }}]" title="{{ screenshot.title }}" class="hide"></a>
+				{% endif %}
+			{% endfor %}
+			{% if item.url %}&nbsp;|&nbsp;<a href="{{ item.url }}" class="launch" target="_blank">Visit site</a>{% endif %}
+		</li>
+	{% endfor %}
+</ul>
+<div id="test">
+	
+</div>
+{% endblock %}
+{% block jsSRC %}{% endblock %}
+{% block js %}{% endblock %}

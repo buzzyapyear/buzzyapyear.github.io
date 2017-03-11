@@ -1,0 +1,47 @@
+{% extends 'mobile/base.html' %}
+{% block title %}Music{% endblock %}
+{% block styles %}{% endblock %}
+{% block header %}
+<div data-role="header">
+	<h1>Music</h1>
+</div>
+{% endblock %}
+{% block content %}
+	<ul>
+		<li class="module hero">
+			<h1>Music</h1>
+			<p>Here is a small selection of projects I've been involved with recently.</p>
+			<p>I've also recommended projects involving others, be it friends, acquaintances or complete strangers, that I find compelling.</p>
+			<p>Enjoy!</p>
+		</li>
+	</ul>
+	{% for category in categories %}
+		<div data-role="collapsible" data-collapse="true">
+			<h4>{% if category.nickname %}{{ category.nickname }}{% else %}{{ category.title }}{% endif %}</h4>
+			<ul{% if isMobile %}{% ifequal mobileType 'tablet' %} class="clearfix"{% endifequal %}{% endif %}>
+				{% for item in category.music_set|dictsort:"rank" %}
+					<li class="module">
+						<a href="{{ item.url }}" target="_blank"><img src="{{ CY_MEDIA_URL }}cydotcom/images/music/{{ item.thumbFilename }}" alt="{{ item.title }}" title="{{ item.title }}" border="0" /></a><br/>
+						<p><a href="{{ item.url }}" class="launch" target="_blank">{{ item.title }}</a></p>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+	{% endfor %}
+
+{% endblock %}
+{% block footerNav %}
+	<!--<div data-role="navbar">
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/resume/">Resum&#233;</a></li>
+			<li><a href="/work/">Work</a></li>
+			<li><a href="/music/">Music</a></li>
+			<li><a href="/contact/">Contact</a></li>
+		</ul>
+	</div>-->
+{% endblock %}
+{% block jsSRC %}{% endblock %}
+{% block js %}
+
+{% endblock %}

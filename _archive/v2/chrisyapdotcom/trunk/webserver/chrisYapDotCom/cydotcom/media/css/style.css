@@ -1,0 +1,336 @@
+body {
+	background: url('{{ CY_MEDIA_URL }}cydotcom/images/bgBlue.gif') no-repeat 50% 0;
+	color: #fff;
+	background-color: #000304;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 11px;
+	height: 100%;
+	width: 100%;
+}
+
+div#headerWrapper {
+	position: absolute;
+	width: inherit;
+	top: 0px;
+}
+
+div#headerWrapper,
+div#content
+{
+	z-index: 2;
+}
+
+div#header {
+	width: 896px;
+}
+
+div#masthead {
+	background: url('{{ CY_MEDIA_URL }}cydotcom/images/logoCY.png') top left no-repeat;
+	padding: 0px 0px 0px 72px;
+	width: 224px;
+	height: 64px;
+	float: left;
+	margin: 24px 0px 24px 24px;
+}
+
+div#masthead h1 {
+	font-size: 1.5em;
+}
+
+div#masthead h2 {
+	font-size: 1.2em;
+}
+
+div#masthead h3
+{
+	text-transform: uppercase;
+}
+
+ul#nav {
+	list-style-type: none;
+	padding: 0px;
+	margin: 24px 0px 0px 0px;
+	float: left;
+	width: 576px;
+}
+
+ul#nav li {
+	padding: 0px;
+	margin: 0px;
+	height: 64px;
+	display: table-cell;
+	vertical-align: bottom;
+}
+
+ul#nav li a {
+	display: block;
+	color: #fff;
+	text-decoration: none;
+	font-size: 2em;
+	margin-right: 32px;
+	font-family: "adrianna-condensed-demibold-1", "adrianna-condensed-demibold-2", helvetica, arial, sans-serif;
+	/*font-family: "anisette-petite-sc-1","anisette-petite-sc-2", helvetica, arial, sans-serif;*/
+}
+
+ul#nav li a:hover {
+	color: #33ccff;
+}
+
+ul#nav li a:active {
+	color: #33ffff;
+}
+
+ul#nav li a.selected {
+	color: #AFFF5F;
+}
+
+div#content {
+	margin: 136px 8px 0px 24px;
+}
+
+div#content ul {
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+li.module,
+#flickrContainer ul li,
+#tumblrContainer ul li
+{
+	background: url('{{ CY_MEDIA_URL }}cydotcom/images/bgModule.png') top left repeat-x;
+	background-color: #1a1a1a;
+	padding: 16px;
+	width: 248px;
+	height: 248px;
+	float: left;
+	position: relative;
+	margin: 0px 16px 16px 0px;
+	overflow: hidden;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+	-moz-box-shadow: 0px 0px 8px #000;
+    -webkit-box-shadow: 0px 0px 8px #000;
+    box-shadow: 0px 0px 8px #000;
+}
+
+div.wide2 {
+	width: 512px;
+}
+
+div.wide3 {
+	width: 776px;
+}
+
+#flickrContainer ul li {
+	text-align: center;
+}
+
+#flickrContainer ul li img.flickrPhoto {
+	position: absolute;
+	top: 16px;
+	left: 16px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#flickrContainer ul li img.flickrHoriz {
+	left: 16px;
+	right: 16px;
+	margin-left: -30px;
+	clip: rect(0px, 278px, 248px, 30px);
+	_clip: rect(0px 278px 248px 30px);
+}
+
+#flickrContainer ul li img.flickrVert {
+	top: 16px;
+	bottom: 16px;
+	margin-top: -30px;
+	clip: rect(30px, 248px, 278px, 0px);
+	clip: rect(30px 248px 278px 0px);
+}
+
+#tumblrContainer ul  {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+#tumblrContainer ul li div.tumblrPost {
+	width: 248px;
+	height: 224px;
+	margin-bottom: 8px;
+	overflow: hidden;
+	position: relative;
+}
+
+#tumblrContainer ul li img {
+	width: 248px;
+}
+
+#tumblrContainer div.tumblrQuote .quote {
+	font-size: 1.3em !important;
+	font-style: oblique !important;
+}
+
+#tumblrContainer div.tumblrQuote .source {
+	font-weight: bold;
+	display: block;
+	margin-top: 8px;
+}
+
+#tumblrContainer div.tumblrConversation ul {
+	margin-bottom: 8px !important;
+}
+
+#tumblrContainer div.tumblrConversation ul li {
+	float: none !important;
+	background: none !important;
+	width: auto !important;
+	height: auto !important;
+	text-align: left !important;
+	padding: 0px !important;
+	margin: 8px 0px 0px 0px !important;
+	overflow: auto !important;
+}
+
+li.noPad,
+li.marker,
+li.marker img
+{
+	padding: 0px !important;
+	width: 280px !important;
+	height: 280px !important;
+}
+
+li.marker img {
+    width: 280px;
+    height: 280px;
+}
+
+li#markerFlickr {
+	background: url('{{ CY_MEDIA_URL }}cydotcom/images/bgMarkerFlickr.png') top left repeat-x !important;
+}
+
+li#markerTumblr {
+	background: url('{{ CY_MEDIA_URL }}cydotcom/images/bgMarkerTumblr.png') top left repeat-x !important;
+	text-align: center;
+}
+
+li.marker h1 {
+	position: absolute;
+}
+
+body.music li.marker h1 {
+	bottom: 8px;
+	right: 8px;
+	font-size: 1.1em;
+	padding: 0px 5px;
+}
+
+body.work li.item h1 {
+	font-size: 1.1em;
+	margin-top: 4px;
+}
+
+li.hero {
+	background: url('{{ CY_MEDIA_URL }}cydotcom/images/bgModuleHero.png') top left repeat-x;
+	background-color: #669933;
+	color: #000 !important;
+}
+
+div#footer {
+	width: inherit;
+}
+
+div#footer div#poweredBy {
+	padding: 24px 0px 0px 24px;
+}
+
+div#footer div#poweredBy h1 {
+	font-size: 1em;
+	font-weight: bold;
+}
+
+div#footer div#poweredBy ul {
+	list-style-type: none;
+}
+
+div#footer div#poweredBy li {
+	float: left;
+	margin-right: 8px;
+}
+
+div#footer div#poweredBy li img {
+	height: 33px;
+}
+
+div#footer div#copyright {
+	padding: 24px 0px 16px 24px;
+}
+
+a {
+	text-decoration: none;
+	font-weight: bold;
+}
+
+a:link,
+a:visited {
+	color: #00ccff;
+}
+
+a:hover {
+	color: #00ffff;
+}
+
+a:active {
+	color: #999999;
+}
+
+li.hero a:link,
+li.hero a:visited {
+	color: #003366;
+}
+
+li.hero a:hover {
+	color: #006699;
+}
+
+li.hero a:active {
+	color: #0076B2;
+}
+
+a.launch {
+	background: url('{{ CY_MEDIA_URL }}cydotcom/images/iconNewWindow.png') center right no-repeat;
+	padding: 3px 15px 0px 0px;
+	_padding: 1px 18px 0px 0px;
+}
+
+li.hero a.launch {
+	background: url('{{ CY_MEDIA_URL }}cydotcom/images/iconNewWindowDark.png') center right no-repeat;
+	padding: 1px 15px 0px 0px;
+	_padding: 1px 18px 0px 0px;
+}
+
+h1 {
+	font-size: 1.6em;
+	font-weight: bold;
+	font-family: "adrianna-condensed-demibold-1", "adrianna-condensed-demibold-2", helvetica, arial, sans-serif;
+	/*font-family: "anisette-petite-sc-1","anisette-petite-sc-2", helvetica, arial, sans-serif;*/
+}
+
+p {
+	padding: 4px 0px;
+}
+
+.hide {
+	position: absolute;
+	visibility: hidden;
+}
+
+.blackBG {
+	background: url('{{ CY_MEDIA_URL }}cydotcom/images/bgBlackTransparent.png') top left repeat;
+	display: block;
+}
+

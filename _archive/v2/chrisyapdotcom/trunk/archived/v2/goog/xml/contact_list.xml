@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<contactlist xmlns="">
+	<contact1 xmlns="">
+		<name>Bert</name>
+		<email>bert@sesamest.com</email>
+		<phone>555-555-5555</phone>
+		<address>123 Sesame St.</address>
+		<city>Brooklyn</city>
+		<state>NY</state>
+		<zip>11218</zip>
+		<avatarURL>/goog/images/avatars/bert.gif</avatarURL>
+	</contact1>
+	<contact2 xmlns="">
+		<name>Ernie</name>
+		<email>ernie@sesamest.com</email>
+		<phone>555-555-5555</phone>
+		<address>123 Sesame St.</address>
+		<city>Brooklyn</city>
+		<state>NY</state>
+		<zip>11218</zip>
+		<avatarURL>/goog/images/avatars/ernie.gif</avatarURL>
+	</contact2>
+	<contact3 xmlns="">
+		<name>Grover</name>
+		<email>grover@sesamest.com</email>
+		<phone>555-555-5555</phone>
+		<address>123 Sesame St.</address>
+		<city>Brooklyn</city>
+		<state>NY</state>
+		<zip>11218</zip>
+		<avatarURL>/goog/images/avatars/grover.gif</avatarURL>
+	</contact3>
+	<contact4 xmlns="">
+		<name>Big Bird</name>
+		<email>bigbird@sesamest.com</email>
+		<phone>555-555-5555</phone>
+		<address>123 Sesame St.</address>
+		<city>Brooklyn</city>
+		<state>NY</state>
+		<zip>11218</zip>
+		<avatarURL>/goog/images/avatars/bigbird.gif</avatarURL>
+	</contact4>
+	<contact5 xmlns="">
+		<name>Hooper</name>
+		<email>hooper@sesamest.com</email>
+		<phone>555-555-5555</phone>
+		<address>123 Sesame St.</address>
+		<city>Brooklyn</city>
+		<state>NY</state>
+		<zip>11218</zip>
+		<avatarURL>/goog/images/avatars/hooper.gif</avatarURL>
+	</contact5>
+</contactlist>

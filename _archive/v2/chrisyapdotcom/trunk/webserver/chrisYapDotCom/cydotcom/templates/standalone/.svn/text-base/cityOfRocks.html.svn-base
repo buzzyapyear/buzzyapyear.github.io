@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title>Chris Yap | DJ set @ City of Rocks | TRUST</title>
+	<style type="text/css" media="screen">
+		body {
+			margin: 0px;
+			padding: 0px;
+			text-align: center;
+			background: url('{{ MEDIA_URL }}cydotcom/images/music/cityOfRocks/moonrise.jpg') no-repeat 50% 0;
+			color: #ccc;
+			background-color: #0C0E05;
+			font-family: Helvetica, Arial, sans-serif;
+			font-size: 16px;
+		}
+
+		#wrapper {
+			/*margin: 0 auto;*/
+			width: 800px;
+			text-align: left;
+			position: relative;
+		}
+		
+		#text-background {
+			background: #000;
+			filter:alpha(opacity=60);
+			opacity:0.6;
+			width: 460px;
+			height: 100%;
+			position: absolute;
+			top: 0px;
+			left: 80px;
+		}
+		
+		#content {
+			z-index: 2;
+			position: relative;
+			padding: 20px;
+			margin-left: 80px;
+		}
+		
+		h1 {
+			margin-top: 0px;
+		}
+		
+		a {
+			text-decoration: none;
+		}
+		
+		a:link,
+		a:visited
+		{
+			color: #B8F140;
+		}
+		
+		a:hover
+		{
+			color: #91BE32;
+		}
+		
+		a:active
+		{
+			color: #D1F389;
+		}
+
+		a.download {
+			background: url('{{ MEDIA_URL }}cydotcom/images/music/cityOfRocks/iconDownload.png') top left no-repeat;
+			padding-left: 34px;
+			padding-top: 2px;
+			margin: 10px 0px;
+			font-size: 1.4em;
+			font-weight: bold;
+			text-transform: uppercase;
+			display: block;
+		}
+		
+		#setlist {
+			width: 800px;
+			font-weight: bold;
+		}
+		
+		ol {
+			list-style-type: none;
+			padding: 0px;
+			margin: 0px;
+		}
+		
+		li {
+			margin-bottom: 5px;
+		}
+		
+		.artist {
+			margin-right: 5px;
+			color: #777;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="wrapper">
+		<div id="content">
+			<h1>Chris Yap<br/>DJ Set @ City of Rocks<br/><a href="http://www.trust-os.net" target="_blank">TRUST &raquo;</a><br/>10.31.09</h1>
+			<h2>1hr 58min 270.4MB 320kbps mp3</h2>
+			
+			<!-- Start of Flickr Badge -->
+			<style type="text/css">
+			#flickr_badge_source_txt {padding:0; font: 11px Arial, Helvetica, Sans serif; color:#666666;}
+			#flickr_badge_icon {display:block !important; margin:0 !important; border: 1px solid rgb(0, 0, 0) !important;}
+			#flickr_icon_td {padding:0px !important;}
+			.flickr_badge_image {text-align:center !important;}
+			.flickr_badge_image img {border: 0px solid black !important;}
+			#flickr_www {display:block; padding: 0px 0px 5px 0px !important; font: 11px Arial, Helvetica, Sans serif !important; color:#3993ff !important;}
+			#flickr_badge_uber_wrapper a:hover,
+			#flickr_badge_uber_wrapper a:link,
+			#flickr_badge_uber_wrapper a:active,
+			#flickr_badge_uber_wrapper a:visited {text-decoration:none !important; background:inherit !important;color:#3993ff;}
+			#flickr_badge_wrapper {}
+			#flickr_badge_source {padding:0 !important; font: 11px Arial, Helvetica, Sans serif !important; color:#666666 !important;}
+			td.flickr_badge_image {padding-right: 10px !important;}
+			</style>
+			<table id="flickr_badge_uber_wrapper" cellpadding="0" cellspacing="0" border="0"><tr><td><a href="http://www.flickr.com" id="flickr_www">www.<strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong>.com</a><table cellpadding="0" cellspacing="0" border="0" id="flickr_badge_wrapper">
+			<tr>
+			<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=5&display=random&size=s&layout=h&source=user_set&user=52033098%40N00&set=72157622737192038&context=in%2Fset-72157622737192038%2F"></script>
+			</tr>
+			</table>
+			</td></tr></table>
+			<!-- End of Flickr Badge -->
+			
+			<p><a class="download" href="http://www.freebeats.org/media/ChrisYap-CityOfRocks.mp3" target="_blank">Download audio</a></p>
+			<div id="setlist">
+				<ol>
+					<li><span class="artist">Shackleton</span> <span class="track">The Rope Tightens (Badawi remix)</span></li>
+					<li><span class="artist">Jus Wan</span> <span class="track">Beyond</span></li>
+					<li><span class="artist">Pinch</span> <span class="track">Widescreen</span></li>
+					<li><span class="artist">Mala</span> <span class="track">Forgive</span></li>
+					<li><span class="artist">Scuba</span> <span class="track">Outmost</span></li>
+					<li><span class="artist">Pinch</span> <span class="track">Gangstaz</span></li>
+					<li><span class="artist">Mala</span> <span class="track">Changes</span></li>
+					<li><span class="artist">Headhunter</span> <span class="track">Prototype</span></li>
+					<li><span class="artist">Sigha</span> <span class="track">Expansions</span></li>
+					<li><span class="artist">Pinch</span> <span class="track">Brighter Day</span></li>
+					<li><span class="artist">L-Wiz</span> <span class="track">Surreal</span></li>
+					<li><span class="artist">Headhunter</span> <span class="track">In Motion</span></li>
+					<li><span class="artist">STP</span> <span class="track">The Fall (T++ remix)</span></li>
+					<li><span class="artist">Headhunter</span> <span class="track">Technopolis</span></li>
+					<li><span class="artist">Headhunter</span> <span class="track">Baseflow</span></li>
+					<li><span class="artist">Deadbeat</span> <span class="track">Rise Again</span></li>
+					<li><span class="artist">Deadbeat</span> <span class="track">Roots and Wire</span></li>
+					<li><span class="artist">Marauder</span> <span class="track">Dubbed In Vain</span></li>
+					<li><span class="artist">Pinch</span> <span class="track">Joyride</span></li>
+					<li><span class="artist">F</span> <span class="track">Icon</span></li>
+					<li><span class="artist">Scuba</span> <span class="track">Tense</span></li>
+					<li><span class="artist">F</span> <span class="track">The untitled dub</span></li>
+					<li><span class="artist">Prince</span> <span class="track">When Doves Cry</span></li>
+					<li><span class="artist">F</span> <span class="track">Phantom</span></li>
+					<li><span class="artist">Surgeon</span> <span class="track">Bad Hands Break Part II</span></li>
+					<li><span class="artist">F</span> <span class="track">Phase one</span></li>
+					<li><span class="artist">Thom Yorke</span> <span class="track">The Clock (Surgeon Remix)</span></li>
+					<li><span class="artist">Surgeon</span> <span class="track">Bad Hands (Monolake Remix)</span></li>
+					<li><span class="artist">Tony Rohr</span> <span class="track">Buzz Buzz Buzz</span></li>
+					<li><span class="artist">Brian Sanhaji</span> <span class="track">Cortosis (Chris Liebing Remix)</span></li>
+					<li><span class="artist">Tony Rohr</span> <span class="track">Fem</span></li>
+					<li><span class="artist">Pascal FEOS</span> <span class="track">Ausklang</span></li>
+					<li><span class="artist">Joel Mull</span> <span class="track">October C</span></li>
+					<li><span class="artist">British Murder Boys</span> <span class="track">Anti Inferno</span></li>
+					<li><span class="artist">Math Head</span> <span class="track">Get Hype</span></li>
+					<li><span class="artist">Ed Colmar</span> <span class="track">Vantisetti</span></li>
+					<li><span class="artist">James Ruskin</span> <span class="track">Against Your Will</span></li>
+					<li><span class="artist">Vaccine</span> <span class="track">Fever (High Grade Mix)</span></li>
+					<li><span class="artist">Intex Systems</span> <span class="track">Transfer</span></li>
+					<li><span class="artist">Vaccine</span> <span class="track">Signal To Noise</span></li>
+					<li><span class="artist">Intex Systems</span> <span class="track">The Depths</span></li>
+					<li><span class="artist">Intex Systems</span> <span class="track">Destroy</span></li>
+					<li><span class="artist">Clockmakers</span> <span class="track">Golf Hats</span></li>
+					<li><span class="artist">Scuba</span> <span class="track">Suck</span></li>
+					<li><span class="artist">Vaccine</span> <span class="track">Side effects</span></li>
+					<li><span class="artist">Time Slips By</span> <span class="track">Setr</span></li>
+					<li><span class="artist">Mount Kimbie</span> <span class="track">Maybes</span></li>
+					<div style="clear: both;"></div>
+				</ol>
+			</div>
+		</div>
+		<div id="text-background"></div>	
+	</div>
+	
+	<!-- BEGIN GOOGLE ANALYTICS -->
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script type="text/javascript">
+		try {
+			var pageTracker = _gat._getTracker("UA-11792387-1");
+			pageTracker._setDomainName(".chrisyap.com");
+			pageTracker._trackPageview();
+		} catch(err) {}
+	</script>
+	<!-- END GOOGLE ANALYTICS -->
+	
+</body>
+</html>

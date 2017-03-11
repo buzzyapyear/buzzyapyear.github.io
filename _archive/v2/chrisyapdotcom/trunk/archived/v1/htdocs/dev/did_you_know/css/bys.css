@@ -1,0 +1,100 @@
+p, div, body, td
+{
+	font-family: 'Verdana', 'Arial', sans-serif;
+	font-size: 10px;
+	color: #303030;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+body { margin: 0px; }
+
+a
+{
+	font-family: 'Verdana','Arial', sans-serif;
+	font-size: 10px;
+	color: #567C01;
+}
+
+a:hover { color: #FDBB30; }
+
+.price
+{
+	font-weight: bold;
+	text-align: right;
+	line-height: 17px;
+}
+
+.grandTotal
+{
+	font-weight: bold;
+	text-align: right;
+	color: #FF9600;
+	line-height: 17px;
+}
+
+.rightColumn { padding: 0,0,0,4px; }
+.checkbox { margin-right: 4px; }
+
+.accessory_info_title
+{
+	font-weight: bold;
+	font-size: 11px;
+	margin-top: 9px;
+	margin-left: 10px;
+}
+
+.accessory_info_price
+{
+	font-weight: bold;
+	font-size: 11px;
+	margin-top: 9px;
+	margin-right: 10px;
+}
+
+#configurationForm { margin: 0; }
+
+.itemText:link
+{
+	color: #303030;
+	text-decoration: none;
+}
+
+.itemText:active
+{
+	color: #303030;
+	text-decoration: none;
+}
+
+.itemText:visited
+{
+	color: #303030;
+	text-decoration: none;
+}
+
+.itemText:hover
+{
+	color: #303030;
+	text-decoration: none;
+}
+
+.subHdr
+{
+	font-family: 'Verdana', 'Arial', sans-serif;
+	font-size: 10px;
+	color: #303030;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.formField 
+{
+	border:1px solid #7B9CBD; padding:2px; margin:0 0 2px 0; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal; 
+}
+
+.newContenteArea { display:none }
+#errorArea { margin:10px; }
+
+.minorNote {
+	font-size:10px; font-weight:normal; color:#303030;
+}

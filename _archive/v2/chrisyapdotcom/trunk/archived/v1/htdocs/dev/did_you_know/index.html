@@ -1,0 +1,4017 @@
+
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<title>Build Your Scion | Customize It</title>
+	<script type="text/javascript" language="javascript" src="js/configurator.js"></script>
+	<link rel="stylesheet" href="css/bys.css" type="text/css">
+	<meta http-equiv="imagetoolbar" content="no">
+	<meta http-equiv="imagetoolbar" content="false">
+<style type="text/css">
+@import "css/scroll-rel.css";
+</style>
+
+<script src="js/scroller/dw_scrollObj.js" type="text/javascript"></script>
+<script src="js/scroller/dw_hoverscroll.js" type="text/javascript"></script>
+<script src="js/scroller/dw_event.js" type="text/javascript"></script>
+<script src="js/scroller/dw_slidebar.js" type="text/javascript"></script>
+<script src="js/scroller/dw_scroll_aux.js" type="text/javascript"></script>
+<script type="text/javascript">
+/*************************************************************************
+  This code is from Dynamic Web Coding at www.dyn-web.com
+  Copyright 2001-4 by Sharon Paine 
+  See Terms of Use at www.dyn-web.com/bus/terms.html
+  regarding conditions under which you may use this code.
+  This notice must be retained in the code as is!
+*************************************************************************/
+
+function initScrollLayer(maxheight,scrollLayer) {
+  //alert('init: ' + maxheight);
+  var wndo = new dw_scrollObj('wn', 'lyr1', 'wn', maxheight, scrollLayer);
+  wndo.setUpScrollbar("dragBar", "track", "v", 1, 1);
+  dw_scrollObj.GeckoTableBugFix('wn'); 
+}
+function initScrollLayer2(maxheight,scrollLayer) {
+  var wndo2 = new dw_scrollObj('wn2', 'lyr2', 'wn2', maxheight, scrollLayer);
+  wndo2.setUpScrollbar("dragBar2", "track2", "v", 1, 1);
+  wndo2.maxheight = maxheight;
+  dw_scrollObj.GeckoTableBugFix('wn2'); 
+}
+
+</script>	
+</head>
+<body style="margin:0; background-color:#FFFFFF" onLoad="initScrollLayer();initScrollLayer2();initMainPage()">
+
+
+<script src="viewpoint/scripts/MTS3Interface.js" type="text/javascript" language="javascript"></script>
+<script src="viewpoint/scripts/VWPT_functions.js" type="text/javascript" language="javascript"></script>
+<script src="js/checkAndRadioMngr.js" type="text/javascript" language="javascript"></script>
+<script src="js/utilities.js" type="text/javascript" language="javascript"></script>
+<script src="js/showDealerGroup.js" type="text/javascript" language="javascript"></script>
+
+<script language="javascript" type="text/javascript">
+
+
+
+
+
+function targetMainWindow(urlElement) {
+	return true;
+}
+
+
+
+function contactDealer(dealerCode) {
+	var configForm = document.getElementById("configurationForm");
+	var dealerCodeElement = document.getElementById("dealerCodeField");
+	if ( dealerCodeElement == null ) {
+		dealerCodeElement = document.createElement("input");
+		dealerCodeElement.id = "dealerCodeField";
+		dealerCodeElement.name = "dealerCode";
+		dealerCodeElement.type = "hidden";
+		configForm.appendChild(dealerCodeElement);
+	}
+	dealerCodeElement.value = dealerCode;
+	loadFindDealers();
+	dealerCodeElement.value = "";
+}
+
+function loadDealerMap(dealerCode) {
+	var dealerData = new UrlData();
+	dealerData.add("width", "388");
+	dealerData.add("height", "228");
+	dealerData.add("dealerCode", dealerCode);
+	var newLocation = '/BysDev2/pub/dealerMap.do' + '?' + dealerData.cgiString;
+	loadFindDealers(newLocation);
+}
+
+
+
+
+// global flag
+	var isIE = false;
+	// global request and XML document objects
+	var req;
+	// current content container
+	var container;
+
+	var onLoadDocSuccess = null;
+
+	function loadDoc(url, method, data, onSuccess) {
+		here.hold = true;
+		if ( typeof(data) == "undefined" ) data = null;
+		if ( ( method == "GET" ) && ( data != null ) ) {
+			url += "?" + data;
+		}
+		// branch for native XMLHttpRequest object
+		if (window.XMLHttpRequest) {
+			req = new XMLHttpRequest();
+			req.onreadystatechange = processReqChange;
+			req.open(method, url, true);
+			if (method == "POST") {
+				var post = data;
+				if ( post == null ) {
+					post = "";
+				}
+				post += configurationPostString();
+				req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+				req.setRequestHeader('BYS-Request-Type', 'page-component');
+				req.send(post);
+			}
+			else {
+				req.send(null);
+			}
+		// branch for IE/Windows ActiveX version
+		} else if (window.ActiveXObject) {
+			isIE = true;
+			req = new ActiveXObject("Microsoft.XMLHTTP");
+			if (req) {
+				req.onreadystatechange = processReqChange;
+				req.open(method, url, true);
+				if(method == "POST") {
+					var post = data;
+					if ( post == null ) {
+						post = "";
+					}
+					post = configurationPostString();
+					req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+					req.setRequestHeader('BYS-Request-Type', 'page-component');
+					req.send(post);
+				} else {
+					req.send();
+				}
+			}
+		}
+		if ( typeof(onSuccess) != "undefined" ) {
+			onLoadDocSuccess = onSuccess;
+		}
+		else {
+			onLoadDocSuccess = null;
+		}
+	}
+
+	function UrlData() {
+		function urlDataAdd(key, value) {
+			if ( this.cgiString != "" ) this.cgiString += "&";
+			this.cgiString += key + "=" + escape(value);
+		}
+
+		this.cgiString = "";
+		this.add = urlDataAdd;
+
+		return this;
+	}
+
+	function configurationPostString() {
+		var data = new UrlData();
+		var selectedColor = "";
+		for (var i in colorMap) {
+			var color = colorMap[i];
+			if ( color.selected ) {
+				selectedColor=color.id;
+				break;
+			}
+		}
+		if ( selectedColor != "" ) data.add("colorId", selectedColor);
+		for (var i in accessoryMap) {
+			var accessory = accessoryMap[i];
+			if ( accessory.selected ) data.add("accessories", accessory.id);
+		}
+		return data.cgiString;
+	}
+
+	function processReqChange() {
+		var displayArea =  document.getElementById(container);
+		var loading =  document.getElementById("loading");
+		displayArea.style.display="none";
+		loading.style.display="block";
+		if (req.readyState == 4) {
+			here.hold = false;
+			if (req.status == 200) {
+				loading.style.display="none";
+				var newContent = req.responseText;
+				displayArea.style.display="block";
+				displayArea.innerHTML = newContent;
+				if ( onLoadDocSuccess != null ) {
+					onLoadDocSuccess();
+					onLoadDocSuccess = null;
+				}
+			} else {
+				loading.style.display="none";
+				document.getElementById('errorArea').style.display = "block";
+				//alert("There was a problem retrieving the requested data:\n" + req.status + req.statusText);
+			}
+		}
+	}
+
+
+
+function Location(mainNav, didYouKnow) {
+	this.mainNav = mainNav;
+	this.subNavHistory = new Array("Colors");
+	this.mainNavHistory = new Array("customize_it");
+	this.currentMain = "customize_it";
+	this.currentSub = "Colors";
+	this.lastMain = "customize_it";
+	this.lastSub = "Colors";
+	this.tabPath = "bys_images/accessories_subnav/";
+	this.tabMainPath = "bys_images/";
+	this.vpArea = "exterior";
+	this.didYouKnow = didYouKnow;
+	this.accessoryDescription = "";
+	this.accessoryName = "&#160;";
+	this.accessoryPrice = "&#160;";
+	this.accessoryDisclaimer = "";
+	this.accessoryState = "description";
+	this.accessoryImagePath = "";
+	this.currentAccessory;
+	this.disclaimerOmniture = "";
+	this.hold = false;
+	this.lastFrameAction = "";
+}
+
+var mainNav = new Array();
+mainNav.push("customize_it","get_it");
+
+
+
+function DidYouKnow() {
+	this.Standard_features = "You can get more info on financing and online credit applications in the \"Get It\" section.";
+	this.Transmission = "You can compare multiple Scions side by side.  Select \"Save &amp; Compare\" above to get going.";
+	this.Colors = "Nothing is permanent. Return to this screen at any time to find the hue that matches your taste.";
+	this.Exterior = "Move your mouse over an accessory for more info and a photo.  Click to add it to your Scion.";
+	this.Interior = "Move your mouse over an accessory for more info and a photo.  Click to add it to your Scion.";
+	this.Sound = "You can take it with you - select \"Print This Scion\" for a custom flyer of your vehicle.";
+	this.Wheels = "Move your mouse over an accessory for more info and a photo.  Click to add it to your Scion.";
+	this.Performance = "You can take it with you - select \"Print This Scion\" for a custom flyer of your vehicle.";
+	this.Packages = "Apply for credit online and get immediate pre-approval. Select \"Apply For Credit\" to get started.";
+	this.pricingDisclaimer = "You can check pricing and availability in your area by sending your Scion to a dealer. Select \"Contact Dealer\" to get started.";
+	this.financingDisclaimer = "Apply for credit online and get immediate pre-approval. Select \"Apply For Credit\" to get started.";
+	this.findDealers = "You can send your Scion to several dealers simultaneously.  Just check the boxes next to all the dealers you\'d like to contact."
+	this.saveAndCompare = "Apply for credit online and get immediate pre-approval. Select \"Apply For Credit\" to get started."
+	this.get_it = "You can check availability by sending your Scion to a dealer. Select \"Contact Dealer\" to get started.";
+}
+
+var didYouKnow = new DidYouKnow();
+var here = new Location(mainNav,didYouKnow);
+
+function updatePageTitle(newTitle) {
+	document.title= newTitle;
+}
+
+function loadScionMain(url) {
+	if(window.opener) {
+		window.opener.location.replace(url);
+		return false;
+	} else {
+		return true;
+	}
+}
+
+function loadGetIt() {
+	return false;
+}
+function loadCustomizeIt() {
+	if(here.currentMain != "customize_it" && here.hold != true) {
+		hideContentAreas();
+		document.getElementById("contentArea").style.display="block";
+		document.Standard_features.src = document.Standard_features.src
+		if(here.currentSub == "none" && here.lastSub == "Standard_features") {
+			loadStandardFeatures();
+			return;
+		}
+		updatePageTitle('Build Your Scion | Customize It');
+		updateLocation('customize_it',here.currentSub);
+
+		setTimeout("loadSubnavSrc()",200);
+	}
+}
+function loadSubnavSrc(){
+	document.Standard_features.src = document.Standard_features.src;
+	document.Transmission.src = document.Transmission.src;
+	document.Colors.src = document.Colors.src;
+	document.Exterior.src = document.Exterior.src;
+	document.Interior.src = document.Interior.src;
+	document.Sound.src = document.Sound.src;
+	document.Wheels.src = document.Wheels.src;
+	document.Performance.src = document.Performance.src;
+	if(document.Packages){document.Packages.src = document.Packages.src;}
+}
+
+function loadPricingDisclaimer() {
+	return;
+}
+function loadFinancingDisclaimer() {
+	return;
+}
+function loadFindDealers(newLocation) {
+	return;
+}
+
+function handleResponse(content) {
+	return;
+}
+
+function loadSaveAndCompare() {
+	return;
+}
+
+function initSaveAndCompare() {
+	return;
+}
+
+function displaySaveAndCompare() {
+	return;
+}
+
+function viewPrint() {
+	return;
+}
+function loadStandardFeatures() {
+	hideContentAreas();
+	document.getElementById("vehicleLayerTransmission").style.display="none";
+	document.getElementById("vehicleLayerColors").style.display="none";
+	document.getElementById("vehicleLayerExterior").style.display="none";
+	document.getElementById("vehicleLayerInterior").style.display="none";
+	document.getElementById("vehicleLayerSound").style.display="none";
+	document.getElementById("vehicleLayerWheels").style.display="none";
+	if(document.getElementById("vehicleLayerPerformance")) document.getElementById("vehicleLayerPerformance").style.display="none";
+	document.getElementById("contentArea").style.display="block";
+	document.getElementById("wholeWorkArea").style.display="none";
+	document.getElementById("lyr1").style.display="none";
+	var visited = false;
+	for(i=0;i<here.subNavHistory.length;i++) {
+		if(here.subNavHistory[i] == "Standard_features") {
+			visited = true;
+		}
+	}
+
+	document.getElementById("vehicleLayerStandard_features").style.display="block";
+	updateLocation('customize_it','Standard_features');
+}
+
+function goBack() {
+	var lastMain = here.lastMain;
+	if(here.currentMain == "financingDisclaimer" || here.currentMain == "pricingDisclaimer") {
+		for(i=0;i<here.mainNavHistory.length;i++) {
+			if(here.mainNavHistory[i] != "financingDisclaimer" && here.mainNavHistory[i] != "pricingDisclaimer") {
+				lastMain = here.mainNavHistory[i];
+				break;
+			}
+		}
+	}
+	if(lastMain == "get_it") { loadGetIt(); return; }
+	if(lastMain == "customize_it") { loadCustomizeIt(); return; }
+	if(lastMain == "findDealers") { loadFindDealers(); return; }
+	if(lastMain == "dealerMap") { loadDealerMap(); return; }
+	if(lastMain == "saveAndCompare") { loadSaveAndCompare(); return; }
+}
+
+function hideContentAreas() {
+	document.getElementById("contentArea").style.display="none";
+//	document.getElementById("getItArea").style.display="none";
+	document.getElementById("pricingDisclaimerArea").style.display="none";
+	document.getElementById("financingDisclaimerArea").style.display="none";
+	document.getElementById("vehicleLayerStandard_features").style.display="none";
+//	document.getElementById("findDealersArea").style.display="none";
+//	document.getElementById("saveAndCompareArea").style.visibility="hidden";
+	document.getElementById("errorArea").style.display="none";
+}
+
+function updateLocation(newMain,newSub,firstLoad) {
+	if(newMain != "get_it" && newMain != "findDealers" && newMain != "pricingDisclaimer" && newMain != "financingDisclaimer" && newSub != "Standard_features"){
+		/*
+		if(firstLoad != true){
+			if(isDownloading == 1 && bandwidth == "high" && vpInstalled == true) {
+				document.getElementById('loadingWarning').style.visibility='visible';
+				return;
+			}
+		}*/
+	}
+		if(bandwidth == "low" || firefoxMac == true){
+			document.lowBandImage.src=document.lowBandImage.src;
+		}
+here.lastMain = here.currentMain;
+	here.currentMain = newMain;
+	updateMainNavHistory(newMain);
+	if(here.currentSub == "none") {
+		if(here.currentMain == "customize_it") {
+			here.currentSub = here.lastSub;
+		} else {
+			here.currentSub = newSub;
+		}
+	} else {
+		here.lastSub = here.currentSub;
+		here.currentSub = newSub;
+	}
+	document.getElementById("scrollbar").style.visibility = "hidden";
+	if(newSub == "Transmission" || newSub == "Colors" || newSub == "Standard_features"){
+		document.getElementById("scrollbar2").style.visibility = "hidden";
+	}else{
+		document.getElementById("scrollbar2").style.visibility = "visible";
+	}
+
+	// trigger viewpoint if the section has changed
+	if(newSub == "Interior" || newSub == "Sound") {
+		if(here.vpArea == "exterior") {
+			here.vpArea = "interior";
+			//triggerInterior();
+		}
+	} else if(newSub == "none") {
+		//don't trigger viewpoint
+	} else {
+		if(here.vpArea == "interior") {
+			here.vpArea = "exterior";
+			//triggerExterior();
+		}
+	}
+
+	if(here.currentSub != "none") updateSubNavHistory(here.currentSub);
+	didYouKnowUpdate();
+	setTimeout("updateMainNavTabs()", 100); //timeout fixes IE image swapping bug
+
+	if(here.currentSub != "none") {
+	// accessory area tab and layer display updates
+		document.getElementById("wholeWorkArea").style.visibility="visible";
+		document.getElementById("wholeWorkArea").style.display="block";
+		document.getElementById("lyr1").style.display="block";
+
+		var layer = document.getElementById("vehicleLayer" + here.currentSub);
+		var lastLayer = document.getElementById("vehicleLayer" + here.lastSub);
+		if ( layer != null ) {
+			layer.style.display="block";
+		}
+		if ( lastLayer != null && lastLayer.id != layer.id ) {
+			lastLayer.style.display="none";
+		}
+		// turn off last tab
+		if ( here.currentSub != here.lastSub ) {
+			var oldTab = document.images[here.lastSub];
+			oldTab.src = here.tabPath + here.lastSub + "_off.gif";
+		}
+		// change visited tab states
+		for(var i in here.subNavHistory){
+			document.images[here.subNavHistory[i]].src = here.tabPath + here.subNavHistory[i] + "_visited.gif";
+		}
+		// turn selected subnav tab to 'at' state
+		if(document.images[here.currentSub]) {
+			document.images[here.currentSub].src = here.tabPath + here.currentSub + "_at.gif";
+		}
+		clearInfoArea();
+	}
+}
+
+function checkIfVisited(page) {
+	for(i=0;i<here.mainNavHistory.length;i++) {
+		if(page == here.mainNavHistory[i]) {
+			return true;
+		}
+	}
+	return false;
+}
+
+function updateMainNavHistory(page) {
+	for(i=0;i<here.mainNavHistory.length;i++) {
+		if(page == here.mainNavHistory[i]) {
+			here.mainNavHistory.splice(i,1);
+		}
+	}
+	here.mainNavHistory.unshift(page);
+	if(here.mainNavHistory.length > 6) {
+		here.mainNavHistory.pop();
+	}
+}
+
+function clearInfoArea() {
+	if (here.currentSub !="Colors" && here.currentSub != "Standard_features") {
+		here.accessoryImagePath = "bys_images/accessory_images/default" + here.currentSub + ".jpg";
+		here.accessoryName = "";
+		document.getElementById("accessoryName").innerHTML = "";
+	} else {
+		var selectedColor = "";
+		for (var i in colorMap) {
+			var color = colorMap[i];
+			if ( color.selected ) {
+				selectedColor=color.id;
+				here.accessoryImagePath = color.imageUrl;
+				var colorName = color.colorName;
+				here.accessoryName = colorName;
+				document.getElementById("accessoryName").innerHTML = colorName;
+				break;
+			}
+		}
+	}
+	here.accessoryDescription = "";
+	here.accessoryPrice = "";
+	here.accessoryDisclaimer = "";
+	if(here.accessoryImagePath != "") document.contextImage.src = here.accessoryImagePath;
+	document.getElementById("lyr1").innerHTML = "";
+	document.getElementById("accessoryPrice").innerHTML = "";
+	document.getElementById("accessoryDisclaimerLink").innerHTML = '<a href="javascript:;">disclaimer</a>';
+	document.getElementById("accessoryDisclaimerLink").style.display = "none";
+}
+
+function updateMainNavTabs() {
+	if ( here.currentMain != here.lastMain ) { // navigation has changed
+		var hasTab = false;
+		for(i=0;i<here.mainNav.length;i++) {
+			if(here.currentMain == here.mainNav[i]) {
+				hasTab = true;
+				break;
+			}
+		}
+		var getItVisited = checkIfVisited('get_it');
+		if(!hasTab) {
+			// main nav item doesn't have a tab so all tabs off
+			if(!getItVisited) {
+				document.images["get_it"].src = here.tabMainPath + "get_it_off.gif";
+			} else {
+				document.images["get_it"].src = here.tabMainPath + "get_it_visited.gif";
+			}
+			document.images["customize_it"].src = here.tabMainPath + "customize_it_visited.gif";
+			return;
+		}// chosen image has a tab, so set it and other tab states
+		if(document.images[here.lastMain]) {
+			var oldMainTab = document.images[here.lastMain];
+
+			if(oldMainTab == "get_it" && !getItVisited)	{
+				oldMainTab.src = here.tabMainPath + here.lastMain + "_off.gif";
+			} else {
+				oldMainTab.src = here.tabMainPath + here.lastMain + "_visited.gif";
+			}
+		}
+		document.images[here.currentMain].src = here.tabMainPath + here.currentMain + "_at.gif";
+	}
+}
+
+function updateSubNavHistory(tab) {
+	if(tab == "none") return;
+	var newTab = true;
+	for(var i in here.subNavHistory) {
+		if(tab == here.subNavHistory[i]) {
+			newTab = false;
+			return;
+		}
+	}
+	if(newTab == true) {
+		here.subNavHistory.push(tab);
+	}
+}
+
+function didYouKnowUpdate() {
+	if(here.currentSub != "none") {
+		document.getElementById("did_you_know").innerHTML = here.didYouKnow[here.currentSub];
+	} else {
+		document.getElementById("did_you_know").innerHTML = here.didYouKnow[here.currentMain];
+	}
+}
+
+function mainNavToggle(theImage, state) {
+
+	if(here.currentMain == theImage) {
+		return;
+	}
+	var imgState;
+	if(state == "on") {
+		imgState =  "_on.gif";
+	}
+	if(state == "off") {
+		if(theImage == "get_it") {
+			if(!checkIfVisited('get_it')) {
+				imgState = "_mouse_off.gif";
+			} else {
+				imgState =  "_mouse_visited.gif";
+			}
+		} else {
+			imgState =  "_mouse_visited.gif";
+		}
+	}
+	document.images[theImage].src = here.tabMainPath + theImage + imgState;
+}
+
+function tabToggle(theImage, state) {
+
+	var newSource = here.tabPath + theImage;
+	if(here.currentSub == theImage) {
+		return;
+	}
+	if(state == "on") {
+		newSource = newSource + "_on.gif";
+		document.images[theImage].src = newSource;
+		return;
+	}
+	if(state == "off") {
+		for(var i in here.subNavHistory){
+			if(theImage == here.subNavHistory[i]) {
+				newSource = newSource + "_visited.gif";
+				document.images[theImage].src = newSource;
+				return;
+			}
+		}
+	newSource = newSource + "_off.gif";
+	document.images[theImage].src = newSource;
+	}
+}
+
+function getCookie(name)
+    {
+        var dc = document.cookie;
+        var prefix = name + "=";
+        var begin = dc.indexOf("; " + prefix);
+        if (begin == -1)
+        {
+            begin = dc.indexOf(prefix);
+            if (begin != 0) return null;
+        }
+        else
+        {
+            begin += 2;
+        }
+        var end = document.cookie.indexOf(";", begin);
+        if (end == -1)
+        {
+            end = dc.length;
+        }
+        return unescape(dc.substring(begin + prefix.length, end));
+}
+
+
+vehicle = new Vehicle(
+	14680.0,
+	515,
+	0.0,
+	0.0,
+	5.9,
+	60
+);
+
+
+
+function submitChooseModel() {
+	submitAction("/BysDev2/pub/chooseModel.do");
+}
+
+function submitModelChange() {
+
+}
+
+function submitAction(actionUrl, target, width, height) {
+	//alert('Safari');
+	var form = document.getElementById("configurationForm");
+	if(!width) width="605";
+	if(!height) height="700";
+	form.action = actionUrl;
+	if ( typeof(target) != "undefined" ) {
+		form.target = target;
+	} else {
+		form.target = "_top";
+	}
+	updateFormAccessories(form);
+	form.submit();
+}
+
+function switchVehicle(vehicleKey) {
+
+}
+
+
+
+	var accessoryGroupMap = new Object();
+	var accessoryMap = new Object();
+
+	function AccessoryGroup( id, name, viewpointKey, isExclusive, category, showName ) {
+
+		function addAccessoryToGroup( accessory ) {
+			this.accessoryList.push(accessory);
+		}
+
+		this.id = id;
+		this.name = name;
+		this.viewpointKey = viewpointKey;
+		this.isExclusive = isExclusive;
+		this.category = category;
+		this.showName = showName;
+
+		this.accessoryList = new Array();
+
+		this.addAccessory = addAccessoryToGroup;
+
+		return this;
+	}
+
+	function Accessory( id, name, msrp, excludeIds, accessoryGroup, viewpointKey, description, disclaimer, imageUrl ) {
+		this.id = id;
+		this.name = name;
+		this.msrp = msrp;
+		this.excludeIds = excludeIds;
+		this.group = accessoryGroup;
+		this.viewpointKey = viewpointKey;
+		this.description = description;
+		this.disclaimer = disclaimer;
+		this.imageUrl = imageUrl;
+		this.checkbox = null;
+		this.excluded = false;
+		this.selected = false;
+
+		accessoryGroup.addAccessory(this);
+
+		return this;
+	}
+
+
+	
+
+	accessoryGroupMap["6003441"] =
+		new AccessoryGroup(
+			"6003441",
+			"Body Side Graphics",
+			"decal_off",
+			true,
+			"Exterior",
+			true
+		);
+
+		
+	accessoryMap["6003453"] =
+		new Accessory(
+			"6003453",
+			"Green",
+			224.0,
+			[ 
+				"6003459",
+				
+				"6003465",
+				
+				"6003463",
+				
+				"6003461"
+				
+			],
+			accessoryGroupMap["6003441"],
+			"circles_decal",
+			"Use these large durable graphics to make a statement about your xB. Backed by our 3-year 36,000 mile warranty. Let our trained professionals give you a Scion quality installation to ensure the life of your body graphic.",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941575"
+				
+			
+		);
+
+		
+	accessoryMap["6003455"] =
+		new Accessory(
+			"6003455",
+			"Gray",
+			224.0,
+			[ 
+				"6003465",
+				
+				"6003459",
+				
+				"6003461",
+				
+				"6003463"
+				
+			],
+			accessoryGroupMap["6003441"],
+			"circles_decal_silver",
+			"Use these large durable graphics to make a statement about your xB. Backed by our 3-year 36,000 mile warranty. Let our trained professionals give you a Scion quality installation to ensure the life of your body graphic.",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941573"
+				
+			
+		);
+
+		
+	accessoryMap["6003457"] =
+		new Accessory(
+			"6003457",
+			"Brown",
+			224.0,
+			[ 
+				"6003459",
+				
+				"6003463",
+				
+				"6003461",
+				
+				"6003465"
+				
+			],
+			accessoryGroupMap["6003441"],
+			"circles_decal_bronze",
+			"Use these large durable graphics to make a statement about your xB. Backed by our 3-year 36,000 mile warranty. Let our trained professionals give you a Scion quality installation to ensure the life of your body graphic.",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941574"
+				
+			
+		);
+
+		
+	accessoryMap["6003459"] =
+		new Accessory(
+			"6003459",
+			"Body Side Graphic Thumbprint",
+			224.0,
+			[ 
+				"6003457",
+				
+				"6003453",
+				
+				"6003461",
+				
+				"6003465",
+				
+				"6003455",
+				
+				"6003463"
+				
+			],
+			accessoryGroupMap["6003441"],
+			"finger_print_decal_gray",
+			"Use these large durable graphics to make a statement about your xB. Backed by our 3-year 36,000 mile warranty. Let our trained professionals give you a Scion quality installation to ensure the life of your body graphic.",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941572"
+				
+			
+		);
+
+		
+	accessoryMap["6003461"] =
+		new Accessory(
+			"6003461",
+			"Brown",
+			264.0,
+			[ 
+				"6003459",
+				
+				"6003457",
+				
+				"6003455",
+				
+				"6003453"
+				
+			],
+			accessoryGroupMap["6003441"],
+			"logo_decal_bronze",
+			"Use these large durable graphics to make a statement about your xB. Backed by our 3-year 36,000 mile warranty. Let our trained professionals give you a Scion quality installation to ensure the life of your body graphic.",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941577"
+				
+			
+		);
+
+		
+	accessoryMap["6003463"] =
+		new Accessory(
+			"6003463",
+			"Green",
+			264.0,
+			[ 
+				"6003457",
+				
+				"6003453",
+				
+				"6003459",
+				
+				"6003455"
+				
+			],
+			accessoryGroupMap["6003441"],
+			"logo_decal",
+			"Use these large durable graphics to make a statement about your xB. Backed by our 3-year 36,000 mile warranty. Let our trained professionals give you a Scion quality installation to ensure the life of your body graphic.",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941578"
+				
+			
+		);
+
+		
+	accessoryMap["6003465"] =
+		new Accessory(
+			"6003465",
+			"Gray",
+			264.0,
+			[ 
+				"6003455",
+				
+				"6003459",
+				
+				"6003457",
+				
+				"6003453",
+				
+				"6003461"
+				
+			],
+			accessoryGroupMap["6003441"],
+			"logo_decal_silver",
+			"Use these large durable graphics to make a statement about your xB. Backed by our 3-year 36,000 mile warranty. Let our trained professionals give you a Scion quality installation to ensure the life of your body graphic.",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941576"
+				
+			
+		);
+
+		
+	
+
+	accessoryGroupMap["6003442"] =
+		new AccessoryGroup(
+			"6003442",
+			"Exterior",
+			"",
+			false,
+			"Exterior",
+			false
+		);
+
+		
+	accessoryMap["6003469"] =
+		new Accessory(
+			"6003469",
+			"Rear Taillights by TYC",
+			275.0,
+			[ 
+			],
+			accessoryGroupMap["6003442"],
+			"t_light_lens",
+			"Completely change the look and feel of your rear end with these elegant tail light assemblies. Install these new lights in just a few easy steps... no cutting or splicing of wires is necessary.",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941602"
+				
+			
+		);
+
+		
+	accessoryMap["6003471"] =
+		new Accessory(
+			"6003471",
+			"Custom Fit Car Cover",
+			219.0,
+			[ 
+			],
+			accessoryGroupMap["6003442"],
+			"",
+			"Keep your xB looking new with this completely custom tailored gray Evolution material car cover. There's pockets for the side view mirrors, a heat-resistant material near the exhaust tip, grommets to accommodate a locking cable (a locking cable can be add",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941612"
+				
+			
+		);
+
+		
+	accessoryMap["6003473"] =
+		new Accessory(
+			"6003473",
+			"Yakima Rack",
+			287.0,
+			[ 
+			],
+			accessoryGroupMap["6003442"],
+			"roof_rack",
+			"No matter where you go - the mountains, the sea, the back country, or all points in between - you'll be in good hands with this Yakima removable roof rack. Bike and ski/snowboard attachments are available at an additional cost through your Scion dealer.",
+			"Pricing may vary by dealer. Installation not included.",
+			
+				"/bys/pub/media?id=5941607"
+				
+			
+		);
+
+		
+	accessoryMap["6003475"] =
+		new Accessory(
+			"6003475",
+			"B Pillar Applique by Superior Dash",
+			189.0,
+			[ 
+			],
+			accessoryGroupMap["6003442"],
+			"carbon_pilar",
+			"These appliques attach to the B and C Pillars using 3M adhesive. They are protected with an exterior-grade urethane topcoat that helps prevent yellowing and fading. The 3M adhesive helps to ensure that it won't be going anywhere for a while once it's inst",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941605"
+				
+			
+		);
+
+		
+	accessoryMap["6003477"] =
+		new Accessory(
+			"6003477",
+			"Fog Lights",
+			350.0,
+			[ 
+			],
+			accessoryGroupMap["6003442"],
+			"fog_light",
+			"This fully integrated fog light system helps increase visibility in the nighttime hours and also in all-weather driving conditions. This flush-mounted halogen illumination system adds life and a touch of sport to your front grille.",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941603"
+				
+			
+		);
+
+		
+	accessoryMap["6003479"] =
+		new Accessory(
+			"6003479",
+			"Carbon Fiber Gas Lid Applique",
+			35.0,
+			[ 
+			],
+			accessoryGroupMap["6003442"],
+			"carbon_gas",
+			"We think you should be able to personalize every corner if your xB if you want to. This adhesive Carbon Fiber accent from Superior Dash products easily installs in minutes and resists from peeling, yellowing, or cracking.",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941606"
+				
+			
+		);
+
+		
+	accessoryMap["6003481"] =
+		new Accessory(
+			"6003481",
+			"Rear Bumper Applique",
+			58.0,
+			[ 
+			],
+			accessoryGroupMap["6003442"],
+			"bumper_ap",
+			"Get additional protection for your xB's rear bumper from the wear and tear of transporting goods in and out of your trunk. This tough polyurethane film is custom engineering at its best. It has a UV-resistant topcoat and a cleverly designed ghosted Scion",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941604"
+				
+			
+		);
+
+		
+	accessoryMap["6003483"] =
+		new Accessory(
+			"6003483",
+			"Rear Spoiler",
+			385.0,
+			[ 
+			],
+			accessoryGroupMap["6003442"],
+			"spoiler",
+			"Aerodynamic, sporty and integrated - it's subtle, yet dynamic enough to fit the versatile xB.",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941600"
+				
+			
+		);
+
+		
+	accessoryMap["6003485"] =
+		new Accessory(
+			"6003485",
+			"Exhaust Tip",
+			64.0,
+			[ 
+			],
+			accessoryGroupMap["6003442"],
+			"exhaust_tip",
+			"Add the finishing touch to your xB with a custom Exhaust Tip by Valor Manufacturing Inc. Made of polished 304 stainless steel. Easy single bolt installation with no cutting, drilling or welding required.",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941601"
+				
+			
+		);
+
+		
+	accessoryMap["6003487"] =
+		new Accessory(
+			"6003487",
+			"Front End Mask",
+			55.0,
+			[ 
+			],
+			accessoryGroupMap["6003442"],
+			"front_end_mask",
+			"Flying insects can be a pain when you have to constantly scrape them off your front end. Add this custom tailored Front End Mask to protect your xB from those pint-sized paint peelers as well as other road debris. Easily attaches to your front end through",
+			"Pricing may vary by dealer. Installation not included.",
+			
+				"/bys/pub/media?id=5941611"
+				
+			
+		);
+
+		
+	
+
+	accessoryGroupMap["6003443"] =
+		new AccessoryGroup(
+			"6003443",
+			"License Plate Frames",
+			"license_off",
+			true,
+			"Exterior",
+			true
+		);
+
+		
+	accessoryMap["6003489"] =
+		new Accessory(
+			"6003489",
+			"Black",
+			42.95,
+			[ 
+			],
+			accessoryGroupMap["6003443"],
+			"license_gun",
+			"High quality and custom-fit license frames with an engraved Scion logo.",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941580"
+				
+			
+		);
+
+		
+	accessoryMap["6003491"] =
+		new Accessory(
+			"6003491",
+			"Chrome",
+			36.95,
+			[ 
+			],
+			accessoryGroupMap["6003443"],
+			"license_silver",
+			"High quality and custom-fit license frames with an engraved Scion logo.",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941581"
+				
+			
+		);
+
+		
+	accessoryMap["6003493"] =
+		new Accessory(
+			"6003493",
+			"Gold",
+			45.95,
+			[ 
+			],
+			accessoryGroupMap["6003443"],
+			"license_gold",
+			"High quality and custom-fit license frames with an engraved Scion logo.",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941579"
+				
+			
+		);
+
+		
+	
+
+	
+
+	accessoryGroupMap["6003444"] =
+		new AccessoryGroup(
+			"6003444",
+			"Interior",
+			"",
+			false,
+			"Interior",
+			false
+		);
+
+		
+	accessoryMap["6003495"] =
+		new Accessory(
+			"6003495",
+			"Cargo Liner",
+			93.0,
+			[ 
+			],
+			accessoryGroupMap["6003444"],
+			"cargo_liner",
+			"Protect your interior from wear and tear with this water-resistant canvas and vinyl backing. This flat cover rolls out across the floor of the cargo area and the backs of the rear seats. The liner also extends up over the rear seats to protect them when t",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941620"
+				
+			
+		);
+
+		
+	accessoryMap["6003497"] =
+		new Accessory(
+			"6003497",
+			"Molded Dash Applique",
+			259.0,
+			[ 
+			],
+			accessoryGroupMap["6003444"],
+			"dash_applique",
+			"Superior Dash developed these panels to help change the look and feel of your interior to create a clean, darkened dash trim.",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941613"
+				
+			
+		);
+
+		
+	accessoryMap["6003499"] =
+		new Accessory(
+			"6003499",
+			"Center Armrest",
+			125.0,
+			[ 
+			],
+			accessoryGroupMap["6003444"],
+			"",
+			"Make driving a more comfortable experience with this ergonomic armrest that fits securely between the front seats. The fabric is color-coordinated to match the rest of your interior.",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941588"
+				
+			
+		);
+
+		
+	accessoryMap["6003501"] =
+		new Accessory(
+			"6003501",
+			"Cargo Cover",
+			55.0,
+			[ 
+				"6003505"
+				
+			],
+			accessoryGroupMap["6003444"],
+			"cargo_cover",
+			"Neatly conceal the cargo area from the cabin with this snap on cover. It's made in the same material color as rest of the interior, so it blends in seamlessly.",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941621"
+				
+			
+		);
+
+		
+	accessoryMap["6003503"] =
+		new Accessory(
+			"6003503",
+			"Cargo Tote",
+			40.0,
+			[ 
+			],
+			accessoryGroupMap["6003444"],
+			"cargo_organizer",
+			"Nifty Products crafted this convenient cargo tote. It is made out of polyester and pops up into divided slots from its flat storage position to neatly organize your goods. Handles are also cut into the organizer to help you lug it around.",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941619"
+				
+			
+		);
+
+		
+	accessoryMap["6003505"] =
+		new Accessory(
+			"6003505",
+			"Cargo Net",
+			49.0,
+			[ 
+				"6003537",
+				
+				"6003501"
+				
+			],
+			accessoryGroupMap["6003444"],
+			"cargo_net1",
+			"Holds articles securely and conveniently in place and is flexible enough to fit around bulky items. Features additional pockets for even more storage capacity and is easy to install and store when not in use.",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941617"
+				
+			
+		);
+
+		
+	accessoryMap["6003507"] =
+		new Accessory(
+			"6003507",
+			"Floor & Cargo Mats",
+			120.0,
+			[ 
+			],
+			accessoryGroupMap["6003444"],
+			"cargo_mat",
+			"Created specifically for your xB with an embroidered silver patch logo, this 20oz carpet features a unique pattern designed for durability and long wear.",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941616"
+				
+			
+		);
+
+		
+	accessoryMap["6003511"] =
+		new Accessory(
+			"6003511",
+			"Door Sill Enhancements by ACSCO",
+			139.0,
+			[ 
+			],
+			accessoryGroupMap["6003444"],
+			"door_sill",
+			"Refine and protect the look of your interior by adding the clean, sophisticated look of stainless steel. These scratch-resistant replacement doorsill enhancements feature a steel insert that is finely detailed with an embossed xB logo and a de-bossed patt",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941614"
+				
+			
+		);
+
+		
+	accessoryMap["6003513"] =
+		new Accessory(
+			"6003513",
+			"Scion Security",
+			469.0,
+			[ 
+			],
+			accessoryGroupMap["6003444"],
+			"keyfob",
+			"Protect your ride. Install some peace of mind with the VIP Scion Security system that includes auto re-arm, door lock/re-lock, interior light activation and a panic mode.",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941615"
+				
+			
+		);
+
+		
+	
+
+	accessoryGroupMap["6003445"] =
+		new AccessoryGroup(
+			"6003445",
+			"LED Illumination",
+			"glow_light_off",
+			true,
+			"Interior",
+			true
+		);
+
+		
+	accessoryMap["6003515"] =
+		new Accessory(
+			"6003515",
+			"Amber",
+			275.0,
+			[ 
+			],
+			accessoryGroupMap["6003445"],
+			"glow_light_amber",
+			"This 4-step multi-function switch system brings depth and mood to your interior in the form of ambient light with the flick of a switch. The lighting kit utilizes the newest LED technology, which draws less power and is far more reliable than neon tubes.",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941583"
+				
+			
+		);
+
+		
+	accessoryMap["6003517"] =
+		new Accessory(
+			"6003517",
+			"Blue",
+			275.0,
+			[ 
+			],
+			accessoryGroupMap["6003445"],
+			"glow_light_blue",
+			"This 4-step multi-function switch system brings depth and mood to your interior in the form of ambient light with the flick of a switch. The lighting kit utilizes the newest LED technology, which draws less power and is far more reliable than neon tubes.",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941584"
+				
+			
+		);
+
+		
+	accessoryMap["6003519"] =
+		new Accessory(
+			"6003519",
+			"Green",
+			275.0,
+			[ 
+			],
+			accessoryGroupMap["6003445"],
+			"glow_light_green",
+			"This 4-step multi-function switch system brings depth and mood to your interior in the form of ambient light with the flick of a switch. The lighting kit utilizes the newest LED technology, which draws less power and is far more reliable than neon tubes.",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941585"
+				
+			
+		);
+
+		
+	accessoryMap["6003521"] =
+		new Accessory(
+			"6003521",
+			"Red",
+			275.0,
+			[ 
+			],
+			accessoryGroupMap["6003445"],
+			"glow_light_red",
+			"This 4-step multi-function switch system brings depth and mood to your interior in the form of ambient light with the flick of a switch. The lighting kit utilizes the newest LED technology, which draws less power and is far more reliable than neon tubes.",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941582"
+				
+			
+		);
+
+		
+	
+
+	accessoryGroupMap["6003446"] =
+		new AccessoryGroup(
+			"6003446",
+			"Sport Pedal Covers by OBX Racing Sports",
+			"sport_pedal_off",
+			true,
+			"Interior",
+			true
+		);
+
+		
+	accessoryMap["6003523"] =
+		new Accessory(
+			"6003523",
+			"Blue",
+			79.0,
+			[ 
+			],
+			accessoryGroupMap["6003446"],
+			"sport_pedal_blue",
+			"Complement your shift knobs and complete a sporty interior with these race inspired sport pedals by OBX Racing Sports. These covers have a brushed stainless steel finish with raised rubber grips for increased traction during aggressive driving movements.",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941591"
+				
+			
+		);
+
+		
+	accessoryMap["6003525"] =
+		new Accessory(
+			"6003525",
+			"Red",
+			79.0,
+			[ 
+			],
+			accessoryGroupMap["6003446"],
+			"sport_pedal_red",
+			"Complement your shift knobs and complete a sporty interior with these race inspired sport pedals by OBX Racing Sports. These covers have a brushed stainless steel finish with raised rubber grips for increased traction during aggressive driving movements.",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941590"
+				
+			
+		);
+
+		
+	accessoryMap["6003527"] =
+		new Accessory(
+			"6003527",
+			"Silver",
+			79.0,
+			[ 
+			],
+			accessoryGroupMap["6003446"],
+			"sport_pedal_silver",
+			"Complement your shift knobs and complete a sporty interior with these race inspired sport pedals by OBX Racing Sports. These covers have a brushed stainless steel finish with raised rubber grips for increased traction during aggressive driving movements.",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941589"
+				
+			
+		);
+
+		
+	
+
+	accessoryGroupMap["6003447"] =
+		new AccessoryGroup(
+			"6003447",
+			"Color Steering Wheel",
+			"normal_stwheel",
+			true,
+			"Interior",
+			true
+		);
+
+		
+	accessoryMap["6003529"] =
+		new Accessory(
+			"6003529",
+			"Gray",
+			279.0,
+			[ 
+			],
+			accessoryGroupMap["6003447"],
+			"sport_stwheel_gray",
+			"This two-tone sport steering wheel retains all standard driver-side airbag functionality while adding to the appeal of your personalized interior.",
+			"Pricing may vary by dealer. Installation not included. Optional Scion Security Remote accessory pictured.",
+			
+				"/bys/pub/media?id=5941586"
+				
+			
+		);
+
+		
+	accessoryMap["6003531"] =
+		new Accessory(
+			"6003531",
+			"Red",
+			279.0,
+			[ 
+			],
+			accessoryGroupMap["6003447"],
+			"sport_stwheel_red",
+			"This two-tone sport steering wheel retains all standard driver-side airbag functionality while adding to the appeal of your personalized interior.",
+			"Pricing may vary by dealer. Installation not included. Optional Scion Security Remote accessory pictured.",
+			
+				"/bys/pub/media?id=5941587"
+				
+			
+		);
+
+		
+	
+
+	
+
+	accessoryGroupMap["6003448"] =
+		new AccessoryGroup(
+			"6003448",
+			"Sound",
+			"",
+			false,
+			"Sound",
+			false
+		);
+
+		
+	accessoryMap["6003533"] =
+		new Accessory(
+			"6003533",
+			"Pioneer AM/FM/CD Deck",
+			0.0,
+			[ 
+				"6003535"
+				
+			],
+			accessoryGroupMap["6003448"],
+			"stereo_cd_player",
+			"Every xB comes standard with a 160 watt Pioneer Stereo and these features:<ul><li>6 speakers (including 2 tweeters)</li><li>A MP3 reader with file text display (that's up to 10 hours of playback on one disc)</li><li>A universal connector for your MP3 player (you must use your MP3 player's interface to navigate and play your collection)</li><li>Built in Digital Sound Processing (DSP) Sound Equalization</li><li>Automatic Sound Levelizer (ASL) that adjusts the decibels to keep the sounds pumping at a steady level when the cabin noise picks up during higher driving speeds</li><li>Scion Sound Processing (SSP)</li><li>Satellite radio controls</li></ul>SSP is a digital sound processing feature that offers three settings. SSP Neutral keeps the music in the background. SSP Hear enhances the sounds with crisp highs and lows. SSP Feel goes all the way, utilizing a sound curve that lets passengers not only hear the music, but feel it, too.",
+			"",
+			
+				"/bys/pub/media?id=5941595"
+				
+			
+		);
+
+		
+	accessoryMap["6003535"] =
+		new Accessory(
+			"6003535",
+			"Pioneer AM/FM/CD + iPod Capability",
+			260.0,
+			[ 
+				"6003533"
+				
+			],
+			accessoryGroupMap["6003448"],
+			"ipod",
+			"This Pioneer Stereo upgrade features:<ul><li>6 speakers (including 2 tweeters)</li><li>A MP3 reader with file text display (that's up to 10 hours of playback on one disc)</li><li>An iPod adapter and universal connector for all other MP3 players</li><li>Built in Digital Sound Processing (DSP) Sound Equalization</li><li>Automatic Sound Levelizer (ASL) that adjusts the decibel output to keep the sound pumping at a steady level when the cabin noise picks up at higher speeds</li><li>Scion Sound Processing (SSP)</li><li>Satellite radio controls</li></ul>SSP is a digital sound processing feature that offers three settings. SSP Neutral keeps the music in the background. SSP Hear enhances the sounds with crisp highs and lows. SSP Feel goes all the way, utilizing a sound curve that lets passengers not only hear the music, but feel it, too.Connect, control, and charge your **iPod through the special adapter port. Using the receiver interface, you'll be able to browse through your collection of MP3s. And as an added benefit, the connector even charges your iPod while it is hooked up to the system. While any MP3 player is able to connect to the system, note that only iPods can be controlled directly through the receiver's interface. All other players can connect just as easily by using the mini-jack.",
+			"",
+			
+				"/bys/pub/media?id=5941618"
+				
+			
+		);
+
+		
+	accessoryMap["6003537"] =
+		new Accessory(
+			"6003537",
+			"8\" Subwoofer by Bazooka",
+			429.0,
+			[ 
+				"6003505"
+				
+			],
+			accessoryGroupMap["6003448"],
+			"subwoofer",
+			"Utilize all the cabin space as an acoustic chamber and produce a full sound you can feel with this subwoofer. This system was engineered specifically for use in a Scion. Its convenient all-in-one package eliminates the need for any extra wiring to amps an",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941596"
+				
+			
+		);
+
+		
+	
+
+	accessoryGroupMap["6003449"] =
+		new AccessoryGroup(
+			"6003449",
+			"Satellite Radio",
+			"",
+			false,
+			"Sound",
+			true
+		);
+
+		
+	accessoryMap["6003539"] =
+		new Accessory(
+			"6003539",
+			"XM Satellite Radio",
+			449.0,
+			[ 
+				"6003542"
+				
+			],
+			accessoryGroupMap["6003449"],
+			"",
+			"With two powerful satellites - \"Rock\" and \"Roll\" - traversing the earth's upper atmosphere, you're never out of signal range with XM Satellite Radio*. With over 120 digital channels of news, sports, and talk to choose from, XM offers its subscribers the f",
+			"Pricing may vary by dealer. Required monthly subscription sold separately. Reception of the XM signal may vary depending on location. All fees and programming subject to change. Subscriptions subject to the terms and conditions available at <U><A href=\"/s",
+			
+				"/bys/pub/media?id=5941598"
+				
+			
+		);
+
+		
+	accessoryMap["6003542"] =
+		new Accessory(
+			"6003542",
+			"Sirius Satellite Radio",
+			449.0,
+			[ 
+				"6003539"
+				
+			],
+			accessoryGroupMap["6003449"],
+			"",
+			"Sirius provides content and quality that AM/FM radio doesn't have and can't offer. Find revolutionary, original, and commercial free music on the Sirius network.* Get news directly from the top sources, including CNBC, Fox News, and NPR. Also available ar",
+			"Required monthly subscription sold separately. Reception of the Sirius signal may vary depending on location. All fees and programming subject to change. Subscriptions subject to the terms and conditions available at www.sirius.com. Available only in the",
+			
+				"/bys/pub/media?id=5941599"
+				
+			
+		);
+
+		
+	
+
+	
+
+	accessoryGroupMap["6003450"] =
+		new AccessoryGroup(
+			"6003450",
+			"Wheel Locks",
+			"",
+			false,
+			"Wheels",
+			false
+		);
+
+		
+	accessoryMap["6003544"] =
+		new Accessory(
+			"6003544",
+			"Alloy Wheel Locks",
+			59.0,
+			[ 
+				"6003558",
+				
+				"6003556"
+				
+			],
+			accessoryGroupMap["6003450"],
+			"",
+			"No one likes a crook. Stay one step ahead of them and put these through-hardened steel with triple nickel/zinc plating wheel locks on your rims. Each set has a unique key pattern and cannot be easily taken off without the key.",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941623"
+				
+			
+		);
+
+		
+	
+
+	accessoryGroupMap["6003451"] =
+		new AccessoryGroup(
+			"6003451",
+			"Wheels",
+			"",
+			true,
+			"Wheels",
+			false
+		);
+
+		
+	accessoryMap["6003546"] =
+		new Accessory(
+			"6003546",
+			"15\" EM 7-Spoke Alloy Wheel",
+			665.0,
+			[ 
+			],
+			accessoryGroupMap["6003451"],
+			"rim_1",
+			"These wheels are made of lightweight material that has been manufactured to meet Scion's strict engineering standards. The center piece has an engraved Scion logo on it.",
+			"Pricing may vary by dealer.",
+			
+				"/bys/pub/media?id=5941622"
+				
+			
+		);
+
+		
+	accessoryMap["6003548"] =
+		new Accessory(
+			"6003548",
+			"18\" 5-Spoke Alloy Wheel",
+			1795.0,
+			[ 
+			],
+			accessoryGroupMap["6003451"],
+			"",
+			"",
+			"",
+			
+				"/bys/pub/media?id=4861986"
+				
+			
+		);
+
+		
+	accessoryMap["6003550"] =
+		new Accessory(
+			"6003550",
+			"10-Spoke Wheel Cover",
+			0.0,
+			[ 
+			],
+			accessoryGroupMap["6003451"],
+			"hubcap_2",
+			"This wheel cover is one of three standard choices for every xB.",
+			"",
+			
+				"/bys/pub/media?id=5941594"
+				
+			
+		);
+
+		
+	accessoryMap["6003556"] =
+		new Accessory(
+			"6003556",
+			"6-Spoke Wheel Cover",
+			0.0,
+			[ 
+				"6003544"
+				
+			],
+			accessoryGroupMap["6003451"],
+			"hubcap_3",
+			"This wheel cover is one of three standard choices for every xB.",
+			"",
+			
+				"/bys/pub/media?id=5941592"
+				
+			
+		);
+
+		
+	accessoryMap["6003558"] =
+		new Accessory(
+			"6003558",
+			"8-Spoke Wheel Cover",
+			0.0,
+			[ 
+				"6003544"
+				
+			],
+			accessoryGroupMap["6003451"],
+			"hubcap_1",
+			"This wheel cover is one of three standard choices for every xB.",
+			"",
+			
+				"/bys/pub/media?id=5941593"
+				
+			
+		);
+
+		
+	
+
+	
+
+	accessoryGroupMap["6003452"] =
+		new AccessoryGroup(
+			"6003452",
+			"Performance",
+			"",
+			false,
+			"Performance",
+			true
+		);
+
+		
+	accessoryMap["6003562"] =
+		new Accessory(
+			"6003562",
+			"TRD Sport Muffler",
+			299.0,
+			[ 
+			],
+			accessoryGroupMap["6003452"],
+			"sport_muffler",
+			"Specially developed and tuned by TRD for the xB, this system helps reduce backpressure and gives your ride a deep, throaty rumble. It's made of stainless steel and has a 4\" exhaust tip.",
+			"Pricing may vary by dealer. Installation not included.<br>TRD USA, Inc. (Toyota Racing Development), an aftermarket performance parts company, markets a line of parts through some Scion dealers. These aftermarket parts are not Genuine",
+			
+				"/bys/pub/media?id=5941626"
+				
+			
+		);
+
+		
+	accessoryMap["6003564"] =
+		new Accessory(
+			"6003564",
+			"TRD Shocks/Struts Kit",
+			329.0,
+			[ 
+			],
+			accessoryGroupMap["6003452"],
+			"strut_shock",
+			"These struts/shocks are direct replacements for the front MacPherson struts and rear shocks. The revised valving in this set helps provide you with a more compliant ride.",
+			"Pricing may vary by dealer. Installation not included.<br>TRD USA, Inc. (Toyota Racing Development), an aftermarket performance parts company, markets a line of parts through some Scion dealers. These aftermarket parts are not Genuine Scion parts, and can",
+			
+				"/bys/pub/media?id=5941625"
+				
+			
+		);
+
+		
+	accessoryMap["6003568"] =
+		new Accessory(
+			"6003568",
+			"TRD Lowering Springs Kit",
+			189.0,
+			[ 
+			],
+			accessoryGroupMap["6003452"],
+			"lowering_spring",
+			"Drop your xB an additional 30mm while improving your ride's stability and ground control with this kit from TRD. The springs are finished in pearl white.",
+			"Pricing may vary by dealer. Installation not included.<br>TRD USA, Inc. (Toyota Racing Development), an aftermarket performance parts company, markets a line of parts through some Scion dealers. These aftermarket parts are not Genuine Scion parts, and can",
+			
+				"/bys/pub/media?id=5941624"
+				
+			
+		);
+
+		
+	
+
+
+	function formAccessories() {
+		var form = document.forms["configurationForm"];
+		if ( typeof(form) == "undefined" ) return new Array();
+		var accessories = new Array();
+		if ( typeof(form.accessories) != "undefined" ) {
+			if ( typeof(form.accessories.length) == "undefined" ) {
+				accessories.push(form.accessories);
+			}
+			else {
+				for (var i=0; i < form.accessories.length; i++) {
+					accessories.push(form.accessories[i]);
+				}
+			}
+		}
+		for (var i=0; i < form.elements.length; i++) {
+			if ( form.elements[i].name.match(/^groupedAccessory.*/) && ( form.elements[i].value != "" ) ) {
+				accessories.push(form.elements[i]);
+			}
+		}
+		return accessories;
+	}
+
+	function computeTotalAccessoryPrice() {
+		var totalPrice = 0;
+		for (var i in accessoryMap ) {
+			if ( accessoryMap[i].selected ) {
+				totalPrice += accessoryMap[i].msrp;
+			}
+		}
+		return totalPrice;
+	}
+
+	function priceString(msrp) {
+		var thePrice = msrp;
+		if(thePrice != "" && thePrice != "&#160;"){
+			thePrice = "$" + thePrice;
+		}
+		else if(thePrice == "0"){
+			thePrice = "$0";
+		}
+		else thePrice = "";
+		return thePrice;
+	}
+
+	function findLocale(){
+		var locale;
+		if (here.currentSub == "Interior" || here.currentSub == "Sound") {
+			locale = "int";
+		} else {
+			locale = "ext";
+		}
+		return locale;
+	}
+
+	function updateAccessory( accessoryId ) {
+		
+		var accessory = accessoryMap["" + accessoryId];
+		var selectedCheckBoxImage = "checkBox" + accessoryId;
+		var updateRequired = false;
+		var locale = findLocale();
+		var thePrice = defaultCurrencyFormat(accessory.msrp);
+		here.accessoryImagePath = accessory.imageUrl;
+		document.contextImage.src = accessory.imageUrl;
+		here.accessoryDescription = accessory.description;
+		here.accessoryName = accessory.name;
+		here.accessoryPrice = accessory.msrp;
+		here.accessoryDisclaimer = accessory.disclaimer;
+		here.accessoryState = "description";
+		document.getElementById("lyr1").innerHTML = accessory.description;
+		document.getElementById("accessoryName").innerHTML = accessory.name;
+		document.getElementById("accessoryPrice").innerHTML = thePrice;
+		toggleAccessoryDisclaimerLink(accessory);
+
+		if ( ! accessory.selected ) {
+			var conflicts = findConflicts(accessory);
+			if ( conflicts.length == 0 ) {
+				accessory.selected = true;
+				document.images[""+ selectedCheckBoxImage].src = "bys_images/checkbox_on.gif"
+				updateRequired = true;
+			}
+			else {
+				accessory.selected = false;
+				document.images[""+ selectedCheckBoxImage].src = "bys_images/checkbox_off.gif"
+
+				showConflictDiv(accessory, conflicts);
+				return;
+			}
+		}
+		else {
+			accessory.selected = false;
+			document.images[""+ selectedCheckBoxImage].src = "bys_images/checkbox_off.gif";
+			updateRequired = true;
+		}
+
+		if ( updateRequired ) {
+			updateAccessoryInfo();
+		}
+
+		initScrollLayer(98,'scrollbar');
+	}
+	
+	function toggleAccessoryDisclaimerLink(accessory) {
+		var displayLink = false;
+		if(accessory == "off") {
+			if(here.accessoryDisclaimer != "" && here.accessoryDisclaimer != null) {
+				displayLink = true;
+			}
+		} else if(accessory.disclaimer != "" && accessory.disclaimer != null) {
+			displayLink = true;
+		}
+		
+		if(displayLink == true) {
+			document.getElementById("accessoryDisclaimerLink").style.display = "block";
+		} else {
+			document.getElementById("accessoryDisclaimerLink").style.display = "none";
+		}
+	}
+	
+	function updateExclusiveAccessory( accessoryId ) {
+		var accessory = accessoryMap["" + accessoryId];
+
+		var updateRequired = false;
+		if(accessoryId=="none"){
+		updateAccessoryInfo();
+		}else{
+		var accessoryGroup = accessory.group;
+
+		var conflicts = findConflicts(accessory);
+		if ( conflicts.length == 0 ) {
+
+			accessory.selected = true;
+			if ( accessoryGroup.isExclusive ) {
+				for (var i=0; i < accessoryGroup.accessoryList.length; i++) {
+					var testAccessory = accessoryGroup.accessoryList[i];
+					if ( testAccessory.id != accessory.id ) {
+						testAccessory.selected = false;
+						//testAccessory.checkBox.checked = false;
+					}
+				}
+				updateRequired = true;
+			}
+		}
+		else {
+			for (var i=0; i < accessoryGroup.accessoryList.length; i++) {
+				var testAccessory = accessoryGroup.accessoryList[i];
+				if ( testAccessory.selected && ( testAccessory.id != accessory.id ) ) {
+					//testAccessory.checkBox.checked = true;
+				}
+				else {
+					//testAccessory.checkBox.checked = false;
+				}
+			}
+			showConflictDiv(accessory, conflicts);
+			return false;
+		}
+
+		if ( updateRequired ) {
+			updateAccessoryInfo();
+		}
+		return true;
+	}
+	}
+
+	function updateAccessoryInfo() {
+		updateExcludes();
+		vehicle.accessoriesPrice = computeTotalAccessoryPrice();
+		var totalPrice = defaultCurrencyFormat(vehicle.totalPrice());
+		document.getElementById("currentVehiclePrice").innerHTML = totalPrice;
+		vehicle.update();
+		document.images["price_change_indicator"].src = "bys_images/price_change_indicator.gif";		
+	}
+
+	function accessoryDisclaimer() {
+		if(here.accessoryState == "description") {
+			document.getElementById("accessoryDisclaimerLink").innerHTML = '<a href="javascript:;" onclick="accessoryDisclaimer();">description</a>';
+			document.getElementById("lyr1").innerHTML = here.accessoryDisclaimer; 
+			here.accessoryState = "disclaimer";
+		} else {
+			document.getElementById("accessoryDisclaimerLink").innerHTML = '<a href="javascript:;" onclick="accessoryDisclaimer();">disclaimer</a>';
+			document.getElementById("lyr1").innerHTML = here.accessoryDescription; 
+			here.accessoryState = "description";
+		}
+		initScrollLayer(98,'scrollbar');
+	}
+
+	function updateExcludes() {
+		var exclude = excludeList();
+
+		for (var x in accessoryMap) {
+			var accessory = accessoryMap[x];
+			if ( exclude[x] ) {
+				accessory.excluded = true;
+			}
+			else {
+				accessory.excluded = false;
+			}
+		}
+	}
+
+	function excludeList() {
+		var excludeList = new Array();
+
+		for (var x in accessoryMap) {
+			var accessory = accessoryMap[x];
+			if (accessory.selected) {
+				for (var x=0; x < accessory.excludeIds.length; x++) {
+					excludeList[accessory.excludeIds[x]] = true;
+				}
+			}
+		}
+
+		return excludeList;
+	}
+
+	function findConflicts(accessory) {
+
+		var selectedAccessories = new Array();
+
+		for (var i in accessoryMap) {
+		var selectedAccessory = accessoryMap[i];
+		if ( selectedAccessory.selected ) selectedAccessories.push(selectedAccessory);
+		}
+
+		var accessoryExcludes = accessory.excludeIds;
+		var conflicts = new Array();
+
+		for (var i=0; i < selectedAccessories.length; i++) {
+
+			var conflict = false;
+			var checkAccessory = accessoryMap["" + selectedAccessories[i].id];
+			if ( arrayContains(accessoryExcludes, checkAccessory.id) ) {
+				conflict = true;
+			}
+			else if ( arrayContains(checkAccessory.excludeIds, accessory.id) ) {
+				conflict = true;
+			}
+			if ( conflict ) {
+				conflicts.push(checkAccessory);
+			}
+		}
+		return conflicts;
+	}
+
+	function resolveConflicts() {
+		hideConflictDiv();
+		deselectAccessories(conflictAccessories);
+		selectAccessoryById(selectedAccessory.id);
+	}
+
+	function showConflictDiv( accessory, conflicts ) {
+		var conflictOutputDiv = document.getElementById("conflictDiv");
+		var conflictList = "<p><b>Are you sure you want to make this selection?<br><br>Doing so will reset the following selections:</b></p><p><b>";
+
+		for (var i=0; i < conflicts.length; i++) {
+			var conAccessory = conflicts[i];
+			var name = conAccessory.name;
+			if ( ( conAccessory.group.isExclusive ) && ( conAccessory.group.showName ) ) {
+				name = conAccessory.group.name + ": " + name;
+			}
+			conflictList += "- " + name + "<br>";
+		}
+
+		conflictList += "<b></p>";
+		conflictList += "<p><b><a href=\"javascript:resolveConflicts();\">Yes</a><br><a href=\"javascript:hideConflictDiv();\">Cancel</a></b></p></b>";
+		conflictOutputDiv.innerHTML = conflictList;
+		selectedAccessory = accessory;
+		conflictAccessories = conflicts;
+		conflictOutputDiv.style.visibility = "visible";
+	}
+
+	function hideConflictDiv(){
+		var conflictDiv = document.getElementById("conflictDiv");
+		conflictDiv.style.visibility = "hidden";
+	}
+
+	function deselectAccessories(accessoryList) {
+		var locale = findLocale();
+		for (var i=0; i < accessoryList.length; i++) {
+			var accessory = accessoryList[i];
+			if (accessory.group.isExclusive) {
+				toggleRadioButtonImage(accessory.group.id, "none");
+			} else {
+				accessory.selected = false;
+				document.images["checkBox" + accessory.id].src = "bys_images/checkbox_off.gif";
+				here.currentAccessory = accessory;
+
+			}
+		}
+		updateAccessoryInfo();
+	}
+
+	function selectNoneForGroup(accessoryGroup) {
+		var groupElementName = "groupedAccessory" + accessoryGroup.id;
+		var accessories = formAccessories();
+		for (var i=0; i < accessories.length; i++) {
+			
+			if ( ( accessories[i].name == groupElementName ) && ( accessories[i].value == "" ) ) {
+				accessories[i].checked = true;
+				break;
+			}
+		}
+	}
+
+	function selectAccessoryById(accessoryId) {
+		var accessory = accessoryMap["" + accessoryId];
+
+		if(accessory.group.isExclusive){
+			toggleRadioButtonImage(accessory.group.id, accessory.id);
+		} else {
+			updateAccessory(accessory.id);
+		}
+
+	}
+
+	function addHiddenField(form, fieldName, fieldValue) {
+		var hiddenField = document.createElement("input");
+		hiddenField.name = fieldName;
+		hiddenField.type = "hidden";
+		form.appendChild(hiddenField);
+		hiddenField.value = fieldValue;
+	}
+
+	function updateFormAccessories(form) {
+		var formNodes = form.childNodes;
+		for (var i=0; i < formNodes.length; i++) {
+			if ( ( formNodes[i].nodeName.toLowerCase() == "input" ) && ( formNodes[i].name == "accessories" ) ) {
+				form.removeChild(formNodes[i]);
+				i--;
+			}
+		}
+		for (var accessoryId in accessoryMap) {
+			var accessory = accessoryMap[accessoryId];
+			if ( accessory.selected ) {
+				addHiddenField(form, "accessories", accessory.id);
+			}
+		}
+	}
+
+	function initAccessoriesDisplay() {
+		var sessionAccessoryIds = [
+			
+		];
+		for (var accessoryId in accessoryMap) {
+			var accessory = accessoryMap[accessoryId];
+			accessory.selected = false;
+		}
+		for (var i=0; i < sessionAccessoryIds.length; i++) {
+			var accessory = accessoryMap[sessionAccessoryIds[i]];
+			accessory.selected = true;
+
+			if ( accessory.group.isExclusive ) {
+				toggleRadioButtonImage(accessory.group.id, accessory.id);
+			}
+			else {
+				document.images["checkBox" + accessory.id].src = checkBoxOnImage.src;
+			}
+
+		}
+
+		updateAccessoryInfo();
+	}
+
+
+	function accessoryMouseOver(accessoryId) {
+		//move description content up to top
+		if(document.getElementById("lyr1").style.pixelTop) document.getElementById("lyr1").style.pixelTop = 0;
+		document.contextImage.src = "bys_images/accessory_loading_indicator.gif";
+		var accessory = accessoryMap["" + accessoryId];
+		if ( typeof(accessory) == "undefined" ) return;
+		var thePrice = defaultCurrencyFormat(accessory.msrp);
+		here.accessoryState = "description";
+		document.contextImage.src = accessory.imageUrl;
+		document.getElementById("lyr1").innerHTML = accessory.description;
+		document.getElementById("accessoryName").innerHTML = accessory.name;
+		document.getElementById("accessoryPrice").innerHTML = thePrice
+		document.getElementById("accessoryDisclaimerLink").innerHTML = '<a href="javascript:;" onclick="accessoryDisclaimer();">disclaimer</a>';
+		toggleAccessoryDisclaimerLink(accessory);
+	}
+
+	function accessoryMouseOut() {
+		var thePrice = "";
+		if(here.accessoryName != "" && here.currentSub != "Colors" && here.currentSub != "Transmission") {
+			thePrice = here.accessoryPrice;
+			thePrice = defaultCurrencyFormat(here.accessoryPrice);
+		}
+		document.contextImage.src = here.accessoryImagePath;
+		document.getElementById("lyr1").innerHTML = here.accessoryDescription;
+		document.getElementById("accessoryName").innerHTML = here.accessoryName;
+		document.getElementById("accessoryPrice").innerHTML = thePrice;
+		toggleAccessoryDisclaimerLink("off"); 
+	}
+
+    var loadViewPrintCounter = 0;
+
+    function loadViewPrint() {
+        if (doneSceneCapture == 1) {
+          submitAction('/BysDev2/pub/viewPrintSummary.do', '_blank');
+          doneSceneCapture = 0;
+        } else {
+          loadViewPrintCounter++;
+          if (loadViewPrintCounter == 30) {
+            doneSceneCapture = 2;
+            submitAction('/BysDev2/pub/viewPrintSummary.do', '_blank');
+            loadViewPrintCounter = 0;
+          } else {
+            setTimeout('loadViewPrint()', 1000);
+          }
+        }
+    }
+
+
+
+	function Color(id, imageUrl, modelImageUrl, colorName, code) {
+		this.id = id;
+		this.imageUrl = imageUrl;
+		this.colorSwatch = new Image();
+		this.colorSwatch.src = imageUrl;
+		this.modelImageUrl = modelImageUrl;
+		this.colorName = colorName;
+		this.selected = false;
+		this.code = code;
+		return this;
+	}
+
+	var colorMap = new Object();
+
+
+	colorMap["6003621"] =
+		new Color(
+			"6003621",
+			"bys_images/camouflage.jpg",
+			"bys_images/camouflage.jpg",
+			"Camouflage",
+			"6M7"
+		);
+
+	colorMap["6003623"] =
+		new Color(
+			"6003623",
+			"/bys/pub/media?id=5941369",
+			"/bys/pub/media?id=5941353",
+			"Blue Onyx Pearl",
+			"8P8"
+		);
+
+	colorMap["6003625"] =
+		new Color(
+			"6003625",
+			"/bys/pub/media?id=5941358",
+			"/bys/pub/media?id=5941359",
+			"Black Sand Pearl",
+			"209"
+		);
+
+	colorMap["6003627"] =
+		new Color(
+			"6003627",
+			"/bys/pub/media?id=5941372",
+			"/bys/pub/media?id=5941381",
+			"Thunder Cloud Metallic",
+			"1D2"
+		);
+
+	colorMap["6003629"] =
+		new Color(
+			"6003629",
+			"/bys/pub/media?id=5941407",
+			"/bys/pub/media?id=5941405",
+			"Polar White",
+			"068"
+		);
+
+	colorMap["6003631"] =
+		new Color(
+			"6003631",
+			"/bys/pub/media?id=5941401",
+			"/bys/pub/media?id=5941402",
+			"Black Cherry Pearl",
+			"3P2"
+		);
+
+
+	function colorMouseOver(colorId) {
+		document.contextImage.src = "bys_images/accessory_loading_indicator.gif";
+		accessoryMouseOver(colorId);
+		var color = colorMap["" + colorId];
+		if ( typeof(color) == "undefined" ) return;
+		document.contextImage.src = color.imageUrl;
+		document.getElementById("accessoryName").innerHTML = color.colorName;
+}
+
+	function changeColorRadio(colorId, pageLoading) {
+		
+		var color = colorMap["" + colorId];
+
+		for (var i in colorMap) {
+			colorMap[i].selected = false;
+		}
+
+		if ( typeof(color) != "undefined" ) {
+			color.selected = true;
+			colorId = color.id;
+		}
+		else {
+			colorId = "";
+		}
+		document.configurationForm.exteriorColorId.value = colorId;
+		here.accessoryImagePath = colorMap[colorId].imageUrl;
+		here.accessoryDescription = "";
+		here.accessoryPrice = "";
+		here.accessoryName = "" + colorMap[colorId].colorName;
+		
+		var viewPointId = vpColorString(color.code);
+
+		refreshColorDisplay();
+	}
+
+	function vpColorString(code) {
+		//convert color.code to format used by ViewPoint
+		var viewPointId = "color_" + code;
+		return viewPointId.toLowerCase();
+	}
+
+	function refreshColorDisplay() {
+		for (var i in colorMap) {
+			var radioImageSrc = "bys_images/radio_off.gif";
+			if ( colorMap[i].selected ) radioImageSrc = "bys_images/radio_on.gif";
+			document.images["radioColor" + i].src = radioImageSrc;
+		}
+	}
+
+	function initColorDisplay() {
+		for (var i in colorMap) {
+			colorMap[i].selected = false;
+		}
+		changeColorRadio("6003621",true);		
+		document.getElementById("accessoryName").innerHTML = here.accessoryName;
+		document.images["contextImage"].src = here.accessoryImagePath;
+	}
+
+var firefoxMac = false;
+
+if(!(navigator.userAgent.indexOf("Firefox") == -1) && navigator.platform == "MacPPC"){
+	firefoxMac = true;
+}
+
+	function modelImageChange(colorId){
+		if(bandwidth == "low" || firefoxMac == true){
+			document.lowBandImage.src=colorMap[''+ colorId].modelImageUrl;
+		}
+	}
+
+
+
+function initMainPage() {
+	initVehicleDisplay();
+	initAccessoriesDisplay();
+	initColorDisplay();
+	//setLoanRate();
+	vehicle.accessoriesPrice = computeTotalAccessoryPrice();
+	vehicle.update();
+	var transitionKey = "";
+	if ( transitionKey == "getIt" ) {
+		loadGetIt();
+	}
+	else if ( transitionKey == 'saveAndCompare' ) {
+		initSaveAndCompare();
+	}
+}
+
+function closeObsoleteAccessories() {
+	document.getElementById("messageArea").style.visibility = "hidden";
+}
+
+function toggleRadioButtonImage(groupId, accessoryId){
+		
+	var accessoryObject = accessoryMap["" + accessoryId];
+	var	selectedAccessoryGroup = accessoryGroupMap["" + groupId];
+	var selectedAccessoryRadioImage = "radioButtonImage" + accessoryId;
+
+	if(accessoryId != "none"){
+	var conflicts = findConflicts(accessoryObject);
+
+	if ( conflicts.length > 0 ) {
+		showConflictDiv(accessoryObject, conflicts);
+		return;
+		}
+	}
+	var locale = findLocale();
+
+	if(accessoryId != "none"){
+		for(i=0;i<selectedAccessoryGroup.accessoryList.length;i++){
+			selectedAccessoryGroup.accessoryList[i].selected = false;
+			document.images["radioButtonImage" + selectedAccessoryGroup.accessoryList[i].id].src = radioButtonOffImage.src;
+			var nonImage = document.images["radioButtonImage" + groupId];
+			if(typeof(nonImage) != "undefined"){
+			nonImage.src = radioButtonOffImage.src;
+				}
+			}
+		accessoryObject.selected = true;
+		document.images['' + selectedAccessoryRadioImage].src = radioButtonOnImage.src;
+		here.accessoryImagePath = accessoryObject.imageUrl;
+		document.contextImage.src = accessoryObject.imageUrl;
+		here.accessoryDescription = accessoryObject.description;
+		here.accessoryName = accessoryObject.name;
+		here.accessoryPrice = accessoryObject.msrp;
+		here.accessoryDisclaimer = accessoryObject.disclaimer;
+
+	}else{
+
+		for(i=0;i<selectedAccessoryGroup.accessoryList.length;i++){
+			if(selectedAccessoryGroup.accessoryList[i].selected) {
+
+				selectedAccessoryGroup.accessoryList[i].selected = false;
+			}
+			document.images["radioButtonImage" + selectedAccessoryGroup.accessoryList[i].id].src = radioButtonOffImage.src;
+
+		}
+		if(document.images["radioButtonImage" + groupId]){
+			document.images["radioButtonImage" + groupId].src = radioButtonOnImage.src;
+		}
+		here.accessoryImagePath = "bys_images/accessory_images/default" + here.currentSub + ".jpg";
+		document.contextImage.src = here.accessoryImagePath;
+		here.accessoryDescription = "";
+		here.accessoryName = "";
+		here.accessoryPrice = "";
+		here.accessoryDisclaimer = "";
+		document.getElementById("lyr1").innerHTML = "";
+		document.getElementById("accessoryName").innerHTML = "";
+		document.getElementById("accessoryPrice").innerHTML = "";
+		document.getElementById("accessoryDisclaimerLink").innerHTML = "";
+	}
+	initScrollLayer(98,'scrollbar');
+	updateAccessoryInfo();
+}
+
+	var radioButtonOffImage = new Image();
+	radioButtonOffImage.src = "bys_images/radio_off.gif";
+	var radioButtonOnImage = new Image();
+	radioButtonOnImage.src = "bys_images/radio_on.gif";
+	var checkBoxOffImage = new Image();
+	checkBoxOffImage.src = "bys_images/checkbox_off.gif";
+	var checkBoxOnImage = new Image();
+	checkBoxOnImage.src = "bys_images/checkbox_on.gif";
+
+
+
+function MM_preloadImages() { //v3.0
+var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+MM_preloadImages (
+	"bys_images/buttons/save_and_compare_on.gif", "bys_images/buttons/print_this_scion_on.gif", "bys_images/choose_a_model_mouse_visited.gif", "bys_images/choose_a_model_visited.gif", "bys_images/customize_it_mouse_visited.gif", "bys_images/customize_it_visited.gif", "bys_images/get_it_mouse_visited.gif", "bys_images/get_it_visited.gif", "bys_images/get_it_mouse_off.gif", "bys_images/get_it_on.gif", "bys_images/get_it_at.gif", "bys_images/accessory_loading_indicator.gif",
+	"bys_images/accessories_subnav/Colors_at.gif", "bys_images/accessories_subnav/Colors_off.gif", "bys_images/accessories_subnav/Colors_on.gif", "bys_images/accessories_subnav/Colors_visited.gif", "bys_images/accessories_subnav/Exterior_at.gif", "bys_images/accessories_subnav/Exterior_off.gif", "bys_images/accessories_subnav/Exterior_on.gif", "bys_images/accessories_subnav/Exterior_visited.gif", "bys_images/accessories_subnav/Interior_at.gif", "bys_images/accessories_subnav/Interior_off.gif", "bys_images/accessories_subnav/Interior_on.gif",
+	"bys_images/accessories_subnav/Interior_visited.gif", "bys_images/accessories_subnav/Packages_at.gif", "bys_images/accessories_subnav/Packages_off.gif", "bys_images/accessories_subnav/Packages_on.gif", "bys_images/accessories_subnav/Packages_visited.gif", "bys_images/accessories_subnav/Performance_at.gif", "bys_images/accessories_subnav/Performance_off.gif", "bys_images/accessories_subnav/Performance_on.gif", "bys_images/accessories_subnav/Performance_visited.gif", "bys_images/accessories_subnav/Sound_at.gif",
+	"bys_images/accessories_subnav/Sound_off.gif", "bys_images/accessories_subnav/Sound_on.gif", "bys_images/accessories_subnav/Sound_visited.gif", "bys_images/accessories_subnav/Standard_features_at.gif", "bys_images/accessories_subnav/Standard_features_off.gif", "bys_images/accessories_subnav/Standard_features_on.gif", "bys_images/accessories_subnav/Standard_features_visited.gif", "bys_images/accessories_subnav/Transmission_at.gif", "bys_images/accessories_subnav/Transmission_off.gif", "bys_images/accessories_subnav/Transmission_on.gif",
+	"bys_images/accessories_subnav/Transmission_visited.gif", "bys_images/accessories_subnav/Wheels_at.gif", "bys_images/accessories_subnav/Wheels_off.gif", "bys_images/accessories_subnav/Wheels_on.gif", "bys_images/accessories_subnav/Wheels_visited.gif"
+)
+
+function di20(id, newSrc) {
+    var theImage = FWFindImage(document, id, 0);
+    if (theImage) {
+        theImage.src = newSrc;
+    }
+}
+
+function FWFindImage(doc, name, j) {
+    var theImage = false;
+    if (doc.images) {
+        theImage = doc.images[name];
+    }
+    if (theImage) {
+        return theImage;
+    }
+    if (doc.layers) {
+        for (j = 0; j < doc.layers.length; j++) {
+            theImage = FWFindImage(doc.layers[j].document, name, 0);
+            if (theImage) {
+                return (theImage);
+            }
+        }
+    }
+    return (false);
+}
+
+</script>
+
+
+
+
+<script language="javascript" type="text/javascript">
+	// Set variables dynamically below
+	var currentModel = "xb";
+	
+	var currentTrans = "auto";			// Possible values: auto manual	
+	
+	
+	var currentLocale = "exterior";  // Possible values: interior exterior
+	var startingColor = vpColorString("6M7") + '_on';
+	var vpInstalled = false;
+	//if (IsMTSInstalled()) vpInstalled = true;
+	/*
+	Example below of setting options in both exterior and interior.  Note "_on" at end of accessory names
+	var exterior_options_chosen = new Array("color_209_on", "front_end_mask_on", "spoiler_2_on", "mud_guard_on", "roof_rack_on", "rim_1_on");
+	var interior_options_chosen = new Array("shift_knob_1_on", "glow_light_blue_on", "sport_pedal_silver_on", "sport_stwheel_gray_on", "satellite_on");
+	*/
+	var exterior_options_chosen = new Array(startingColor);
+	var interior_options_chosen = new Array();
+
+
+	/*
+		sceneCaptureURL is the URL to the script used to handle the image captures
+	*/
+	var sceneCaptureURL = "/BysDev2/pub/imageReceiverAction.do;jsessionid_bys="+getCookie("JSESSIONID_BYS");
+</script>
+
+<table width="1008" height="768" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td colspan="7"><img src="bys_images/top_margin.gif" width="1008" height="28" alt="" hspace="0" vspace="0" border="0"></td>
+	</tr>
+	<tr valign="top">
+		<td rowspan="4"><img src="bys_images/left_margin.gif" width="28" height="672" alt="" hspace="0" vspace="0" border="0"></td>
+		<td colspan="5"><img src="bys_images/top_gradiant.jpg" width="952" height="14" alt="" hspace="0" vspace="0" border="0"></td>
+		<td rowspan="4"><img src="bys_images/right_margin.gif" width="28" height="672" alt="" hspace="0" vspace="0" border="0"></td>
+	</tr>
+	<tr valign="top">
+		<td rowspan="3"><img src="bys_images/left_gradiant.jpg" width="14" height="658" alt="" hspace="0" vspace="0" border="0"></td>
+		<td rowspan="3">
+			<table width="754" height="658" border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td><!--view point plugin -->
+						<script language="javascript" type="text/javascript">
+						// set high or low bandwidth
+						var bandwidth = "high";
+						var isFirefoxMac = false;
+						</script>
+						<img src="bys_images/big_xB.jpg" width="479" height="318" alt="" hspace="0" vspace="0" border="0"></td>
+					<td><img src="bys_images/viewpoint_margin.jpg" width="2" height="318" alt="" hspace="0" vspace="0" border="0"></td>
+					<td width="273" height="318" valign="top" style="background-color:#EFEFEF"><!--pricing-->
+						<div id="priceColumn">
+							<table border="0" width="273" cellpadding="0" cellspacing="0">
+								<tr>
+									<td><img src="bys_images/spacer.gif" width="14" height="14" alt="" hspace="0" vspace="0" border="0"></td>
+									<td colspan="3">&nbsp;</td>
+									<td><img src="bys_images/spacer.gif" width="18" height="14" alt="" hspace="0" vspace="0" border="0"></td>
+								</tr>
+								<tr>
+									<td>&nbsp;</td>
+									<td colspan="2"><img src="bys_images/pricing_header.gif" width="168" height="30" border="0" alt="Pricing"></td>
+									<td valign="top" align="right"><a href="javascript:loadPricingDisclaimer();">Disclaimer</a></td>
+									<td>&nbsp;</td>
+								</tr>
+								<tr>
+									<td>&nbsp;</td>
+									<td colspan="2">Base MSRP</td>
+									<td class="price"><div id="vehicleBasePrice" class="price">$14,680</div></td>
+									<td>&nbsp;</td>
+								</tr>
+								<tr>
+									<td>&nbsp;</td>
+									<td colspan="2">Del, Proc &amp; Handling</td>
+									<td class="price"><div id="vehicleDeliveryFee" class="price">$515</div></td>
+									<td>&nbsp;</td>
+								</tr>
+								<tr>
+									<td>&nbsp;</td>
+									<td colspan="2">Accessories</td>
+									<td class="price"><div id="vehicleAccessoriesPrice" class="price">$0</div></td>
+									<td>&nbsp;</td>
+								</tr>
+							
+								<tr style="background-color:#FFFFFF">
+									<td>&nbsp;</td>
+									<td style="font-weight:bold">Grand Total</td>
+									<td align="right"><img src="bys_images/spacer.gif" width="70" height="13" hspace="3" alt="" name="price_change_indicator"></td>
+									<td><div id="vehicleTotalPrice" class="grandTotal">$15,195</div></td>
+									<td>&nbsp;</td>
+								</tr>
+							</table>
+							<img src="bys_images/spacer.gif" width="273" height="14" alt="" hspace="0" vspace="0" border="0"><br>
+							<a href="javascript:loadFindDealers();"><img src="bys_images/buttons/find_dealers.gif" width="243" height="17" hspace="14" vspace="0" border="0" alt="Find Dealers"></a><br>
+							<img src="bys_images/pricing_dot_divider.gif" width="273" height="27" alt="" hspace="0" vspace="0" border="0">
+							<table border="0" width="273" cellpadding="0" cellspacing="0">
+								<tr>
+									<td><img src="bys_images/spacer.gif" width="14" height="14" alt="" hspace="0" vspace="0" border="0"></td>
+									<td><img src="bys_images/financing_header.gif" width="178" height="28" alt="Financing"></td>
+									<td valign="top"><a href="javascript:loadFinancingDisclaimer();">Disclaimer</a></td>
+									<td><img src="bys_images/spacer.gif" width="14" height="14" alt="" hspace="0" vspace="0" border="0"></td>
+								</tr>
+							
+								<tr>
+									<td>&nbsp;</td>
+									<td><span style="font-weight:bold">Estimated Monthly Payment</span><br><span style="color:#727272">(Based on good credit and a 60-month contract)</span></td>
+									<td class="price" valign="top"><div id="monthlyPayment" class="price"></div></td>
+									<td>&nbsp;</td>
+								</tr>
+							
+							</table>
+							<img src="bys_images/spacer.gif" width="243" height="15" alt="" hspace="0" vspace="0" border="0">
+						
+							<a href="javascript:void(0)"><img src="bys_images/buttons/customize_monthly_payment.gif" width="243" height="17" hspace="14" vspace="2" border="0" alt="Customize Monthly Payment"></a>
+						
+						
+							<a href="javascript:void(0)"><img src="bys_images/buttons/apply_for_credit.gif" width="243" height="17" hspace="14" vspace="2" border="0" alt="Apply For Credit"></a>
+						
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3"><img src="bys_images/above_main_nav.gif" width="754" height="3" alt="" hspace="0" vspace="0" border="0"></td>
+				</tr>
+
+				<tr>
+					<td width="754" height="28" colspan="3" style="background-color:#4F5152"><!-- main nav-->
+					<table border="0" width="475" cellpadding="0" cellspacing="0">
+						<tr>
+							<td><img src="bys_images/spacer.gif" width="9" height="28" alt="" hspace="0" vspace="0" border="0"></td>
+							<td><img src="bys_images/choose_a_model_visited.gif" width="189" height="28" border="0" alt="Choose a Model" name="choose_a_model"></a></td>
+							<td><img src="bys_images/main_nav_arrow.gif" width="25" height="28" alt="" hspace="0" vspace="0" border="0"></td>
+							<td><img src="bys_images/customize_it_at.gif" width="150" height="28" border="0" alt="Customize It" name="customize_it"></a></td>
+							<td><img src="bys_images/main_nav_arrow.gif" width="25" height="28" alt="" hspace="0" vspace="0" border="0"></td>
+							<td><img src="bys_images/get_it_off.gif" width="77" height="28" border="0" alt="Get It" name="get_it"></a></td>
+						</tr>
+					</table>
+					</td>
+				</tr>
+				<tr>
+					<td width="754" height="309" colspan="3" valign="top" style="background:url(bys_images/work_area_bg.jpg)"><!--work area -->
+
+							<div id="loading" style="display:none; margin:0;">
+								<div style="background:url(bys_images/choose/form_bg.jpg); margin:0;">
+								<table border="0" width="754" height="309" cellspacing="0" cellpadding="0">
+									<tr>
+										<td><img src="bys_images/spacer.gif" alt="" width="11" height="278" hspace="0" vspace="0" border="0"></td>
+										<td align="left" valign="top" width="743" style="font-family: 'Verdana', 'Arial', sans-serif; font-size:10px; color:#303030;"><br><br>
+										<img src="bys_images/loading_indicator.gif" width="25" height="16" hspace="0" vspace="0" border="0" alt="">Loading...</td>
+									</tr>
+								</table>
+								</div>
+							</div>
+
+							<div id="messageArea" style="position: absolute; width:754; height:308; z-index: 100; visibility: hidden;">
+	
+							</div>
+
+							<div id="getItArea" class="newContenteArea"></div>
+							<div id="pricingDisclaimerArea" class="newContenteArea"></div>
+							<div id="financingDisclaimerArea" class="newContenteArea"></div>
+							
+							
+							<div id="errorArea" class="newContenteArea">
+								<h3>Oops...</h3><p>Sorry, the system has encountered an error and can't load the content you requested at this time.</p>
+								<p><a href="javascript:goBack();"><img src="bys_images/disclaimer_btn_back.gif" alt="" width="42" height="11" hspace="0" vspace="0" border="0" alt="Back"></a></p>
+							</div>
+
+							<div id="contentArea" style="position:absolute;width:754px;height:307px;">
+
+							<!-- sub-navigation tabs -->
+							<table border="0" width="662" cellpadding="0" cellspacing="0">
+								<tr>
+									<td><img src="bys_images/spacer.gif" width="13" height="28" alt="" hspace="0" vspace="0" border="0"></td>
+									<td><a href="javascript:loadStandardFeatures();" onmouseover="tabToggle('Standard_features','on')" onmouseout="tabToggle('Standard_features','off')"><img src="bys_images/accessories_subnav/Standard_features_off.gif" width="121" height="30" border="0" alt="Standard Features" name="Standard_features"></a></td><td><img src="bys_images/accessories_subnav/arrow.gif" width="9" height="30" border="0" alt="" hspace="0" vspace="0" border="0"></td>
+									<td><a href="javascript:updateLocation('customize_it','Transmission');initScrollLayer2(252,'scrollbar2');" onmouseover="tabToggle('Transmission','on')" onmouseout="tabToggle('Transmission','off')"><img src="bys_images/accessories_subnav/Transmission_off.gif" width="86" height="30" border="0" alt="Transmission" name="Transmission"></a></td><td><img src="bys_images/accessories_subnav/arrow.gif" width="9" height="30" border="0" alt="" hspace="0" vspace="0" border="0"></td>
+									<td><a href="javascript:updateLocation('customize_it','Colors');initScrollLayer2(252,'scrollbar2');" onmouseover="tabToggle('Colors','on')" onmouseout="tabToggle('Colors','off')"><img src="bys_images/accessories_subnav/Colors_at.gif" width="50" height="30" border="0" alt="Colors" name="Colors"></a></td><td><img src="bys_images/accessories_subnav/arrow.gif" width="9" height="30" border="0" alt="" hspace="0" vspace="0" border="0"></td>
+									
+										<td><a href="javascript:updateLocation('customize_it','Exterior');initScrollLayer2(252,'scrollbar2');"  onmouseover="tabToggle('Exterior', 'on')" onmouseout="tabToggle('Exterior','off')" ><img src="bys_images/accessories_subnav/Exterior_off.gif" border="0" alt="Exterior" name="Exterior"></a></td>
+										<td><img src="bys_images/accessories_subnav/arrow.gif" width="9" height="30" border="0" alt="" hspace="0" vspace="0" border="0"></td>
+									
+										<td><a href="javascript:updateLocation('customize_it','Interior');initScrollLayer2(252,'scrollbar2');"  onmouseover="tabToggle('Interior', 'on')" onmouseout="tabToggle('Interior','off')" ><img src="bys_images/accessories_subnav/Interior_off.gif" border="0" alt="Interior" name="Interior"></a></td>
+										<td><img src="bys_images/accessories_subnav/arrow.gif" width="9" height="30" border="0" alt="" hspace="0" vspace="0" border="0"></td>
+									
+										<td><a href="javascript:updateLocation('customize_it','Sound');initScrollLayer2(252,'scrollbar2');"  onmouseover="tabToggle('Sound', 'on')" onmouseout="tabToggle('Sound','off')" ><img src="bys_images/accessories_subnav/Sound_off.gif" border="0" alt="Sound" name="Sound"></a></td>
+										<td><img src="bys_images/accessories_subnav/arrow.gif" width="9" height="30" border="0" alt="" hspace="0" vspace="0" border="0"></td>
+									
+										<td><a href="javascript:updateLocation('customize_it','Wheels');initScrollLayer2(252,'scrollbar2');"  onmouseover="tabToggle('Wheels', 'on')" onmouseout="tabToggle('Wheels','off')" ><img src="bys_images/accessories_subnav/Wheels_off.gif" border="0" alt="Wheels" name="Wheels"></a></td>
+										<td><img src="bys_images/accessories_subnav/arrow.gif" width="9" height="30" border="0" alt="" hspace="0" vspace="0" border="0"></td>
+									
+										<td><a href="javascript:updateLocation('customize_it','Performance');initScrollLayer2(252,'scrollbar2');"  onmouseover="tabToggle('Performance', 'on')" onmouseout="tabToggle('Performance','off')" ><img src="bys_images/accessories_subnav/Performance_off.gif" border="0" alt="Performance" name="Performance"></a></td>
+										
+									
+								</tr>
+							</table>
+								
+							<div id="vehicleLayerStandard_features" style="display:none; width:755px; height:278px; position: absolute; top: 31px; left: 0; background:url(bys_images/choose/form_bg.jpg);">
+								<table border="0" cellspacing="0" cellpadding="0" width="722" align="center">
+									<tr>
+									  <td><img src="/pub-share/images/spacer.gif" width="705" height="1" alt=""></td>
+									</tr>
+									<tr>
+									  <td width="705">
+										<table border="0" cellpadding="8" cellspacing="0" width="688">
+											<tr>
+												<td colspan="3" align="right"><a href="javascript:parent.updateLocation('customize_it','Transmission');parent.initScrollLayer2();"><img src="bys_images/accessory_images/next_button_transmission.gif" width="200" height="16" border="0" alt="Next - Transmission"></a></td>
+											</tr>
+											<tr>
+												<td valign="top" width="33%">
+													<strong>Comfort and Convenience Features</strong><br clear="all">
+														 Air Conditioner<br clear="all">
+														 Power Windows (with one-touch Auto Down on driver's window)<br clear="all">
+														 Power Door Locks with Remote Entry<br clear="all">
+														 Power Outside Mirrors<br clear="all">
+														 Rear Window Defogger<br clear="all">
+														 Digital Clock<br clear="all">
+														 Tilt-Steering Wheel Column<br clear="all">
+														 Rear Privacy Glass<br clear="all">
+														 Tachometer and Trip Meter<br clear="all">
+														 Driver’s Sun Visor<br clear="all">
+														 Sport Front Bucket Seats with Fabric Upholstery<br clear="all">
+														 Cargo Area Under-floor Storage<br clear="all">
+														 60/40 Split Rear Seat<br clear="all">
+														 Amber Instrument Panel Illumination</td>
+												<td valign="top">
+													<strong>Exterior Features</strong><br clear="all">
+													Choice of 3 Wheel Cover Designs<br clear="all">
+													 Multi-Reflector Halogen Headlamps<br clear="all">
+													 Fender Mounted Turn Indicators<br clear="all">
+													 Intermittent Front Wipers<br clear="all">
+													 Rear Wiper<br clear="all">
+													 Chrome Exhaust Tip<br clear="all">
+													 Exterior Ground Effects Kit (includes front air dam, rocker panel extensions, and rear valance panel) </td>
+												<td valign="top">
+													<strong>Audio</strong><br clear="all">
+														 Pioneer AM/FM/CD Head Unit (MP3 and Satellite controller capable)<br clear="all">
+														 Scion Sound Processing<br clear="all">
+														 6-Speakers (including 2 tweeters)<br clear="all">
+														 Rear Glass Mount Antenna<br clear="all"><br>
+													
+													<strong>Safety Features</strong><br clear="all">
+														Driver and Passenger Front Airbags*<br clear="all">
+													 Anti-Lock Brakes (ABS) and Vehicle Skid Control (VSC)**<br clear="all">
+													 Driver and Passenger 3-Point Seat Belts<br clear="all">
+													 3-Across Rear Head Rests<br clear="all">
+													 3-Across 3-Point Rear Seat Belts
+												</td>
+											</tr>
+											
+										</table>
+									</td>
+								 </tr>
+								</table>							
+							</div>
+							<!-- begin container div for whole work area -->
+							<div id="wholeWorkArea" style="width:480px;height:277px;">
+	
+									<table border="0" width="754" cellspacing="0" cellpadding="0">
+										<tr>
+											<td height="1" colspan="3"><img src="bys_images/spacer.gif" alt="" width="1" height="1" hspace="0" vspace="0" border="0"></td>
+										</tr>
+										<tr valign="top">
+											<td width="480" rowspan="3">
+
+<!-- begin workArea scroller -->										
+<table cellspacing="0" cellpadding="0" border="0" width="480" align="center">
+	<tr>
+	  <td width="463" height="278">
+			<!-- relative positioned layer that contains scrolling layers -->		
+			<div id="hold2">
+			<div id="wn2"> 
+				<!-- scrolling layers start here -->
+				<div id="lyr2" class="content">
+											<form name="configurationForm" method="post" action="." id="configurationForm">
+											<input name="vehicleKey" type="hidden" value="">
+
+											<!-- begin work area left side -->
+											
+												
+												<div id="vehicleLayerTransmission" style="display:none; width:463px;padding:11px;">
+													<div style="text-align:right;margin-right:11px;position:relative;"><a href="javascript:updateLocation('customize_it','Colors');initScrollLayer2(252,'scrollbar2');"><img src="bys_images/accessory_images/next_button_colors.gif" width="108" height="16" hspace="0" vspace="0" border="0" alt="Next - Colors"></a></div>
+													<table border="0" cellspacing="0" cellpadding="0">
+														<tr>
+															<td width="16" height="16"><a href="javascript:document.transAutomatic.src='bys_images/radio_on.gif';document.transManual.src='bys_images/radio_off.gif';document.getElementById('configurationForm').modelTransmission[0].checked=true;submitModelChange();"><input type="radio" name="modelTransmission" value="Automatic" checked="checked" style="display:none;"><img src="bys_images/radio_off.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="transAutomatic"></a></td>
+															<td><a href="javascript:document.transAutomatic.src='bys_images/radio_on.gif';document.transManual.src='bys_images/radio_off.gif';document.getElementById('configurationForm').modelTransmission[0].checked=true;submitModelChange();" class="itemText">Automatic</a></td>
+														</tr>
+														<tr>
+															<td width="16" height="16"><a href="javascript:document.images['transAutomatic'].src='bys_images/radio_off.gif';document.images['transManual'].src='bys_images/radio_on.gif';document.getElementById('configurationForm').modelTransmission[1].checked=true;submitModelChange();"><input type="radio" name="modelTransmission" value="Manual" style="display:none;"><img src="bys_images/radio_off.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="transManual"></a></td>
+															<td><a href="javascript:document.images['transAutomatic'].src='bys_images/radio_off.gif';document.images['transManual'].src='bys_images/radio_on.gif';document.getElementById('configurationForm').modelTransmission[1].checked=true;submitModelChange();" class="itemText">Manual</a></td>
+														</tr>
+													</table>
+												</div>
+												<div id="vehicleLayerColors" style="display:none; width:463px; padding:11px;">
+													<div style="text-align:right;margin-right:11px;position:relative;"><a href="javascript:updateLocation('customize_it','Exterior');initScrollLayer2(252,'scrollbar2');"><img src="bys_images/accessory_images/next_button_exterior.gif" width="200" height="16" hspace="0" vspace="0" border="0" alt="Next - Exterior Accessories"></a></div>
+													<input type="hidden" name="exteriorColorId" value="">
+													<table border="0" cellspacing="0" cellpadding="0">
+														
+														<tr>
+															<td width="16" height="17"><a href="javascript:void(0)"><img src="bys_images/radio_off.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioColor6003621"></a></td>
+															<td><a href="javascript:void(0)" class="itemText">Camouflage</a></td>
+														</tr>
+														
+														<tr>
+															<td width="16" height="17"><a href="javascript:void(0)"><img src="bys_images/radio_off.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioColor6003623"></a></td>
+															<td><a href="javascript:void(0)" class="itemText">Blue Onyx Pearl</a></td>
+														</tr>
+														
+														<tr>
+															<td width="16" height="17"><a href="javascript:void(0)"><img src="bys_images/radio_off.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioColor6003625"></a></td>
+															<td><a href="javascript:void(0)" class="itemText">Black Sand Pearl</a></td>
+														</tr>
+														
+														<tr>
+															<td width="16" height="17"><a href="javascript:void(0)"><img src="bys_images/radio_off.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioColor6003627"></a></td>
+															<td><a href="javascript:void(0)" class="itemText">Thunder Cloud Metallic</a></td>
+														</tr>
+														
+														<tr>
+															<td width="16" height="17"><a href="javascript:void(0)"><img src="bys_images/radio_off.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioColor6003629"></a></td>
+															<td><a href="javascript:void(0)" class="itemText">Polar White</a></td>
+														</tr>
+														
+														<tr>
+															<td width="16" height="17"><a href="javascript:void(0)"><img src="bys_images/radio_off.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioColor6003631"></a></td>
+															<td><a href="javascript:void(0)" class="itemText">Black Cherry Pearl</a></td>
+														</tr>
+														
+													</table>
+												</div>
+												
+													<div id="vehicleLayerExterior" style="display:none; width:463px; padding:11px;">
+														<div style="text-align:right;margin-right:11px;position:relative;"><a href="javascript:updateLocation('customize_it','Interior');initScrollLayer2(252,'scrollbar2');"><img src="bys_images/accessory_images/next_button_Interior.gif" width="200" height="16" hspace="0" vspace="0" border="0" alt="Next - Interior"></a>
+															
+														</div>
+															<!-- begin two column container table -->
+															<table border="0" width="450" cellspacing="0" cellpadding="0">
+																<tr>
+																
+																	<td valign="top">
+																		
+																		<table border="0" width="210" cellspacing="0" cellpadding="0">
+																			<tr>
+																				<td width="16"><img src="bys_images/spacer.gif" alt="" width="16" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="123"><img src="bys_images/spacer.gif" alt="" width="123" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="27"><img src="bys_images/spacer.gif" alt="" width="27" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="44"><img src="bys_images/spacer.gif" alt="" width="44" height="1" hspace="0" vspace="0" border="0"></td>
+																			</tr>
+														
+																			
+																				
+																						<tr>
+																							<td colspan="4">Body Side Graphics</td>
+																						</tr>
+																						<tr>
+																							<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																						</tr>
+																				
+																			
+																			
+																				
+																					
+																					<tr>
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/radio_on.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioButtonImage6003441"></a></td>
+																						<td colspan="3"><a href="javascript:void(0)" class="itemText">None</a></td>																
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																					
+																					
+																					<tr>
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/radio_off.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioButtonImage6003453"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Green</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$224</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																				
+																					<tr>
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/radio_off.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioButtonImage6003455"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Gray</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$224</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																				
+																					<tr>
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/radio_off.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioButtonImage6003457"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Brown</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$224</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																				
+																					<tr>
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/radio_off.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioButtonImage6003459"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Body Side Graphic Thumbprint</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$224</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																				
+																					<tr>
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/radio_off.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioButtonImage6003461"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Brown</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$264</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																				
+																					<tr>
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/radio_off.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioButtonImage6003463"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Green</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$264</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																				
+																					<tr>
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/radio_off.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioButtonImage6003465"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Gray</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$264</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																				
+																				
+																				
+																			
+																			</table>
+																		
+																		<table border="0" width="210" cellspacing="0" cellpadding="0">
+																			<tr>
+																				<td width="16"><img src="bys_images/spacer.gif" alt="" width="16" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="123"><img src="bys_images/spacer.gif" alt="" width="123" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="27"><img src="bys_images/spacer.gif" alt="" width="27" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="44"><img src="bys_images/spacer.gif" alt="" width="44" height="1" hspace="0" vspace="0" border="0"></td>
+																			</tr>
+														
+																			
+																			
+																				
+																				
+																					
+																					<tr valign="top">
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/checkbox_off.gif" alt="" width="9" height="9" hspace="0" vspace="3" border="0" name="checkBox6003469"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Rear Taillights by TYC</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$275</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																					
+																					<tr valign="top">
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/checkbox_off.gif" alt="" width="9" height="9" hspace="0" vspace="3" border="0" name="checkBox6003471"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Custom Fit Car Cover</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$219</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																					
+																					<tr valign="top">
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/checkbox_off.gif" alt="" width="9" height="9" hspace="0" vspace="3" border="0" name="checkBox6003473"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Yakima Rack</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$287</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																					
+																					<tr valign="top">
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/checkbox_off.gif" alt="" width="9" height="9" hspace="0" vspace="3" border="0" name="checkBox6003475"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">B Pillar Applique by Superior Dash</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$189</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																					
+																					<tr valign="top">
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/checkbox_off.gif" alt="" width="9" height="9" hspace="0" vspace="3" border="0" name="checkBox6003477"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Fog Lights</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$350</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																					
+																					<tr valign="top">
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/checkbox_off.gif" alt="" width="9" height="9" hspace="0" vspace="3" border="0" name="checkBox6003479"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Carbon Fiber Gas Lid Applique</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$35</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																					
+																					<tr valign="top">
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/checkbox_off.gif" alt="" width="9" height="9" hspace="0" vspace="3" border="0" name="checkBox6003481"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Rear Bumper Applique</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$58</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																					
+																					<tr valign="top">
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/checkbox_off.gif" alt="" width="9" height="9" hspace="0" vspace="3" border="0" name="checkBox6003483"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Rear Spoiler</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$385</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																					
+																					<tr valign="top">
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/checkbox_off.gif" alt="" width="9" height="9" hspace="0" vspace="3" border="0" name="checkBox6003485"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Exhaust Tip</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$64</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																					
+																					<tr valign="top">
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/checkbox_off.gif" alt="" width="9" height="9" hspace="0" vspace="3" border="0" name="checkBox6003487"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Front End Mask</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$55</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																					
+																				
+																			
+																			</table>
+																		
+																	</td>
+																	
+																	<td valign="top">
+																		
+																		<table border="0" width="210" cellspacing="0" cellpadding="0">
+																			<tr>
+																				<td width="16"><img src="bys_images/spacer.gif" alt="" width="16" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="123"><img src="bys_images/spacer.gif" alt="" width="123" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="27"><img src="bys_images/spacer.gif" alt="" width="27" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="44"><img src="bys_images/spacer.gif" alt="" width="44" height="1" hspace="0" vspace="0" border="0"></td>
+																			</tr>
+														
+																			
+																				
+																						<tr>
+																							<td colspan="4">License Plate Frames</td>
+																						</tr>
+																						<tr>
+																							<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																						</tr>
+																				
+																			
+																			
+																				
+																					
+																					<tr>
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/radio_on.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioButtonImage6003443"></a></td>
+																						<td colspan="3"><a href="javascript:void(0)" class="itemText">None</a></td>																
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																					
+																					
+																					<tr>
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/radio_off.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioButtonImage6003489"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Black</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$42.95</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																				
+																					<tr>
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/radio_off.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioButtonImage6003491"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Chrome</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$36.95</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																				
+																					<tr>
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/radio_off.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioButtonImage6003493"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Gold</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$45.95</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																				
+																				
+																				
+																			
+																			</table>
+																		
+																	</td>
+																	
+																</tr>
+															</table>
+															<!-- end two column container table -->
+													</div>
+											
+													<div id="vehicleLayerInterior" style="display:none; width:463px; padding:11px;">
+														<div style="text-align:right;margin-right:11px;position:relative;"><a href="javascript:updateLocation('customize_it','Sound');initScrollLayer2(252,'scrollbar2');"><img src="bys_images/accessory_images/next_button_Sound.gif" width="200" height="16" hspace="0" vspace="0" border="0" alt="Next - Sound"></a>
+															
+														</div>
+															<!-- begin two column container table -->
+															<table border="0" width="450" cellspacing="0" cellpadding="0">
+																<tr>
+																
+																	<td valign="top">
+																		
+																		<table border="0" width="210" cellspacing="0" cellpadding="0">
+																			<tr>
+																				<td width="16"><img src="bys_images/spacer.gif" alt="" width="16" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="123"><img src="bys_images/spacer.gif" alt="" width="123" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="27"><img src="bys_images/spacer.gif" alt="" width="27" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="44"><img src="bys_images/spacer.gif" alt="" width="44" height="1" hspace="0" vspace="0" border="0"></td>
+																			</tr>
+														
+																			
+																			
+																				
+																				
+																					
+																					<tr valign="top">
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/checkbox_off.gif" alt="" width="9" height="9" hspace="0" vspace="3" border="0" name="checkBox6003495"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Cargo Liner</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$93</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																					
+																					<tr valign="top">
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/checkbox_off.gif" alt="" width="9" height="9" hspace="0" vspace="3" border="0" name="checkBox6003497"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Molded Dash Applique</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$259</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																					
+																					<tr valign="top">
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/checkbox_off.gif" alt="" width="9" height="9" hspace="0" vspace="3" border="0" name="checkBox6003499"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Center Armrest</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$125</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																					
+																					<tr valign="top">
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/checkbox_off.gif" alt="" width="9" height="9" hspace="0" vspace="3" border="0" name="checkBox6003501"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Cargo Cover</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$55</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																					
+																					<tr valign="top">
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/checkbox_off.gif" alt="" width="9" height="9" hspace="0" vspace="3" border="0" name="checkBox6003503"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Cargo Tote</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$40</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																					
+																					<tr valign="top">
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/checkbox_off.gif" alt="" width="9" height="9" hspace="0" vspace="3" border="0" name="checkBox6003505"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Cargo Net</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$49</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																					
+																					<tr valign="top">
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/checkbox_off.gif" alt="" width="9" height="9" hspace="0" vspace="3" border="0" name="checkBox6003507"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Floor &amp; Cargo Mats</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$120</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																					
+																					<tr valign="top">
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/checkbox_off.gif" alt="" width="9" height="9" hspace="0" vspace="3" border="0" name="checkBox6003511"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Door Sill Enhancements by ACSCO</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$139</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																					
+																					<tr valign="top">
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/checkbox_off.gif" alt="" width="9" height="9" hspace="0" vspace="3" border="0" name="checkBox6003513"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Scion Security</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$469</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																					
+																				
+																			
+																			</table>
+																		
+																		<table border="0" width="210" cellspacing="0" cellpadding="0">
+																			<tr>
+																				<td width="16"><img src="bys_images/spacer.gif" alt="" width="16" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="123"><img src="bys_images/spacer.gif" alt="" width="123" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="27"><img src="bys_images/spacer.gif" alt="" width="27" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="44"><img src="bys_images/spacer.gif" alt="" width="44" height="1" hspace="0" vspace="0" border="0"></td>
+																			</tr>
+														
+																			
+																				
+																						<tr>
+																							<td colspan="4">LED Illumination</td>
+																						</tr>
+																						<tr>
+																							<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																						</tr>
+																				
+																			
+																			
+																				
+																					
+																					<tr>
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/radio_on.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioButtonImage6003445"></a></td>
+																						<td colspan="3"><a href="javascript:void(0)" class="itemText">None</a></td>																
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																					
+																					
+																					<tr>
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/radio_off.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioButtonImage6003515"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Amber</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$275</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																				
+																					<tr>
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/radio_off.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioButtonImage6003517"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Blue</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$275</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																				
+																					<tr>
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/radio_off.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioButtonImage6003519"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Green</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$275</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																				
+																					<tr>
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/radio_off.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioButtonImage6003521"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Red</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$275</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																				
+																				
+																				
+																			
+																			</table>
+																		
+																	</td>
+																	
+																	<td valign="top">
+																		
+																		<table border="0" width="210" cellspacing="0" cellpadding="0">
+																			<tr>
+																				<td width="16"><img src="bys_images/spacer.gif" alt="" width="16" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="123"><img src="bys_images/spacer.gif" alt="" width="123" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="27"><img src="bys_images/spacer.gif" alt="" width="27" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="44"><img src="bys_images/spacer.gif" alt="" width="44" height="1" hspace="0" vspace="0" border="0"></td>
+																			</tr>
+														
+																			
+																				
+																						<tr>
+																							<td colspan="4">Sport Pedal Covers by OBX Racing Sports</td>
+																						</tr>
+																						<tr>
+																							<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																						</tr>
+																				
+																			
+																			
+																				
+																					
+																					<tr>
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/radio_on.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioButtonImage6003446"></a></td>
+																						<td colspan="3"><a href="javascript:void(0)" class="itemText">None</a></td>																
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																					
+																					
+																					<tr>
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/radio_off.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioButtonImage6003523"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Blue</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$79</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																				
+																					<tr>
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/radio_off.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioButtonImage6003525"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Red</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$79</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																				
+																					<tr>
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/radio_off.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioButtonImage6003527"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Silver</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$79</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																				
+																				
+																				
+																			
+																			</table>
+																		
+																		<table border="0" width="210" cellspacing="0" cellpadding="0">
+																			<tr>
+																				<td width="16"><img src="bys_images/spacer.gif" alt="" width="16" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="123"><img src="bys_images/spacer.gif" alt="" width="123" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="27"><img src="bys_images/spacer.gif" alt="" width="27" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="44"><img src="bys_images/spacer.gif" alt="" width="44" height="1" hspace="0" vspace="0" border="0"></td>
+																			</tr>
+														
+																			
+																				
+																						<tr>
+																							<td colspan="4">Color Steering Wheel</td>
+																						</tr>
+																						<tr>
+																							<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																						</tr>
+																				
+																			
+																			
+																				
+																					
+																					<tr>
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/radio_on.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioButtonImage6003447"></a></td>
+																						<td colspan="3"><a href="javascript:void(0)" class="itemText">None</a></td>																
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																					
+																					
+																					<tr>
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/radio_off.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioButtonImage6003529"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Gray</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$279</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																				
+																					<tr>
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/radio_off.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioButtonImage6003531"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Red</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$279</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																				
+																				
+																				
+																			
+																			</table>
+																		
+																	</td>
+																	
+																</tr>
+															</table>
+															<!-- end two column container table -->
+													</div>
+											
+													<div id="vehicleLayerSound" style="display:none; width:463px; padding:11px;">
+														<div style="text-align:right;margin-right:11px;position:relative;"><a href="javascript:updateLocation('customize_it','Wheels');initScrollLayer2(252,'scrollbar2');"><img src="bys_images/accessory_images/next_button_Wheels.gif" width="200" height="16" hspace="0" vspace="0" border="0" alt="Next - Wheels"></a>
+															
+														</div>
+															<!-- begin two column container table -->
+															<table border="0" width="450" cellspacing="0" cellpadding="0">
+																<tr>
+																
+																	<td valign="top">
+																		
+																		<table border="0" width="210" cellspacing="0" cellpadding="0">
+																			<tr>
+																				<td width="16"><img src="bys_images/spacer.gif" alt="" width="16" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="123"><img src="bys_images/spacer.gif" alt="" width="123" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="27"><img src="bys_images/spacer.gif" alt="" width="27" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="44"><img src="bys_images/spacer.gif" alt="" width="44" height="1" hspace="0" vspace="0" border="0"></td>
+																			</tr>
+														
+																			
+																			
+																				
+																				
+																					
+																					<tr valign="top">
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/checkbox_off.gif" alt="" width="9" height="9" hspace="0" vspace="3" border="0" name="checkBox6003533"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Pioneer AM/FM/CD Deck</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$0</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																					
+																					<tr valign="top">
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/checkbox_off.gif" alt="" width="9" height="9" hspace="0" vspace="3" border="0" name="checkBox6003535"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Pioneer AM/FM/CD + iPod Capability</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$260</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																					
+																					<tr valign="top">
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/checkbox_off.gif" alt="" width="9" height="9" hspace="0" vspace="3" border="0" name="checkBox6003537"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">8&#034; Subwoofer by Bazooka</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$429</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																					
+																				
+																			
+																			</table>
+																		
+																	</td>
+																	
+																	<td valign="top">
+																		
+																		<table border="0" width="210" cellspacing="0" cellpadding="0">
+																			<tr>
+																				<td width="16"><img src="bys_images/spacer.gif" alt="" width="16" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="123"><img src="bys_images/spacer.gif" alt="" width="123" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="27"><img src="bys_images/spacer.gif" alt="" width="27" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="44"><img src="bys_images/spacer.gif" alt="" width="44" height="1" hspace="0" vspace="0" border="0"></td>
+																			</tr>
+														
+																			
+																				
+																						<tr>
+																							<td colspan="4">Satellite Radio</td>
+																						</tr>
+																						<tr>
+																							<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																						</tr>
+																				
+																			
+																			
+																				
+																				
+																					
+																					<tr valign="top">
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/checkbox_off.gif" alt="" width="9" height="9" hspace="0" vspace="3" border="0" name="checkBox6003539"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">XM Satellite Radio</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$449</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																					
+																					<tr valign="top">
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/checkbox_off.gif" alt="" width="9" height="9" hspace="0" vspace="3" border="0" name="checkBox6003542"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Sirius Satellite Radio</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$449</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																					
+																				
+																			
+																			</table>
+																		
+																	</td>
+																	
+																</tr>
+															</table>
+															<!-- end two column container table -->
+													</div>
+											
+													<div id="vehicleLayerWheels" style="display:none; width:463px; padding:11px;">
+														<div style="text-align:right;margin-right:11px;position:relative;"><a href="javascript:updateLocation('customize_it','Performance');initScrollLayer2(252,'scrollbar2');"><img src="bys_images/accessory_images/next_button_Performance.gif" width="200" height="16" hspace="0" vspace="0" border="0" alt="Next - Performance"></a>
+															
+														</div>
+															<!-- begin two column container table -->
+															<table border="0" width="450" cellspacing="0" cellpadding="0">
+																<tr>
+																
+																	<td valign="top">
+																		
+																		<table border="0" width="210" cellspacing="0" cellpadding="0">
+																			<tr>
+																				<td width="16"><img src="bys_images/spacer.gif" alt="" width="16" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="123"><img src="bys_images/spacer.gif" alt="" width="123" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="27"><img src="bys_images/spacer.gif" alt="" width="27" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="44"><img src="bys_images/spacer.gif" alt="" width="44" height="1" hspace="0" vspace="0" border="0"></td>
+																			</tr>
+														
+																			
+																			
+																				
+																				
+																					
+																					<tr valign="top">
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/checkbox_off.gif" alt="" width="9" height="9" hspace="0" vspace="3" border="0" name="checkBox6003544"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">Alloy Wheel Locks</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$59</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																					
+																				
+																			
+																			</table>
+																		
+																	</td>
+																	
+																	<td valign="top">
+																		
+																		<table border="0" width="210" cellspacing="0" cellpadding="0">
+																			<tr>
+																				<td width="16"><img src="bys_images/spacer.gif" alt="" width="16" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="123"><img src="bys_images/spacer.gif" alt="" width="123" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="27"><img src="bys_images/spacer.gif" alt="" width="27" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="44"><img src="bys_images/spacer.gif" alt="" width="44" height="1" hspace="0" vspace="0" border="0"></td>
+																			</tr>
+														
+																			
+																			
+																				
+																					
+																					
+																					<tr>
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/radio_off.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioButtonImage6003546"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">15&#034; EM 7-Spoke Alloy Wheel</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$665</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																				
+																					<tr>
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/radio_off.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioButtonImage6003548"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">18&#034; 5-Spoke Alloy Wheel</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$1,795</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																				
+																					<tr>
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/radio_off.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioButtonImage6003550"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">10-Spoke Wheel Cover</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$0</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																				
+																					<tr>
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/radio_off.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioButtonImage6003556"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">6-Spoke Wheel Cover</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$0</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																				
+																					<tr>
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/radio_off.gif" alt="" width="10" height="10" hspace="0" vspace="0" border="0" name="radioButtonImage6003558"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">8-Spoke Wheel Cover</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$0</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																				
+																				
+																				
+																			
+																			</table>
+																		
+																	</td>
+																	
+																</tr>
+															</table>
+															<!-- end two column container table -->
+													</div>
+											
+													<div id="vehicleLayerPerformance" style="display:none; width:463px; padding:11px;">
+														
+															<!-- begin two column container table -->
+															<table border="0" width="450" cellspacing="0" cellpadding="0">
+																<tr>
+																
+																	<td valign="top">
+																		
+																		<table border="0" width="210" cellspacing="0" cellpadding="0">
+																			<tr>
+																				<td width="16"><img src="bys_images/spacer.gif" alt="" width="16" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="123"><img src="bys_images/spacer.gif" alt="" width="123" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="27"><img src="bys_images/spacer.gif" alt="" width="27" height="1" hspace="0" vspace="0" border="0"></td>
+																				<td width="44"><img src="bys_images/spacer.gif" alt="" width="44" height="1" hspace="0" vspace="0" border="0"></td>
+																			</tr>
+														
+																			
+																				
+																						<tr>
+																							<td colspan="4">Performance</td>
+																						</tr>
+																						<tr>
+																							<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																						</tr>
+																				
+																					
+																					<tr valign="top">
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/checkbox_off.gif" alt="" width="9" height="9" hspace="0" vspace="3" border="0" name="checkBox6003562"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">TRD Sport Muffler</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$299</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																					
+																					<tr valign="top">
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/checkbox_off.gif" alt="" width="9" height="9" hspace="0" vspace="3" border="0" name="checkBox6003564"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">TRD Shocks/Struts Kit</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$329</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																					
+																					<tr valign="top">
+																						<td width="16"><a href="javascript:void(0)"><img src="bys_images/checkbox_off.gif" alt="" width="9" height="9" hspace="0" vspace="3" border="0" name="checkBox6003568"></a></td>
+																						<td width="123"><a href="javascript:void(0)" class="itemText">TRD Lowering Springs Kit</a></td>
+																						<td width="27" align="right"></td>
+																						<td align="right" width="44">$189</td>
+																					</tr>
+																					<tr>
+																						<td colspan="4" height="5"><img src="bys_images/spacer.gif" alt="" width="1" height="5" hspace="0" vspace="0" border="0"></td>
+																					</tr>
+																					
+																				
+																			
+																			</table>
+																		
+																	</td>
+																	
+																</tr>
+															</table>
+															<!-- end two column container table -->
+													</div>
+											
+										</form>
+				</div>				
+			</div>  <!-- end wn  -->
+			</div>	<!-- end hold (relative layer) -->	
+		</td>
+		<td align="center" width="17" valign="top" style="padding-top:11px;padding-bottom:11px;background:url(bys_images/scroller_bg.jpg);">
+		<div id="scrollbar2" style="visibility:hidden;">
+          <div id="up2"><a href="javascript:;" onclick="return false" onmouseover="dw_scrollObj.initScroll('wn2','up')" onmouseout="dw_scrollObj.stopScroll('wn2')" onmousedown="dw_scrollObj.doubleSpeed('wn2')" onmouseup="dw_scrollObj.resetSpeed('wn2')"><img src="bys_images/btn-up.gif" width="9" height="6" alt=""></a></div>
+          <div id="track2">
+            <div id="dragBar2"></div>
+          </div>
+          <div id="down2"><a href="javascript:;" onclick="return false" onmouseover="dw_scrollObj.initScroll('wn2','down')" onmouseout="dw_scrollObj.stopScroll('wn2')" onmousedown="dw_scrollObj.doubleSpeed('wn2')" onmouseup="dw_scrollObj.resetSpeed('wn2')"><img src="bys_images/btn-dn.gif" width="9" height="6" alt=""></a></div>
+      </div></td>
+ </tr>
+</table>
+
+<!-- end workArea scroller -->										
+										
+									<!-- end work area left side -->
+
+									</td>
+									<td width="1" rowspan="3" style="background-color:#444343;"><img src="bys_images/spacer.gif" width="1" height="1" hspace="0" vspace="0" border="0" alt=""></td>
+									<td width="273" height="108" style="background-color:#cccccc;"><img src="bys_images/camouflage.jpg" width="273" height="108" hspace="0" vspace="0" name="contextImage" alt=""></td>
+								</tr>
+								<tr>
+									<td width="1" style="background-color:#444343;" height="2"><img src="bys_images/spacer.gif" width="1" height="2" hspace="0" vspace="0" border="0" alt=""></td>
+								</tr>
+								<tr>
+									<td style="background-color:#B6B5B5;" height="166" valign="top">
+										<table border="0" width="273" cellpadding="0" cellspacing="0">
+											<tr>
+												<td align="left" height="23"><div id="accessoryName" style="font-weight:bold; padding-left:10px;">&#160;</div></td>
+												<td align="right"><div id="accessoryPrice" style="font-weight:bold; padding-right:10px;">&#160;</div></td>
+											</tr>
+											<tr>
+												<td colspan="2"><img src="bys_images/info_dot_divider.gif" width="273" height="11" border="0" alt=""></td>
+											</tr>
+										</table>
+										<div id="accessoryDisclaimerLink" style="margin-right:10px; margin-bottom:3px; text-align:right; display:none;"><a href="javascript:onclick="accessoryDisclaimer();">disclaimer</a></div>										
+										
+<!-- begin accessoryDescription scroller -->										
+<table cellspacing="0" cellpadding="0" border="0" width="255" align="center">
+	<tr>
+	  <td width="238">
+			<!-- relative positioned layer that contains scrolling layers -->		
+			<div id="hold">
+			<div id="wn"> 
+				<!-- scrolling layers start here -->
+				<div id="lyr1" class="content" style="display:block"></div>
+			</div>  <!-- end wn  -->
+			</div>	<!-- end hold (relative layer) -->	
+		</td>
+		<td id="scrollLinks" align="center" width="17" valign="top">
+		<div id="scrollbar" style="visibility:hidden;">
+          <div id="up"><a href="javascript:;" onclick="return false" onmouseover="dw_scrollObj.initScroll('wn','up')" onmouseout="dw_scrollObj.stopScroll('wn')" onmousedown="dw_scrollObj.doubleSpeed('wn')" onmouseup="dw_scrollObj.resetSpeed('wn')"><img src="bys_images/btn-up.gif" width="9" height="6" alt=""></a></div>
+          <div id="track">
+            <div id="dragBar"></div>
+          </div>
+          <div id="down"><a href="javascript:;" onclick="return false" onmouseover="dw_scrollObj.initScroll('wn','down')" onmouseout="dw_scrollObj.stopScroll('wn')" onmousedown="dw_scrollObj.doubleSpeed('wn')" onmouseup="dw_scrollObj.resetSpeed('wn')"><img src="bys_images/btn-dn.gif" width="9" height="6" alt=""></a></div>
+      </div></td>
+ </tr>
+</table>
+
+<!-- end accessoryDescription scroller -->										
+									
+									</td>
+								</tr>
+							</table>							
+							<!-- end work area divider table -->
+							</div>
+							<!-- end container div for whole work area -->
+						</div>
+
+					</td>
+				</tr>
+			</table></td>
+		<td rowspan="3"><img src="bys_images/after_main_content.jpg" width="4" height="658" alt="" hspace="0" vspace="0" border="0"></td>
+		<td width="174" height="448" style="background:url(bys_images/right_column_bg.jpg)" valign="top"><!-- right column -->
+			<img src="bys_images/bys_title_xb.jpg" width="174" height="90" border="0" alt="Build Your Scion -- xB">
+			<div style="margin:0,0,0,4px;">
+				State: CA<br><br>
+			</div>
+			<img src="bys_images/right_column_your_scions.gif" width="174" height="34" alt="Your Scions">
+			<div class="rightColumn">
+				<table border="0" width="165" cellpadding="2" cellspacing="0">
+					<tr><td align="left">My Second xB</td><td align="right"><div id="currentVehiclePrice" style="display:inline">$15,195</div></td></tr>
+					
+						<tr><td align="left"><a href="javascript:switchVehicle(1);">My First xB</a></td><td align="right">$15,195</td></tr>
+					
+						
+					
+				</table>
+			</div>
+			
+			<a href="javascript:loadSaveAndCompare();" onMouseOut="di20('save_compare','bys_images/buttons/save_and_compare.gif');"  onMouseOver="di20('save_compare','bys_images/buttons/save_and_compare_on.gif');"><img src="bys_images/buttons/save_and_compare.gif" width="174" height="22" hspace="0" border="0" alt="Save &amp; Compare" name="save_compare"></a><br clear="all">
+			<a href="javascript:viewPrint();" onMouseOut="di20('print_scion','bys_images/buttons/print_this_scion.gif');"  onMouseOver="di20('print_scion','bys_images/buttons/print_this_scion_on.gif');"><img src="bys_images/buttons/print_this_scion.gif" width="174" height="16" hspace="0" border="0" alt="Print This Scion" name="print_scion"></a>
+			<img src="bys_images/right_column_dot_lines.gif" width="174" height="20" alt="">
+			<div style="margin:0,0,0,4px;"><span style="font-weight:bold">DID YOU KNOW?</span>
+				<div id="did_you_know" style="margin:3px,0,0,0">Nothing is permanent. Return to this screen at any time to find the hue that matches your taste.</div>
+			</div>
+		</td>
+		<td><img src="bys_images/right_column_margin.jpg" width="6" height="448" alt="" hspace="0" vspace="0" border="0"></td>
+	</tr>
+	<tr valign="top">
+		<td colspan="2"><img src="bys_images/scion_logo.jpg" width="180" height="98" border="0" alt="" hspace="0" vspace="0" border="0"></td>
+	</tr>
+	<tr>
+		<td colspan="2"><img src="bys_images/below_logo.gif" width="180" height="112" alt="" hspace="0" vspace="0" border="0"></td>
+	</tr>
+	<tr>
+		<td><img src="bys_images/below_left_margin.jpg" width="28" height="28" alt="" hspace="0" vspace="0" border="0"></td>
+		<td colspan="3"><img src="bys_images/bottom_margin.gif" width="772" height="28" alt="" hspace="0" vspace="0" border="0"></td>
+		<td colspan="2"><img src="bys_images/bottom_margin2.gif" width="180" height="28" alt="" hspace="0" vspace="0" border="0"></td>
+		<td width="28" height="28"><!--below right margin--></td>
+	</tr>
+	<tr>
+		<td width="1008" height="40" colspan="7"><!-- footer -->
+
+<style type="text/css">
+<!--
+.footerText { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 9px; color: #4F5152; line-height: 14px }
+a.footerText { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 9px; color: #4F5152; line-height: 14px; text-decoration: underline; }
+a.footerText:hover { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 9px; color: #4F5152; line-height: 14px; text-decoration: underline; }
+
+-->
+</style>
+	
+<table border="0" width="742" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="footerText" style="padding-left:15px;"><br clear="all">A Marque of <a href="javascript:void(0)" style="color:#4F5152;text-decoration:underline;">Toyota Motor Sales USA, Inc.</a></font> | <a href="javascript:void(0)" style="color:#4F5152;text-decoration:underline;">Legal Info</a></td>
+	</tr>
+</table>
+
+
+		</td>
+	</tr>
+</table>
+
+<map name="no_vp_map">
+<area shape="rect" alt="" coords="273,279,330,295" href="/bys/pub/">
+<area shape="rect" alt="Install ViewPoint" coords="66,264,128,279" href="/scion/pub/gen/outlink.do?url=http://www.viewpoint.com/pub/products/vmp.html" target="_blank">
+</map>
+
+<div id="loadingWarning" style="position: absolute; top:433px; left:53px; font-weight:bold;z-index:1002;width:458px;background-color:white;border:solid 1px black;padding:15px;visibility:hidden;">Please wait for your Scion to finish loading before making any selections<br><br><a href="javascript:;" onclick="document.getElementById('loadingWarning').style.visibility='hidden';">close</a></div>
+
+<script language="javascript" type="text/javascript">
+	updateLocation("customize_it","Colors",true);
+	here.accessoryImagePath = colorMap["6003621"].imageUrl;
+	if(document.getElementById("configurationForm").modelTransmission[0].checked){
+		document.images.transAutomatic.src = "bys_images/radio_on.gif";		
+	}else{
+		document.images.transManual.src = "bys_images/radio_on.gif";
+	}	
+</script>
+<div id="conflictDiv" style="position: absolute; top:433px; left:53px; font-weight:bold;z-index:1001;width:458px;background-color:white;border:solid 1px black;padding:15px;visibility:hidden;"></div>
+
+
+</body>
+</html>
+

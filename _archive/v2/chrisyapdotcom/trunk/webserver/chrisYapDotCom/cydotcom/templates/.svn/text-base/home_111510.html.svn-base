@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block styles %}{% endblock %}
+{% block content %}
+<ul>
+	<li class="module hero">
+		<h1>Welcome to ChrisYap.com</h1>
+		<p>I am a San Francisco-based <a href="/work/">designer and developer</a>, working primarily in web technologies.  I've been at it since 1999 and have loved almost every minute of it.</p>
+		<p>I am also a lifelong musician, with experience working in a variety of mediums.  I have experience in classical music, having studied the violin for 20 years and the piano for 12 years.  Since 1996 I've also been a <a href="/music/">DJ</a> working with electronic music, and more recently have worked on a variety of <a href="/music/">original productions and projects</a>.
+	</li>
+</ul>
+
+<span id="flickrContainer">
+	<ul>
+		<li id="markerFlickr" class="module marker"><h1 class="hide">Flickr</h1><img src="{{ CY_MEDIA_URL }}cydotcom/images/markerFlickr.png" alt="Flickr" title="Flickr" border="0" /></li>
+		{% if not isMobile %}
+			{% for photo in photoList %}
+				<li><a href="{{ photo.mediumFlickrLink }}" rel="lightbox['flickr']" title="{{ photo.title }}">{{ photo.imgTag|safe }}</a></li>
+			{% endfor %}
+		{% else %}
+			{% for photo in photoList|slice:":4" %}
+				<li><a href="{{ photo.mediumFlickrLink }}" rel="lightbox['flickr']" title="{{ photo.title }}">{{ photo.imgTag|safe }}</a></li>
+			{% endfor %}
+		{% endif %}
+	</ul>
+	{% if isMobile %}
+		<div style="clear: both;"></div>
+	{% endif %}
+</span>
+<span id="tumblrContainer">
+	<ul>
+		<li id="markerTumblr" class="module marker"><h1 class="hide">Tumblr</h1><img src="{{ CY_MEDIA_URL }}cydotcom/images/markerTumblr.png" alt="Tumblr" title="Tumblr" border="0" /></li>
+		{% for post in postList %}
+			<li>{{ post|safe }}</li>
+		{% endfor %}
+	</ul>
+</span>
+
+{% endblock %}
+{% block jsSRC %}{% endblock %}
+{% block js %}
+	document.observe("dom:loaded", function() {
+	  	//cyc.embedFlickr(); - TODO[cyap] - deprecated in favor of python methods, get rid of this...?
+		//cyc.embedTumblr(); - TODO[cyap] - deprecated in favor of python methods, get rid of this...?
+	});
+{% endblock %}

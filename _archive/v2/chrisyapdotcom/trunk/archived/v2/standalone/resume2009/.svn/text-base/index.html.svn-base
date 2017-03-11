@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Christopher S. Yap | Resum&#233;</title>
+	<link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="print.css" type="text/css" media="print" />
+</head>
+
+<body>
+	<div id="wrapper">
+		
+		<div>
+			<img src="logocyap.gif" id="headerLogo" alt="Chris Yap logo" title="Chris Yap" border="0" />
+			<div id="headerInfo">
+				<h1>Christopher S. Yap</h1>
+				<h2>Web Software Developer and Designer</h2>
+				<div id="contactInfo">GMail: buzzyapyear | Tel: 510.387.6284 | Web: <a href="http://www.chrisyap.com" target="_blank">www.chrisyap.com</a></div>
+			</div>
+			<div id="headerPrint">
+				<a href="javascript:void(0);" onclick="window.print();"><img src="print.gif" alt="Print" title="Print" border="0" /></a><br/><a href="javascript:void(0);" onclick="window.print();">Print</a>
+			</div>
+			<div class="clearer"></div>
+		</div>
+		
+		
+		
+		<div id="skills" class="module">
+			<h3>SKILLS</h3> 
+
+			<ul>
+				<li><h4>Coding/Programming</h4>
+				XHTML, CSS, JavaScript/AJAX, Django, Python, Ruby on Rails, JSP, Struts, XML, PHP, Interwoven TeamSite templating, Actionscript 3, Adobe Flex, SVN/CVS version control systems, *nix command-line.</li>
+				
+				<li><h4>Software</h4>
+				TextMate; FireBug; Eclipse IDE; Adobe Photoshop, Flash, Fireworks, Illustrator, Premiere, Acrobat, Dreamweaver; Interwoven TeamSite; MS Office; Audacity; Renoise.</li> 
+
+				<li><h4>Platforms</h4>
+				 Mac OS X; Windows 95, 98, 2000, NT, XP, Vista; Linux.</li>
+				
+			</ul>
+			<div class="clearer"></div>
+		</div>
+		
+		
+
+		<div id="experience" class="module">
+			<h3>EXPERIENCE</h3>
+
+			
+			<div class="row">
+				<ul>
+					<li class="title">Software Developer</li> 
+					<li class="company"><a href="http://www.flowgram.com" target="_blank">Flowgram</a>, San Francisco, CA</li>
+					<li class="dates">October 2007 - Present</li> 
+					<li class="url">www.flowgram.com</li>
+					<li class="description">
+						Develop and design a rich internet MVC application using a host of cutting edge modern tools such as Django web application framework, Python, AJAX/Prototype.js, Scriptaculous, XHTML, CSS, Flex/Actionscript and Adobe Creative Suite.  Contribute to brainstorming efforts for innovative and useful features, and perform end-to-end implementations, from design through front and back-end development.  Implement an AJAX-friendly analytics system using Google Analytics tools.  Optimize user-interface using A/B experimentation with Google Web Optimizer.
+						<br/><br/>
+						Major roles include:
+						<ul class="bullets">
+							<li>Lead website developer</li>
+							<li>Contributor to website and application design</li>
+							<li>Contributor to Flex application development</li>
+						</ul>
+					</li>
+				</ul>
+
+				<ul>
+					<li class="title">Interactive Developer</li> 
+					<li class="company"><a href="http://www.dhapdigital.com" target="_blank">DHAP Digital, Inc.</a>, San Francisco, CA</li>
+					<li class="dates">September 2004 - October 2007</li>
+					<li class="url">www.dhapdigital.com</li>
+					<li class="description">
+						Develop large, robust websites and presentation layer of custom software applications with hand-coding of JSP, Struts, XHTML, JavaScript, AJAX, CSS, while maintaining highest standards for standards compliance and cross-platform performance.  Utilize advanced object-oriented Javascript libraries to create data-rich front-end application frameworks.  Integrate websites into complex and robust content management systems, such as Interwoven TeamSite, working with custom Perl scripting.  Create original graphics and layout for client sites, using Adobe Photoshop and Illustrator.  Develop and maintain sites in Flash using Actionscript.<br/><br/>
+						Major roles include:
+						<ul class="bullets">
+							<li>Front-end application development for <a href="http://www.lexus.com/byl" target="_blank">Lexus Build Your Lexus AJAX configurator 2007</a> <span class="url">www.lexus.com/byl</span></li>
+							<li>Front-end applications development lead for <a href="http://www.lexus.com" target="_blank">Lexus Phase 3 site redesign 2006/2007</a> <span class="url">www.lexus.com</span></li>
+							<li>Front-end development for <a href="http://www.scion.com" target="_blank">Scion website</a> <span class="url">www.scion.com</span></li>
+							<li>Front-end development for <a href="http://www.toyota.com/about" target="_blank">Toyota Motors About website</a> <span class="url">www.toyota.com/about</span></li>
+							<li>Front-end technical lead for Amgen TATS animal-population-tracking application</li>
+							<li>Front-end development for <a href="http://www.scion.com/bys/pub" target="_blank">Scion Car Configurator application</a> <span class="url">www.scion.com/bys/pub</span></li>
+							<li>Front-end technical lead for <a href="http://www.lexusespanol.com/dealers" target="_blank">Lexus Espanol Dealer Locator application</a> <span class="url">www.lexusespanol.com/dealers</span></li>
+						</ul>
+					</li>
+				</ul>
+
+				<ul>
+					<li class="title">Co-founder, Design Director and Interactive Developer</li> 
+					<li class="company"><a href="http://www.exobi.com" target="_blank">Exobi Interactive</a>, San Francisco, CA</li>
+					<li class="dates">January 2006 - Present</li>
+					<li class="url">www.exobi.com</li>
+					<li class="description">
+						Establish, standardize and implement the creative strategy and design process for all projects.  Create visual design comps and assets for all projects, and create style guides, while adhering to client business objectives.  Design information architecture for maximum efficiency.  Develop websites using XHTML, CSS, Javascript, AJAX, and PHP, adhering to highest expectations for standards compliance and cross-platform performance.  Contribute to business development efforts and manage client relations.  Manage project timelines and ensure project completion and delivery on-time and on-budget.
+						<br/><br/>
+						Major roles include:
+						<ul class="bullets">
+							<li>Design lead for <a href="http://www.asianamericanmedia.org" target="_blank">Center for Asian American Media redesign 2007</a> <span class="url">www.asianamericanmedia.org</span></li>
+							<li>Design lead for <a href="http://www.revisionfx.com" target="_blank">RE:Vision Effects redesign 2006</a> <span class="url">www.revisionfx.com</span></li>
+							<li>Front-end development for <a href="http://www.citysearch.com" target="_blank">Citysearch Redesign 2007</a> <span class="url">www.citysearch.com</span></li>
+							<li>Front-end development for <a href="https://selfenroll.citysearch.com" target="_blank">Citysearch Advertiser's Micro-Site Redesign 2006</a> <span class="url">selfenroll.citysearch.com</span></li>
+							<li>Design lead for <a href="http://www.danielkrieger.com" target="_blank">Daniel Krieger Photography site design</a> <span class="url">www.danielkrieger.com</span></li>
+						</ul>
+					</li>
+				</ul>
+				<div class="clearer"></div>
+			</div>
+			
+			<div class="row">
+				<ul>
+					<li class="title">Web Production Artist</li> 
+					<li class="company"><a href="http://www.entercomm.com" target="_blank">Entercomm, Inc.</a>, San Francisco, CA</li>
+					<li class="dates">October 2001 - September 2004</li> 
+					<li class="url">www.entercomm.com</li>
+					<!-- <li class="description">
+										Created original graphics and layout for client sites, using Adobe Illustrator and Photoshop. Hand-code HTML, Javascript, DHTML, CSS, implementing exact "look and feel" and architecture.  Develop sites in Macromedia Flash.
+										<br/><br/>
+										Major roles include:
+										<ul class="bullets">
+											<li>Design and front-end for Hewlett-Packard Education Services website</li>
+											<li>Front-end development for Caliper Technologies website</li>
+											<li>Front-end development Amphora Discovery Corp. website</li>
+											<li>Front-end development Sunesis Pharmeceuticals website</li>
+											<li>Front-end development Immersion Corporation website</li>
+										</ul>
+									</li> -->
+				</ul>
+
+				<ul>
+					<li class="title">Production Engineer</li> 
+					<li class="company"><a href="http://www.arcww.com" target="_blank">NOVO Interactive</a> (now Arc Worldwide), New York, NY</li>
+					<li class="dates">September 2000 - March 2001</li>
+					<li class="url">www.arcww.com</li>
+					<!-- <li class="description">
+										Hand-coded websites for Continental Airlines, Proctor & Gamble, and others.  Implemented exact "look and feel" and architecture.  Hand-coded HTML and JavaScript, using Allaire HomeSite as a supplement.  Used DHTML to create global navigation system, and server-side includes to create dynamically-generated content.  Used Adobe ImageReady to create graphics from visual comps.  Maintained consistency across browsers and platforms while keeping to the highest standards for file size and download time.
+										<br/><br/>
+										Major roles included:
+										<ul class="bullets">
+											<li>Technical lead for Continental Airlines site redesign </li>
+											<li>Technical lead for Puffs Tissue site refresh</li>
+											<li>Client-side production for Crest Toothpaste Site</li>
+										</ul>
+									</li> -->
+				</ul>
+
+				<ul>
+					<li class="title">Web Designer and Technical Support</li> 
+					<li class="company"><a href="http://www.wwnorton.com" target="_blank">W. W. Norton &amp; Co.</a>, New York, NY</li>
+					<li class="dates">September 2000 - March 2001</li>
+					<li class="url">www.wwnorton.com</li>
+					<!-- <li class="description">
+										Designed websites for college-textbook department. Worked with producers to conceptualize site architecture.  Used Adobe Photoshop and Macromedia Fireworks to create original graphics and Equilibrium DeBabelizer to streamline graphics.  Hand-coded HTML and JavaScript, using Macromedia Dreamweaver and Allaire HomeSite.  Helped produce multimedia products.
+
+										<ul class="bullets">
+											<li>Helped with graphics production and coding of company website</li>
+											<li>Held full responsibility for design and coding college-textbook supplemental websites on a project by project basis.</li>
+											<li>Provided technical support for textbook-related software applications.</li>
+										</ul>
+									</li> -->
+				</ul>
+
+				<div class="clearer"></div>
+			</div>
+		</div>
+		
+
+		<div class="module">
+			<h3>EDUCATION</h3>
+			<ul>
+				<li>Oberlin College, Oberlin, OH.  BA Politics, May 1999.</li>
+			</ul>
+		</div>
+		
+		<div class="module" id="footer"><a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10-blue" alt="Valid XHTML 1.0 Transitional" height="31" width="88" /></a><br/>Last updated 12.12.08</div>
+		
+		
+	</div>
+
+</body>
+</html>

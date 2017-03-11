@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<navdata xmlns="">
+	<home xmlns="">
+		<title>Home</title>
+		<contentURL>/content/home.html</contentURL>
+		<id>Home</id>
+	</home>
+	<portfolio xmlns="">
+		<title>Portfolio</title>
+		<contentURL>/content/portfolio.html</contentURL>
+		<id>Portfolio</id>
+	</portfolio>
+	<resume xmlns="">
+		<title>Resum&#233;</title>
+		<contentURL>/content/resume.html</contentURL>
+		<id>Resume</id>
+	</resume>
+	<audio xmlns="">
+		<title>Audio</title>
+		<contentURL>/content/audio.html</contentURL>
+		<id>Audio</id>
+	</audio>
+	<contact xmlns="">
+		<title>Contact</title>
+		<contentURL>/content/contact.html</contentURL>
+		<id>Contact</id>
+	</contact>
+</navdata>

@@ -1,0 +1,13 @@
+div#contact_list_wrapper div#list_wrapper ul#contact_list li {
+	border: 1px solid #ffffff;
+	margin-left: 0px;
+}
+
+div#contact_list_wrapper div#list_wrapper ul#contact_list li div.contact_info_full {
+	width: 187px;
+	margin-top: 1px;
+}
+
+div#contact_list_wrapper div#footer {
+	margin-left: 1px;
+}

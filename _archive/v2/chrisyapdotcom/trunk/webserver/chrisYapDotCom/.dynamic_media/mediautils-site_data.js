@@ -1,0 +1,1 @@
+window.site_data = {};window.site_data.settings = {"CY_MEDIA_URL": "http://media.chrisyap.com/", "MEDIA_URL": "/media/5/"};

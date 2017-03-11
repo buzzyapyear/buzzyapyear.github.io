@@ -1,0 +1,342 @@
+body {
+    /*background: url('{{ CY_MEDIA_URL }}cydotcom/images/bgBlue.gif') no-repeat 50% 0;*/
+	color: #fff;
+	background-color: #1a1a1a;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 12px;
+}
+div#header {
+    background: url('{{ CY_MEDIA_URL }}cydotcom/images/mobile/logoCY.png') top left no-repeat;
+	padding: 0px 0px 8px 80px;
+	margin: 16px;
+}
+
+div#masthead h1 {
+	font-size: 1.5em;
+	font-weight: bold;
+	line-height: 1.2em;
+}
+
+div#masthead h2 {
+	font-size: 1.2em;
+}
+
+div#masthead h3
+{
+    font-size: .95em;
+	text-transform: uppercase;
+}
+
+ul#nav {
+	font-size: 1.3em;
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+ul#nav li {
+	padding: 0px;
+	margin-right: 24px;
+	float: left;
+}
+
+ul#nav li a {
+	display: block;
+	color: #fff;
+	font-weight: bold;
+	text-decoration: none;
+	font-size: 1.2em;
+	position: relative;
+}
+
+ul#nav li a:hover {
+	color: #33ccff;
+}
+
+ul#nav li a:active {
+	color: #33ffff;
+}
+
+ul#nav li a.selected {
+	color: #AFFF5F;
+}
+
+ul#nav li a img.iconLaunchNewWindow {
+	display: none;
+}
+
+div#controls-background {
+	display: none;
+}
+
+div#content
+{
+	z-index: 2;
+}
+
+div#content ul {
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+.module {
+	background-color: #1a1a1a;
+	background-image: -moz-linear-gradient(top, #444, #1a1a1a); 
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #444),color-stop(1, #1a1a1a)); 
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#444', EndColorStr='#1a1a1a)')";
+	padding: 16px;
+	position: relative;
+	overflow: hidden;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+	margin-bottom: 8px;
+	width: auto;
+}
+
+body.tablet .module {
+    float: left;
+    margin-right: 8px;
+    width: 248px;
+    height: 248px;
+}
+
+.hero {
+	background-color: #669933;
+	background-image: -moz-linear-gradient(top, #9BE452, #669A33); 
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #9BE452),color-stop(1, #669A33)); 
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#9BE452', EndColorStr='#669A33)')";
+	color: #000 !important;
+	width: auto !important;
+	height: auto !important;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+}
+
+body.tablet .hero {
+    float: none !important;
+    margin-right: auto !important;
+}
+
+#flickrContainer ul li {
+    position: relative;
+	overflow: hidden;
+	text-align: center;
+	width: 112px;
+	height: 112px;
+	float: left;
+	margin: 0px 8px 8px 0px;
+}
+
+#flickrContainer ul li img.flickrPhoto {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#flickrContainer ul li img.flickrHoriz {
+	margin-left: -30px;
+	clip: rect(0px, 163px, 112px, 30px);
+}
+
+#flickrContainer ul li img.flickrVert {
+	margin-top: -30px;
+	clip: rect(30px, 112px, 163px, 0px);
+}
+
+#tumblrContainer ul  {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+body.tablet div.tumblrPost {
+	width: 248px;
+	height: 224px;
+	margin-bottom: 8px;
+	overflow: hidden;
+	position: relative;
+}
+
+#tumblrContainer div.tumblrQuote .quote {
+	font-size: 1.3em !important;
+	font-style: oblique !important;
+}
+
+#tumblrContainer div.tumblrQuote .source {
+	font-weight: bold;
+}
+
+#tumblrContainer div.tumblrConversation ul {
+	margin-bottom: 8px !important;
+}
+
+#tumblrContainer div.tumblrConversation ul li {
+	float: none !important;
+	background: none !important;
+	width: auto !important;
+	height: auto !important;
+	text-align: left !important;
+	padding: 0px !important;
+	margin: 8px 0px 0px 0px !important;
+	overflow: auto !important;
+}
+
+li.noPad,
+li.marker
+{
+	padding: 0px !important;
+}
+
+li#markerFlickr {
+	background: url('{{ CY_MEDIA_URL }}cydotcom/images/bgMarkerFlickr.png') top left repeat-x !important;
+	width: auto !important;
+	float: none !important;
+	height: 248px !important;
+	padding: 0px !important;
+}
+
+li#markerTumblr {
+	background: url('{{ CY_MEDIA_URL }}cydotcom/images/bgMarkerTumblr.png') top left repeat-x !important;
+	text-align: center;
+	width: auto !important;
+	float: none !important;
+	height: 248px !important;
+	padding: 0px !important;
+}
+
+li.marker h1 {
+	position: absolute;
+}
+
+body.contact .hero img {
+	display: block;
+}
+
+div#footer {
+	padding: 24px;
+	background-color: #000;
+}
+
+div#footer div#poweredBy h1 {
+	font-size: 1em;
+	font-weight: bold;
+}
+
+div#footer div#poweredBy ul {
+	list-style-type: none;
+}
+
+div#footer div#poweredBy li {
+	float: left;
+	margin-right: 8px;
+}
+
+div#footer div#poweredBy li img {
+	height: 33px;
+}
+
+a {
+	text-decoration: none;
+	font-weight: bold;
+}
+
+a:link,
+a:visited {
+	color: #00ccff;
+}
+
+a:hover {
+	color: #00ffff;
+}
+
+a:active {
+	color: #999999;
+}
+
+.hero a:link,
+.hero a:visited {
+	color: #003366;
+}
+
+.hero a:hover {
+	color: #006699;
+}
+
+.hero a:active {
+	color: #0076B2;
+}
+
+a.launch {
+	background: url('{{ CY_MEDIA_URL }}cydotcom/images/iconNewWindow.png') center right no-repeat;
+	padding: 3px 15px 0px 0px;
+}
+
+.hero a.launch {
+	background: url('{{ CY_MEDIA_URL }}cydotcom/images/iconNewWindowDark.png') center right no-repeat;
+	padding: 1px 15px 0px 0px;
+}
+
+h1 {
+	font-size: 1.6em;
+	font-weight: bold;
+}
+
+p {
+	padding: 4px 0px;
+}
+
+.hide {
+	position: absolute;
+	visibility: hidden;
+}
+
+.blackBG {
+	background: url('{{ CY_MEDIA_URL }}cydotcom/images/bgBlackTransparent.png') top left repeat;
+	display: block;
+}
+
+/* RESUME */
+div#resume .module {
+    float: none !important;
+    margin-right: none !important;
+}
+
+div#resume ul {
+	list-style-type: none;
+}
+
+div#resume div#skills h4 {
+    font-size: 1.6em;
+}
+
+div#resume div#skills ul li {
+    margin-bottom: 16px;
+}
+
+div#resume div#experience li.title {
+    font-size: 1.6em;
+}
+
+div#resume div#experience li.description {
+    margin-top: 16px;
+}
+
+div#resume ul.bullets {
+    margin-bottom: 8px;
+	list-style: disc !important;
+	padding-left: 2em;
+	float: none;
+	width: 90% !important;
+}
+/* END RESUME */
+
+/* FLICKR DIALOG */
+img#mobileFlickr {
+    width: 100%;
+}
+/* END FLICKR DIALOG */

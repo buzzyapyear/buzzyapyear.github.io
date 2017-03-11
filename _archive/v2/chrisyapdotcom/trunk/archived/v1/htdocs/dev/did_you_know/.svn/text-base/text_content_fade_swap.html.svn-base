@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+	<title>content swap test</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript">
+
+if(window.screen.Width<900)
+{
+document.write('<td height="270" align="center" valign="top">');
+}
+else
+{
+document.write('<td height="270" align="center" valign="top">');
+}
+</script> <script language="JavaScript1.2">
+
+var delay=6000 //set delay between message change (in miliseconds)
+var fcontent=new Array()
+
+begintag='<p class="smalltext">' //set opening tag, such as font declarations
+fcontent[0]="<br>&quot;If JMS represents the pipes, Fiorano ESB is the complete plumbing. Fiorano ESB is billed as a fully distributed, peer-to-peer platform with a layered architecture.&#148;<br><br>&#8220;Fiorano ESB is a compelling story for enterprises that want to standardize on JMS and need robust enterprise features plus comprehensive integration with existing applications and protocols. I was impressed by Fiorano ESB.&#8221;<br><br><b>Andrew Binstock<br><i>Principal Analyst<br>Pacific Data Works LLC</i></b><br><br><br><br><br><br><br><br><br><br><br>"
+
+fcontent[1]="<br>&quot;An ESB can be a sensible first step toward a systematic Enterprise Nervous System because it provides the basic connectivity backbone. It can interoperate with a variety of disparate application servers simultaneously, smoothing over technical differences and also providing services for communication and integration.&#148;<br><br><b>Roy Schulte<br><i>VP and Research Fellow<br>Gartner Research</i></b><br><br><br><br><br><br><br><br><br><br><br><br><br>"
+closetag='</p>'
+
+fcontent[2]="<br>&quot;Fiorano Software has taken a significant leadership position in the integration space. Under the direction of Atul Saini, CEO, Fiorano continues to demonstrate that they are now a peer of IBM, Sun, TIBCO and Vitria, who are also founding members of the EAI Industry Consortium, in relation to the strength of their technological platform and solution sets but continue to lead other integration technology companies with their market responsiveness and business acumen.  We are pleased that they continue to be a driving force in the industry and within the EAI Industry Consortium as participants and a member of the Board of Directors.&#148;<br><br><b>Michael Kuhbock<br><i> Chairman<br>EAI Industry Consortium </i></b><br><br><br><br><br>"
+closetag='</p>'
+
+fcontent[3]="<br>&quot;Fiorano leverages component architecture to compete against established EAI players such as IBM & TIBCO. Fiorano's Tifosi platform is general enough not only to do EAI, Business Process Management and B-to-B related applications, but the same platform can be used to build highly collaborative applications&#148;<br><br><b>Michael Vizard<br><i> Infoworld </i></b><br><br><br><br><br><br><br><br><br><br><br><br><br><br>"
+closetag='</p>'
+
+fcontent[4]="<br>&quot;The 40-year reign of monolithic architecture in mainstream software design will come to an end. Five years from now less than one-quarter of new software projects will depend on the traditional technologies of monolithic mainframe environments, or even basic three-tier architectures.&#148;<br>Instead, users and vendors of IT systems, over the next five years, will grow to understand and use a service oriented architecture (SOA). This will help them clarify design issues and make it easier to add to and extend applications. Developers will be able to integrate SOA applications more easily with heterogeneous, legacy and purchased applications. Using SOA, they will be able to develop applications with greater flexibility, scalability and reusability.<br><br><b>Yefim Natis<br><i>Gartner vice president and research director</i></b>"
+closetag='</p>'
+
+var fwidth=200 //set scroller width
+var fheight=320 //set scroller height
+
+///No need to edit below this line/////////////////
+
+var ie4=document.all&&!document.getElementById
+var ns4=document.layers
+var DOM2=document.getElementById
+var faderdelay=0
+var index=0
+
+if (DOM2)
+faderdelay=2000
+
+//function to change content
+function changecontent(){
+if (index>=fcontent.length)
+index=0
+if (DOM2){
+document.getElementById("fscroller").style.color="rgb(255,255,255)"
+document.getElementById("fscroller").innerHTML=begintag+fcontent[index]+closetag
+colorfade()
+}
+else if (ie4)
+document.all.fscroller.innerHTML=begintag+fcontent[index]+closetag
+else if (ns4){
+document.fscrollerns.document.fscrollerns_sub.document.write(begintag+fcontent[index]+closetag)
+document.fscrollerns.document.fscrollerns_sub.document.close()
+}
+
+index++
+setTimeout("changecontent()",delay+faderdelay)
+}
+
+// colorfade() partially by Marcio Galli for Netscape Communications.  ////////////
+// Modified by Dynamicdrive.com
+
+frame=20;
+hex=255  // Initial color value.
+
+function colorfade() {	         	
+// 20 frames fading process
+if(frame>0) {	
+hex-=12; // increase color value
+document.getElementById("fscroller").style.color="rgb("+hex+","+hex+","+hex+")"; // Set color value.
+frame--;
+setTimeout("colorfade()",20);	
+}
+else{
+document.getElementById("fscroller").style.color="rgb(0,0,0)";
+frame=20;
+hex=255
+}   
+}
+
+if (ie4||DOM2)
+document.write('<div id="fscroller" style="border:0px solid black;width:'+fwidth+';height:'+fheight+';padding:2px"></div>')
+
+window.onload=changecontent
+</script> 
+<ilayer id="fscrollerns" width=&{fwidth}; height=&{fheight};> </ilayer>
+<layer id="fscrollerns_sub" width=&{fwidth}; height=&{fheight}; left=0 top=0></layer>
+<br>
+
+</body>
+</html>

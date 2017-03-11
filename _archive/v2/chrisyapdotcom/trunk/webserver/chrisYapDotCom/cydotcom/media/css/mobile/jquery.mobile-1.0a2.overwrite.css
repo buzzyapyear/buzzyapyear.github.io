@@ -1,0 +1,18 @@
+/*
+ * Rather than changing the source jQuery CSS, I will overwrite styles here
+ */
+
+.ui-body-a {
+    background-image: -moz-linear-gradient(top, #000, #111); 
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #000),color-stop(1, #111)); 
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#000', EndColorStr='#111)')"; 
+    text-shadow: none;
+}
+
+.ui-collapsible-heading { 
+    font-size: 1.2em; 
+    margin: 0px;
+}
+.ui-collapsible-content {
+    padding: 8px 0px;
+}

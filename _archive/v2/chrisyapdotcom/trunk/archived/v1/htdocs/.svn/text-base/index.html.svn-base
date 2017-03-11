@@ -1,0 +1,319 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+<title>Chris Yap</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="description" content="Chris Yap Portfolio">
+<meta name="keywords" content="chris yap, yap, dj yap, web design, web development, techno, electronic music, dj, san francisco">
+<script type="text/javascript" src="assets/code/includesBuild.js"></script>
+<link rel="stylesheet" HREF="css/cyap.css" TYPE="text/css" MEDIA="screen">
+
+<script language="JavaScript" type="text/JavaScript">
+<!--
+
+// HOME JS
+function navHome() {
+	document.getElementById('content-home').style.display='block';
+	document.getElementById('content-resume').style.display='none';
+	document.getElementById('content-portfolio').style.display='none';
+	document.getElementById('content-dj').style.display='none';
+	document.getElementById('content-links').style.display='none';
+	document.getElementById('content-contact').style.display='none';
+		
+}
+
+// RESUME JS
+function navResume() {
+	document.getElementById('content-home').style.display='none';
+	document.getElementById('content-resume').style.display='block';
+	document.getElementById('content-portfolio').style.display='none';
+	document.getElementById('content-dj').style.display='none';
+	document.getElementById('content-links').style.display='none';
+	document.getElementById('content-contact').style.display='none';
+		
+}
+
+// PORTFOLIO JS
+function navPortfolio() {
+	document.getElementById('content-home').style.display='none';
+	document.getElementById('content-resume').style.display='none';
+	document.getElementById('content-portfolio').style.display='block';
+	document.getElementById('content-dj').style.display='none';
+	document.getElementById('content-links').style.display='none';
+	document.getElementById('content-contact').style.display='none';
+		
+}
+
+// DJ JS
+function navDJ() {
+	document.getElementById('content-home').style.display='none';
+	document.getElementById('content-resume').style.display='none';
+	document.getElementById('content-portfolio').style.display='none';
+	document.getElementById('content-dj').style.display='block';
+	document.getElementById('content-links').style.display='none';
+	document.getElementById('content-contact').style.display='none';
+		
+}
+
+// LINKS JS
+function navLinks() {
+	document.getElementById('content-home').style.display='none';
+	document.getElementById('content-resume').style.display='none';
+	document.getElementById('content-portfolio').style.display='none';
+	document.getElementById('content-dj').style.display='none';
+	document.getElementById('content-links').style.display='block';
+	document.getElementById('content-contact').style.display='none';
+		
+}
+
+// CONTACT JS
+function navContact() {
+	document.getElementById('content-home').style.display='none';
+	document.getElementById('content-resume').style.display='none';
+	document.getElementById('content-portfolio').style.display='none';
+	document.getElementById('content-dj').style.display='none';
+	document.getElementById('content-links').style.display='none';
+	document.getElementById('content-contact').style.display='block';
+		
+}
+
+
+// SWF Randomizer
+arrayNumber = 7;
+
+flashCodeHead = '<OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" WIDTH="680" HEIGHT="55" id="header" ALIGN=""><PARAM NAME=movie VALUE="images/header';
+flashCodeMid = '.swf"> <PARAM NAME=quality VALUE=high> <PARAM NAME=bgcolor VALUE=#AAB9C8><EMBED src="images/header';
+flashCodeTail = '.swf" quality=high bgcolor=#AAB9C8  WIDTH="680" HEIGHT="55" NAME="header" ALIGN="" TYPE="application/x-shockwave-flash" PLUGINSPAGE="http://www.macromedia.com/go/getflashplayer"></EMBED></OBJECT>';
+
+
+function writeFlashCode() {
+var fL = Math.ceil(Math.random() * arrayNumber);
+document.write(flashCodeHead + fL + flashCodeMid + fL + flashCodeTail);
+}
+
+
+//-->
+</script>
+</head>
+
+<body>
+<table cellpadding="0" cellspacing="0" border="0" width="680">
+	<tr>
+		<td style="background-color:#666666" width="680" height="7"><img src="images/spacer.gif" width="680" height="7" border="0" alt=""></td>
+	</tr>
+	<tr>
+		<td width="680" height="55"><script type="text/javascript" language="JavaScript">writeFlashCode();</script></td>
+	</tr>
+	<tr>
+		<td width="680" height="1"><img src="images/spacer.gif" width="680" height="1" border="0" alt=""></td>
+	</tr>
+	<tr>
+		<td style="background-color:#666666" width="680" height="1"><img src="images/spacer.gif" width="680" height="1" border="0" alt=""></td>
+	</tr>
+</table>
+
+<ul class="nav">
+	<li><a href="javascript:navHome();">Home</a></li>
+	<li><a href="javascript:navResume();">Resume</a></li>
+	<li><a href="javascript:navPortfolio();">Portfolio</a></li>
+    <li><a href="javascript:navDJ();">DeeJay</a></li>
+   	<li><a href="javascript:navLinks();">Links</a></li> 
+   	<li><a href="javascript:navContact();">Contact</a></li>
+</ul>
+
+<div class="content">
+
+<!-- HOME -->
+<div id="content-home">
+<ul>
+<li class="header">Hello</li>
+<li><p>My name is Chris Yap.  I'm a web designer and developer based in San Francisco, CA.  I'm also an active DJ.  Thanks for having a look.  Please feel free to contact me.</p></li>
+</ul>
+<br>
+</div>
+
+
+
+
+<!-- RESUME -->
+<div id="content-resume" style="display: none;">
+
+
+<p><span class="header">Resume</span>
+
+<p><span class="subHeader">EXPERIENCE</span><br><br>
+
+
+<strong>Production Developer.</strong>  DHAP Digital, Inc., San Francisco, CA.<br>
+September 2004 - Present. <a href="http://www.dhapdigital.com" class="rez" target="_blank">http://www.dhapdigital.com</a><br> 
+Develop large, robust websites and presentation layer of custom software applications with hand-coding of JSP, Struts, HTML, JavaScript, AJAX, DHTML, CSS, while maintaining highest standards for coding.  Integrate websites into complex and robust content management systems, such as Interwoven TeamSite, working with custom Perl scripting.  Create original graphics and layout for client sites, using Adobe Photoshop and Illustrator.  Develop and maintain sites in Macromedia Flash using Actionscript.<br><br>
+Major roles include:
+<ol><li>Front-end development for Scion website
+<li>Front-end development for Toyota Motors About website
+<li>Front-end technical lead for Amgen TATS animal-population-tracking application
+<li>Front-end development for Scion Car Configurator application
+<li>Front-end technical lead for Lexus Espanol Dealer Locator application</ol>
+<br>
+				
+
+<strong>Web Production Artist.</strong>  Entercomm, Inc., San Francisco, CA.<br>
+October 2001 - September 2004. <a href="http://www.entercomm.com" class="rez" target="_blank">http://www.entercomm.com</a><br> 
+Created original graphics and layout for client sites, using Adobe Illustrator and Photoshop. Hand-code HTML, Javascript, DHTML, CSS, implementing exact "look and feel" and architecture.  Develop sites in Macromedia Flash.<br><br>
+Major roles include:
+<ol><li>Design and front-end for Hewlett-Packard Education Services website
+<li>Front-end development for Caliper Technologies website
+<li>Front-end development Amphora Discovery Corp. website
+<li>Front-end development Sunesis Pharmeceuticals website
+<li>Front-end development Immersion Corporation website
+</ol>
+<br>
+				
+<strong>Production Engineer.</strong> NOVO Interactive. (now Arc Worldwide), New York, NY.<br>
+September 2000 - March 2001. <a href="http://www.arcww.com" class="rez" target="_blank">http://www.arcww.com</a>/<br> 
+Hand-coded websites for Continental Airlines, Proctor & Gamble, and others.  Implemented exact "look and feel" and architecture.  Hand-coded HTML and JavaScript, using Allaire HomeSite as a supplement.  Used DHTML to create global navigation system, and server-side includes to create dynamically-generated content.  Used Adobe ImageReady to create graphics from visual comps.  Maintained consistency across browsers and platforms while keeping to the highest standards for file size and download time.<br><br>
+Major roles included:
+<ol>
+<li>Technical lead for Continental Airlines site redesign 
+<li>Technical lead for Puffs Tissue site refresh
+<li>Client-side production for Crest Toothpaste Site
+</ol> 
+<br>
+
+<strong>Web Designer and Technical Support.</strong>  W. W. Norton & Co., New York, NY.<br> 
+June 1999 - September 2000. <a href="http://www.wwnorton.com" class="rez" target="_blank">http://www.wwnorton.com</a><br>
+Designed websites for college-textbook department. Worked with producers to conceptualize site architecture.  Used Adobe 
+Photoshop and Macromedia Fireworks to create original graphics and 
+Equilibrium DeBabelizer to streamline graphics.  Hand-coded HTML and 
+JavaScript, using Macromedia Dreamweaver and Allaire HomeSite.  Helped produce multimedia products. <br> 
+<ol>
+<li>Helped with graphics production and coding of company website.
+<li>Held full responsibility for design and coding college-textbook supplemental websites on a project by project basis.
+<li>Provided technical support for textbook-related software applications.
+</ol>
+<br>
+
+<p><span class="subHeader">SKILLS</span><br><br>
+Platforms - Windows 95, 98, 2000, NT, XP; Mac OS 9, X; UNIX.<br><br> 
+
+Software - MS Office; Adobe Photoshop, Illustrator, ImageReady, Premiere, and Acrobat; 
+Allaire HomeSite; Bare Bones BBEdit; Macromedia Flash, Fireworks, and Dreamweaver; CVS command-line; Interwoven TeamSite. 
+Working knowledge of Macromedia Director, AutoDesSys 
+Form-Z Renderzone, Autodesk 3D Studio Max.<br><br>
+
+Coding/Programming - Expert knowledge of JSP, Struts, HTML, DHTML, AJAX, JavaScript, CSS.  Working knowledge of XML, Perl, ASP, CGI.<br><br> 
+
+<p><span class="subHeader">EDUCATION</span><br><br>
+Oberlin College, Oberlin, OH.  BA Politics, May 1999.<br> 
+University of California at Berkeley.  Summer Semesters 1996 - 1998.
+
+
+</div>
+
+
+<!-- PORTFOLIO -->
+<div id="content-portfolio" style="display: none;">
+<p><span class="header">Portfolio</span><br><br>
+
+<table cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td class="port"><p><img src="images/screenshots/scion_configurator.jpg" width="200" height="150" border="0" align="left"><strong>Project</strong><br>Scion Car Configurator [website/application]<br><br><strong>Role</strong><br>Front-end development<br><br><strong>URL</strong><br><a href="http://www.scion.com/bys/pub" class="rez" target="_blank">www.scion.com/bys/pub</a></p></td>
+	</tr>
+	<tr>
+		<td class="port"><p><img src="images/screenshots/scion.jpg" width="200" height="150" border="0" align="left"><strong>Project</strong><br>Scion [website]<br><br><strong>Role</strong><br>Front-end development<br><br><strong>URL</strong><br><a href="http://www.scion.com" class="rez" target="_blank">www.scion.com</a></p></td>
+	</tr>
+	<tr>
+		<td class="port"><p><img src="images/screenshots/hpe.gif" width="200" height="150" border="0" align="left"><strong>Project</strong><br>HP Education Services [website]<br><br><strong>Role</strong><br>Front-end development lead, Visual Design/Layout (within corporate design guidelines)<br><br><strong>URL</strong><br><a href="http://www.hp.com/education" class="rez" target="_blank">www.hp.com/education</a></p></td>
+	</tr>
+	<tr>
+		<td class="port"><p><img src="images/screenshots/continental.jpg" width="200" height="150" border="0" align="left"><strong>Project</strong><br>Continental Airlines [website/application]<br><br><strong>Role</strong><br>Front-end development lead<br><br><strong>URL</strong><br><a href="http://www.continental.com" class="rez" target="_blank">www.continental.com</a></p></td>
+	</tr>
+	<tr>
+		<td class="port"><p><img src="images/screenshots/tatu.jpg" width="200" height="150" border="0" align="left"><strong>Project</strong><br>Tatu Creative [website]<br><br><strong>Role</strong><br>Visual design lead<br><br><strong>URL</strong><br><a href="http://www.tatucreative.com" class="rez" target="_blank">www.tatucreative.com</a></p></td>
+	</tr>
+	<tr>
+		<td class="port"><p><img src="images/screenshots/flex.gif" width="200" height="150" border="0" align="left"><strong>Project</strong><br>Flex Your Power [website]<br><br><strong>Role</strong><br>Front-end development lead<br><br><strong>URL</strong><br><a href="http://www.fypower.org" class="rez" target="_blank">www.fypower.org</a></p></td>
+	</tr>
+	<tr>
+		<td class="port"><p><img src="images/screenshots/toyota.jpg" width="200" height="150" border="0" align="left"><strong>Project</strong><br>Toyota About Section Redesign [website]<br><br><strong>Role</strong><br>Front-end development lead, Visual Design/Layout (within corporate design guidelines)<br><br><strong>URL</strong><br><a href="http://www.toyota.com/about" class="rez" target="_blank">www.toyota.com/about</a></p></td>
+	</tr>
+	<tr>
+		<td class="port"><p><img src="images/screenshots/caliper.gif" width="200" height="150" border="0" align="left"><strong>Project</strong><br>Caliper Technologies [website]<br><br><strong>Role</strong><br>Front-end development lead<br><br><strong>URL</strong><br><a href="http://www.caliperls.com" class="rez" target="_blank">www.caliperls.com</a></p></td>
+	</tr>
+	<tr>
+		<td class="port"><p><img src="images/screenshots/lotrs.jpg" width="200" height="150" border="0" align="left"><strong>Project</strong><br>Land of the Rising Sun flyer [print]<br><br><strong>Role</strong><br>Graphic Design<br><br><strong>URL</strong><br><a href="archive/lotrs/front.jpg" class="rez" target="_blank">flyer front</a> | <a href="archive/lotrs/back.jpg" class="rez" target="_blank">flyer back</a> | <a href="archive/lotrs/poster.jpg" class="rez" target="_blank">poster</a> </p></td>
+	</tr>
+	<tr>
+		<td class="port"><p><img src="images/screenshots/beatification.jpg" width="200" height="150" border="0" align="left"><strong>Project</strong><br>Beatification of the Beat online flyer [website]<br><br><strong>Role</strong><br>Visual Design/Web Development<br><br><strong>URL</strong><br><a href="archive/beatification/" class="rez" target="_blank">link</a> [archived]</p></td>
+	</tr>
+	<tr>
+		<td class="port"><p><img src="images/screenshots/tlsmall.jpg" width="200" height="150" border="0" align="left"><strong>Project</strong><br>Tenderloft [website]<br><br><strong>Role</strong><br>Visual Design/Web Development<br><br><strong>URL</strong><br><a href="images/screenshots/tlbig.jpg" class="rez" target="_blank">link</a> [screenshot]</p></td>
+	</tr>
+</table>
+
+
+</div>
+
+<!-- DJ -->
+<div id="content-dj" style="display: none;">
+<ul>
+<li class="header">DeeJay</li>
+<!--<li><p>I've been DJing electronic music for nine years, and have been involved with putting on events for the past seven years.  I've run the gamut in terms of my tastes, but currently I'm playing a lot of techno, downtempo and IDM, and I'm building up a drum n' bass selection.  Below are a few sets I've recorded over the years.  This year has been very productive for me as a DJ, and I hope to get some of my more current recordings up soon.  Please feel free to contact me regarding bookings, and thanks for listening.</p></li>
+-->
+<li><p><strong><a href="http://eeng.net/chrisyap/djyap-futurebreaksfm.m4a" class="rez" target=_blank">DJ set on Future Breaks FM</a></strong> [57min 96kbps AAC | recorded 10.22.05] - Classic breaks and acid, moving into techno.  Recorded on air for <a href="http://futurebreaks.fm/blog/" target="_blank">Future Breaks FM</a> in San Francisco.</p></li>
+
+<li><p><strong><a href="http://eeng.net/chrisyap/djyap-loftopia.mp3" class="rez" target=_blank">DJ set @ Loftopia</a></strong> [1hr 15min 192kbps mp3 | recorded 9.21.03] - Loftopia was an event friends and I organized in 2003 at a loft space in downtown SF, called the Tenderloft.  It was a true melding of different scenes, bringing together fans of techno, psy-trance and video art.  Five accomplished artists created an incredible multimedia installation.  This is a techno mix.</p></li>
+
+<li><p><strong><a href="http://eeng.net/chrisyap/djyap-yearone.mp3" class="rez" target=_blank">Year One</a></strong> [1hr 7min 128kbps mp3 | recorded 10.29.00] - I recorded this mix at home in Brooklyn, NY, as a gift to my wife on our first wedding anniversary.  This mix contains a lot of downtempo and IDM, with some drum n' bass and wee bit of hip-hop thrown in for good measure.</p></li>
+
+<li><p><strong><a href="http://eeng.net/chrisyap/djyap-live_at_niva_NYC.mp3" class="rez" target=_blank">DJ set @ Niva NYC</a></strong> [1hr 8min 192kbps mp3 | recorded 6.15.00] - The Beatpusher crew in NYC used to run a weekly event at Niva on the lower east side.  This set was recorded on a beautiful summer night with the entire front of the club open to the street.  This is a trance mix.</p></li>
+
+</ul>
+</div>
+
+<!-- LINKS -->
+<div id="content-links" style="display: none;">
+<p><span class="header">Friends & Allies</span></p>
+<ul>
+<!--<li><a href="http://www.freebeats.org" class="rez" target="_blank">Subductive Freebeats Corporation</a>-->
+<li><a href="http://www.subductive.com" class="rez" target="_blank">Subductive.com</a>
+<li><a href="http://www.faultlinednb.com/" class="rez" target="_blank">Faultline Productions</a>
+<li><a href="http://www.otherworld.ws" class="rez" target="_blank">Otherworld</a>
+<li><a href="http://www.timeslipsby.com" class="rez" target="_blank">Time Slips By</a>
+<li><a href="http://www.edcolmar.com" class="rez" target="_blank">Ed Colmar</a>
+<li><a href="http://www.nodeone.com" class="rez" target="_blank">Node One</a>
+<li><a href="http://www.adamx.net" class="rez" target="_blank">Adam X</a>
+<li><a href="http://www.stoptime341.com" class="rez" target="_blank">Stoptime 341</a>
+<li><a href="http://www.staticbeats.com" class="rez" target="_blank">Static Beats</a>
+<li><a href="http://www.forestgreen.org" class="rez" target="_blank">Forest Green</a>
+<li><a href="http://www.dalycityrecords.com" class="rez" target="_blank">Daly City Records</a>
+<li><a href="http://www.dj-surgeon.com" class="rez" target="_blank">Surgeon</a>
+<li><a href="http://www.sogresearch.com" class="rez" target="_blank">SOG Research</a>
+<li><a href="http://www.the-advent.com" class="rez" target="_blank">The Advent</a>
+<li><a href="http://www.agentsunshine.com" class="rez" target="_blank">Agent Sunshine</a>
+<li><a href="http://www.junkast.org" class="rez" target="_blank">Junkast</a>
+<li><a href="http://www.defsf.com" class="rez" target="_blank">DEF SF</a>
+<li><a href="http://www.migoto.com" class="rez" target="_blank">Migoto</a>
+<li><a href="http://www.feministing.com" class="rez" target="_blank">Feministing</a>
+<li><a href="http://www.eeng.net" class="rez" target="_blank">Enlightenment Engine</a>
+<li><a href="http://www.anti-yo.com" class="rez" target="_blank">Anti-Yo</a>
+</ul>
+</div>
+
+<!-- CONTACT -->
+<div id="content-contact" style="display: none;">
+<ul>
+<li class="header">Contact</li>
+<li><p>Chris Yap<br>1301 Fulton St., #201,<br>San Francisco, CA 94117<br>chris at exobi.com<br>510.387.6284</p></li>
+</ul>
+</div>
+
+</div>
+
+
+<!--<ul class="footer">
+<li><a href="mailto:chris-at-exobi.com?subject=Hello Chris Yap">chris at exobi.com</a></li>
+</ul>-->
+
+</body>
+</html>

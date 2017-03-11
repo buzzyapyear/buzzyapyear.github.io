@@ -1,0 +1,10 @@
+{% extends 'mobile/baseDialog.html' %}
+{% block title %}Flickr{% endblock %}
+{% block header %}
+	<div data-role="header" data-position="inline">
+		<h1>Flickr</h1>
+	</div>
+{% endblock %}
+{% block content %}
+	<img src="{{ imgUrl }}" id="mobileFlickr" alt="" border="0" />
+{% endblock %}

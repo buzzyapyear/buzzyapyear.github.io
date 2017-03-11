@@ -1,0 +1,23 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>Christopher S. Yap | Online Portfolio | {% block title %}{% endblock %}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="description" content="The online portfolio of Chris Yap." />
+	<meta name="keywords" content="Website Design, Interactive Design, Interaction Design, web developer, web designer, html, css, javascript, xhtml, dhtml, ajax, django, python, rails, ruby, php, jsp, teamsite, DJ, techno, electronic music, Chris Yap, Christopher Yap, " />
+	<link rel="icon" href="{{ CY_MEDIA_URL }}cydotcom/images/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="{{ CY_MEDIA_URL }}cydotcom/images/favicon.ico" type="image/x-icon">
+</head> 
+<body> 
+	
+	<div data-role="page">
+
+		{% block header %}{% endblock %}
+
+		<div data-role="content">
+			{% block content %}{% endblock %}
+		</div>
+	</div>
+	
+</body>
+</html>

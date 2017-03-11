@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>test1</title>
+
+<script type="text/javascript">
+function OpenWin(url,Width,Height) {
+
+	
+	
+	if(window.createPopup) {
+		var oPopup = window.createPopup();
+		var oPopBody = oPopup.document.body;
+	    oPopBody.style.backgroundColor = "lightyellow";
+	    oPopBody.style.border = "solid black 1px";
+	    oPopBody.innerHTML = "Click outside <B>popup</B> to close.";
+	    oPopup.show(100, 100, 180, 25, document.body);
+	} else {
+		Width += 0;
+		Height += 0;
+			x = (screen.width-Width)/2;
+			y = (screen.height-Height)/2;
+		str='"toolbar=no,width=' + Width + ',height=' + Height + ',left=' + x + ',top=' + y + ',status=no,scrollbars=no,resizable=no,menubar=no"';
+		window.open(url,"",str);
+	}
+	
+}
+
+</script>
+
+<style type="text/css">
+	#textContent { position:absolute; top:0px; left:0px; width:400px; }
+	#flashContent { position:absolute; top:0px; left:0px; }
+</style>
+
+
+</head>
+<body bgcolor="#ffffff">
+
+<div id="textContent">
+jkdsf;kdfklj;sdaf fasdjkl;sadfjasdfkjladsf fadsjkl;adsfjsadfl;jlksad jlkdsajkdfsklsdfaj;kadsf jkladsfjfd;asjdfas jkladsfjkadfs;kljsadf 
+jkfdas;jkfda;sj;dasf dfjk;lasdfjkl;sad fdsjkl;fdsaj dfsajklfd;djfkdasjkl;fdsa afsdjkl;adfsjkl;dafs asdfjkl;dfjkldfsa; adsfjkl;dfjadsf
+dafsjk;fdjfdsl;adsaf fdjkl;fdsajkl;fsa dfasjkl;asdfjdsfa.
+</div>
+
+<div id="flashContent">
+<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,0,0" width="550" height="400" id="test1" align="middle">
+<param name="allowScriptAccess" value="sameDomain" />
+<param name="movie" value="test1.swf" />
+<param name="quality" value="high" />
+<param name="bgcolor" value="#cccccc" />
+<param name="wmode" value="transparent">
+<embed src="test1.swf" quality="high" bgcolor="#cccccc" wmode="transparent" width="550" height="400" name="test1" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+</object>
+</div>
+
+
+</body>
+</html>

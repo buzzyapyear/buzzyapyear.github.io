@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>Contact List - Hello Google!</title>
+		<link rel="stylesheet" href="/goog/css/style.css" type="text/css" media="screen" />
+		<!--[if lt IE 7]>
+		<link rel="stylesheet" href="/goog/css/styleIE6.css" />
+		<![endif]-->
+		<!--[if IE 7]>
+		<link rel="stylesheet" href="/goog/css/styleIE7.css" />
+		<![endif]-->
+	</head>
+	<body>
+		
+		<div id="loading_div"><img src="/goog/images/loading.gif"/></div>
+		
+		<div id="contact_list_wrapper">
+		
+			<div id="header">
+				<h1>Contacts</h1>
+			</div>
+			
+			<div id="list_wrapper">
+				<ul id="contact_list">
+					
+				</ul>
+			</div>
+			
+			<div id="footer">
+				<form id="contact_list_pulldown_form" name="contact_list_pulldown_form">
+					<select id="contact_list_pulldown" onchange="ContactList.swapEmailPhone();">
+						<option value="email">Email</option>
+						<option value="phone">Phone</option>
+					</select>
+				</form>
+			</div>
+			
+		</div>
+		
+		<!-- JS -->
+		<script type="text/javascript" src="/goog/js/prototype.js"></script>
+		<script type="text/javascript" src="/goog/js/prototype_additions.js"></script>
+		<!--[if lt IE 7]>
+		<script type="text/javascript">
+			var IESelectFix = true;
+		</script>
+		<![endif]-->
+		<script type="text/javascript" src="/goog/js/ContactListController.js"></script>
+		
+	</body>
+</html>

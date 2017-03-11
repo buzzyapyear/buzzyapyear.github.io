@@ -1,0 +1,328 @@
+body {
+	color: #fff;
+	background-color: #1a1a1a;
+	font-family: Helvetica, Arial, sans-serif;
+	height: 100%;
+	width: 100%;
+	font-size: 24px;
+}
+div#header {
+    background: url('{{ CY_MEDIA_URL }}cydotcom/images/logoCYiPhone.png') top left no-repeat;
+	padding: 0px 0px 24px 152px;
+	margin: 16px;
+}
+
+div#masthead {
+	margin: 24px 0px;
+	font-size: .7em;
+}
+
+div#masthead h1 {
+	font-size: 1.5em;
+	font-weight: bold;
+	display: inline;
+	border-right: 1px dotted #999;
+	padding-right: 8px;
+}
+
+div#masthead h2 {
+	font-size: 1.2em;
+	display: inline;
+	border-right: 1px dotted #999;
+	padding: 0px 8px;
+}
+
+div#masthead h3
+{
+	font-size: 1.2em;
+	text-transform: uppercase;
+	display: inline;
+	padding-left: 8px;
+}
+
+ul#nav {
+	font-size: 1.3em;
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+ul#nav li {
+	padding: 0px;
+	margin-right: 24px;
+	float: left;
+}
+
+ul#nav li a {
+	display: block;
+	color: #fff;
+	font-weight: bold;
+	text-decoration: none;
+	font-size: 1.2em;
+	position: relative;
+}
+
+ul#nav li a:hover {
+	color: #33ccff;
+}
+
+ul#nav li a:active {
+	color: #33ffff;
+}
+
+ul#nav li a.selected {
+	color: #AFFF5F;
+}
+
+ul#nav li a img.iconLaunchNewWindow {
+	display: none;
+}
+
+div#controls-background {
+	display: none;
+}
+
+div#content
+{
+	z-index: 2;
+}
+
+div#content ul {
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+li.module,
+#tumblrContainer ul li
+{
+	background: url('{{ CY_MEDIA_URL }}cydotcom/images/bgModule.png') top left repeat-x;
+	background-color: #1a1a1a;
+	padding: 24px;
+	position: relative;
+	overflow: hidden;
+}
+
+#flickrContainer ul li {
+	position: relative;
+	overflow: hidden;
+}
+
+li.hero {
+	background: url('{{ CY_MEDIA_URL }}cydotcom/images/bgModuleHero.png') top left repeat-x;
+	background-color: #669933;
+	color: #000 !important;
+	width: auto !important;
+	height: auto !important;
+}
+
+#flickrContainer ul li {
+	text-align: center;
+	width: 245px;
+	height: 248px;
+	float: left;
+}
+
+#flickrContainer ul li img.flickrPhoto {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#flickrContainer ul li img.flickrHoriz {
+	margin-left: -30px;
+	clip: rect(0px, 275px, 248px, 30px);
+}
+
+#flickrContainer ul li img.flickrVert {
+	margin-top: -30px;
+	clip: rect(30px, 245px, 278px, 0px);
+}
+
+#tumblrContainer ul  {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+#tumblrContainer ul li div.tumblrPost {
+	margin-bottom: 8px;
+	position: relative;
+}
+
+#tumblrContainer div.tumblrQuote .quote {
+	font-size: 1.3em !important;
+	font-style: oblique !important;
+}
+
+#tumblrContainer div.tumblrQuote .source {
+	font-weight: bold;
+}
+
+#tumblrContainer div.tumblrConversation ul {
+	margin-bottom: 8px !important;
+}
+
+#tumblrContainer div.tumblrConversation ul li {
+	float: none !important;
+	background: none !important;
+	width: auto !important;
+	height: auto !important;
+	text-align: left !important;
+	padding: 0px !important;
+	margin: 8px 0px 0px 0px !important;
+	overflow: auto !important;
+}
+
+li.noPad,
+li.marker
+{
+	padding: 0px !important;
+}
+
+li#markerFlickr {
+	background: url('{{ CY_MEDIA_URL }}cydotcom/images/bgMarkerFlickr.png') top left repeat-x !important;
+	width: auto !important;
+	float: none !important;
+	height: 248px !important;
+	padding: 0px !important;
+}
+
+li#markerTumblr {
+	background: url('{{ CY_MEDIA_URL }}cydotcom/images/bgMarkerTumblr.png') top left repeat-x !important;
+	text-align: center;
+	width: auto !important;
+	float: none !important;
+	height: 248px !important;
+	padding: 0px !important;
+}
+
+li.marker h1 {
+	position: absolute;
+}
+
+body.music li.marker h1 {
+	bottom: 8px;
+	right: 8px;
+	font-size: 1.1em;
+	padding: 0px 5px;
+}
+
+body.music li.marker {
+	margin-right: 16px;
+}
+
+body.music li.module {
+	float: left;
+	width: 248px;
+	height: 248px;
+}
+
+body.music li.marker {
+	width: auto !important;
+	height: auto !important;
+}
+
+body.work li.item h1 {
+	font-size: 1.1em;
+	margin-top: 0px;
+}
+
+body.work li.item img {
+	float: left;
+	margin-right: 24px;
+	width: 240px;
+	margin-bottom: 64px;
+}
+
+body.contact li.hero img {
+	display: block;
+}
+
+div#footer {
+	padding: 24px;
+	background-color: #000;
+}
+
+div#footer div#poweredBy h1 {
+	font-size: 1em;
+	font-weight: bold;
+}
+
+div#footer div#poweredBy ul {
+	list-style-type: none;
+}
+
+div#footer div#poweredBy li {
+	float: left;
+	margin-right: 8px;
+}
+
+div#footer div#poweredBy li img {
+	height: 33px;
+}
+
+a {
+	text-decoration: none;
+	font-weight: bold;
+}
+
+a:link,
+a:visited {
+	color: #00ccff;
+}
+
+a:hover {
+	color: #00ffff;
+}
+
+a:active {
+	color: #999999;
+}
+
+li.hero a:link,
+li.hero a:visited {
+	color: #003366;
+}
+
+li.hero a:hover {
+	color: #006699;
+}
+
+li.hero a:active {
+	color: #0076B2;
+}
+
+a.launch {
+	background: url('{{ CY_MEDIA_URL }}cydotcom/images/iconNewWindow.png') center right no-repeat;
+	padding: 3px 15px 0px 0px;
+	_padding: 1px 18px 0px 0px;
+}
+
+li.hero a.launch {
+	background: url('{{ CY_MEDIA_URL }}cydotcom/images/iconNewWindowDark.png') center right no-repeat;
+	padding: 1px 15px 0px 0px;
+	_padding: 1px 18px 0px 0px;
+}
+
+h1 {
+	font-size: 1.6em;
+	font-weight: bold;
+}
+
+p {
+	padding: 4px 0px;
+}
+
+.hide {
+	position: absolute;
+	visibility: hidden;
+}
+
+.blackBG {
+	background: url('{{ CY_MEDIA_URL }}cydotcom/images/bgBlackTransparent.png') top left repeat;
+	display: block;
+}
+

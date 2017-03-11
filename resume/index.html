@@ -1,208 +1,197 @@
-<!DOCTYPE html>
+---
+layout: resume
+title: Resume
+id: resume
+group: nav_main
+nav_order: 2
+---
 
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<title>Christopher S. Yap | Resum&#233;</title>
-		<link rel="stylesheet" type="text/css" href="/vendor/bootstrap/dist/css/bootstrap.min.css" />
-		<link rel="stylesheet" type="text/css" href="/vendor/font-awesome/css/font-awesome.min.css" />
-		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
-		<link rel="stylesheet" type="text/css"  media="screen, projection" href="/dist/css/buzz_resume.css" />
-		<!--<link rel="stylesheet" type="text/css"  media="print" href="/dist/css/buzz_resume_print.css" />-->
-	</head>
+<header>
+	<div class="container">
+		<h1>Christopher S. Yap <small>UI Engineer and UX Designer</small></h1>
+	</div>
+</header>
 
-	<body>
+<div class="container">
 
-		<header>
-			<div class="container">
-				<div class="masthead">
-					<h1>Christopher S. Yap <small>Software Developer and Designer</small></h1>
-					<ul class="contact list-unstyled">
-						<li><small><i class="fa fa-envelope"></i> buzzyapyear@gmail.com</small></li>
-						<li><small><i class="fa fa-globe"></i> www.chrisyap.com</small></li>
-					</ul>
-				</div>
-			</div>
-		</header>
-		
-		<div class="container">
-			
+	<div class="row">
+		<div class="col-md-3">
+			<section id="profile">
+				<h2>Profile</h2>
+				<canvas id="profile-chart" width="250" height="250"></canvas>
+			</section>
+		</div>
+		<div class="col-md-9">
+
+			<section id="contact">
+				<h2>Contact</h2>
+				<ul class="list-unstyled">
+					<li><i class="fa fa-envelope"></i> buzzyapyear@gmail.com</li>
+					<li><i class="fa fa-globe"></i> www.chrisyap.com</li>
+				</ul>
+			</section>
+
 			<section id="skills">
 				<h2>Skills</h2>
 
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col-md-6">
 						<h3>Coding</h3>
 						<p>HTML, CSS (including Bootstrap, Foundation), JavaScript (including Angular, jQuery, React), Python (Django, Pyramid/Pylons), JSP (Spring, Tiles, Struts), PHP, MySQL, Ruby on Rails, Git/SVN version control systems, Unix command-line, among other things, as well as a healthy love of learning.</p>
 					</div>
 
-					<div class="col-md-4">
+					<div class="col-md-6">
 						<h3>Software</h3>
-						<p>SublimeText, Eclipse IDE, Balsamiq, Photoshop, Sketch, Illustrator, Final Cut Pro</p>
-					</div>
+						<p>SublimeText, Eclipse IDE, Balsamiq, Photoshop, Sketch, Illustrator, Final Cut Pro.</p>
 
-					<div class="col-md-4">
 						<h3>Platforms</h3>
-						<p>Mac OS X; Windows; Linux.</p>
+						<p>Mac OS X, Windows, Linux.</p>
 					</div>
 				</div>
 			</section>
-
-			<section id="experience" class="jobs">
-				<h2>Recent Experience</h2>
-
-				<div class="row">
-					<div class="col-md-4 job">
-						<h3>
-							<span class="company">Lytmus</span>&nbsp;|&nbsp;<span class="title">Software Engineer</span>
-						</h3>
-                        <ul class="list-unstyled job-details">
-							<li class="location">San Francisco, CA</li>
-							<li class="dates">September 2012 - Present</li>
-							<li class="url"><a href="http://www.lytmus.io" target="_blank">www.lytmus.io <i class="fa fa-external-link"></i></a></li>
-                        </ul>
-                        <p class="company-description">
-                        	Lytmus is a bleeding-edge technical assessment platform, built with an intent to revolutionize hiring by leveling the playing field for candidates and employers with deep, objective and realistic assessments.  I was hired as the first employee to work with the founders to bring the vision to life.
-                        </p>
-                        <ul class="job-roles">
-                            <li>Lead engineering of all product user-interfaces</li>
-                            <li>Conceptualize and design product user-experiences</li>
-                            <li>Contribute to specification of a comprehensive API to harness the power of the platform</li>
-                            <li>First employee, founding team</li>
-                        </ul>
-					</div>
-					<div class="col-md-4 job">
-						<h3>
-							<span class="company">Betabrand</span>&nbsp;|&nbsp;<span class="title">Software Engineer</span>
-						</h3>
-                        <ul class="list-unstyled job-details">
-							<li class="location">San Francisco, CA</li>
-							<li class="dates">January 2012 - September 2012</li>
-							<li class="url"><a href="http://www.betabrand.com" target="_blank">www.betabrand.com <i class="fa fa-external-link"></i></a></li>
-                        </ul>
-                        <p class="job-description">
-                        	Betabrand is a forward-thinking, California-infused fashion company, built from the ground up with technology at its core.  I was hired, following a major round of venture capital funding, to help build a crowd-funding platform, which was conceived to evolve the company into its next phase of growth.
-                        </p>
-                        <ul class="job-roles">
-                            <li>Build robust, perforance-minded user-interfaces</li>
-                            <li>Optimize code for e-commerce goals</li>
-                            <li>Design and instrument analytics campaigns, and optimize interfaces against gathered data</li>
-                            <li>Integrate with existing Magento platform</li>
-                        </ul>
-					</div>
-					<div class="col-md-4 job">
-						<h3>
-							<span class="company">Watchwith</span>&nbsp;|&nbsp;<span class="title">Web-Applications Engineer</span>
-						</h3>
-                        <ul class="list-unstyled job-details">
-							<li class="location">San Francisco, CA</li>
-							<li class="dates">September 2010 - January 2012</li>
-							<li class="url"><a href="http://www.watchwith.com" target="_blank">www.watchwith.com <i class="fa fa-external-link"></i></a></li>
-                        </ul>
-                        <p class="job-description">
-                            Watchwith is a platform built for the next generation of television media delivery.  The platform enables content owners and advertisers to capitalize on contextual opportunities in the consumption of media by their audiences through the use of time-based metadata. 
-                        </p>
-                        <ul class="job-roles">
-                            <li>Architect and execute product engineering, focusing on user-interface code</li>
-                            <li>Contribute to formation of product concepts</li>
-                            <li>Design and prototype product concepts</li>
-                            <li>Research delivery of web-applications to a wide array of platforms, from browsers, to mobile devices, smart TVs and set-top boxes.</li>
-                        </ul>
-					</div>
-				</div>
-			</section>
-
-			<section id="ancient-history" class="jobs">
-				<h2>A long time ago, in a galaxy far, far away...</h2>
-
-				<div class="row">
-					<div class="col-md-3 job">
-						<h3>
-							<span class="company">VoxPop</span>&nbsp;|&nbsp;<span class="title">Lead Web Developer</span>
-						</h3>
-                        <ul class="list-unstyled job-details">
-							<li class="location">San Francisco, CA</li>
-							<li class="dates">January 2010 - October 2010</li>
-							<li class="url">&nbsp;</li>
-                        </ul>
-					</div>
-					<div class="col-md-3 job">
-						<h3>
-							<span class="company">Flowgram</span>&nbsp;|&nbsp;<span class="title">Software Developer</span>
-						</h3>
-                        <ul class="list-unstyled job-details">
-							<li class="location">San Francisco, CA</li>
-							<li class="dates">October 2007 - January 2009</li>
-							<li class="url">&nbsp;</li>
-                        </ul>
-					</div>
-					<div class="col-md-3 job">
-						<h3>
-							<span class="company">Exobi Interactive</span>&nbsp;|&nbsp;<span class="title">Co-Founder, Lead Designer</span>
-						</h3>
-                        <ul class="list-unstyled job-details">
-							<li class="location">San Francisco, CA</li>
-							<li class="dates">January 2006 - January 2012</li>
-							<li class="url">&nbsp;</li>
-                        </ul>
-					</div>
-					<div class="col-md-3 job">
-						<h3>
-							<span class="company">DHAP Digital</span>&nbsp;|&nbsp;<span class="title">Interactive Developer</span>
-						</h3>
-                        <ul class="list-unstyled job-details">
-							<li class="location">San Francisco, CA</li>
-							<li class="dates">January 2004 - October 2007</li>
-							<li class="url"><a href="www.dhapdigital.com" target="_blank">www.dhapdigital.com <i class="fa fa-external-link"></i></a></li>
-                        </ul>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-3 job">
-						<h3>
-							<span class="company">Entercomm</span>&nbsp;|&nbsp;<span class="title">Web Production Artist</span>
-						</h3>
-                        <ul class="list-unstyled job-details">
-							<li class="location">San Francisco, CA</li>
-							<li class="dates">October 2001 - September 2004</li>
-							<li class="url">&nbsp;</li>
-                        </ul>
-					</div>
-					<div class="col-md-3 job">
-						<h3>
-							<span class="company">NOVO Interactive</span>&nbsp;|&nbsp;<span class="title">Production Engineer</span>
-						</h3>
-                        <ul class="list-unstyled job-details">
-							<li class="location">New York, NY</li>
-							<li class="dates">September 2000 - March 2001</li>
-							<li class="url">&nbsp;</li>
-                        </ul>
-					</div>
-				</div>
-			</section>
-			
-			<section id="education">
-				<h2>Education</h2>
-                <ul class="list-unstyled">
-                    <li>Oberlin College, Oberlin, OH.  BA Politics, May 1999.</li>
-                </ul>
-        	</section>
-			
 		</div>
-		
-		<!-- BEGIN GOOGLE ANALYTICS -->
-		<script type="text/javascript">
-			var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-			document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-		</script>
-		<script type="text/javascript">
-			try {
-				var pageTracker = _gat._getTracker("UA-11792387-1");
-				pageTracker._setDomainName(".chrisyap.com");
-				pageTracker._trackPageview();
-			} catch(err) {}
-		</script>
-		<!-- END GOOGLE ANALYTICS -->
-		
-	</body>
-</html>
+	</div>
+	
+	
+
+	<section id="experience" class="jobs">
+		<h2>Recent Experience</h2>
+
+		<div class="row">
+			<div class="col-md-4 job">
+				<h3>
+					<span class="company">Lytmus</span>&nbsp;|&nbsp;<span class="title">Software Engineer</span>
+				</h3>
+                <ul class="list-unstyled job-details">
+					<li class="location">San Francisco, CA</li>
+					<li class="dates">September 2012 - Present</li>
+					<li class="url"><a href="http://www.lytmus.io" target="_blank">www.lytmus.io <i class="fa fa-external-link"></i></a></li>
+                </ul>
+                <p class="company-description">
+                	Lytmus is a bleeding-edge technical assessment platform, built with an intent to revolutionize hiring by leveling the playing field for candidates and employers with deep, objective and realistic assessments.  I was hired as the first employee to work with the founders to bring the vision to life.
+                </p>
+                <ul class="job-roles">
+                    <li>Lead engineering of all product user-interfaces</li>
+                    <li>Conceptualize and design product user-experiences</li>
+                    <li>Contribute to specification of a comprehensive API to harness the power of the platform</li>
+                    <li>First employee, founding team</li>
+                </ul>
+			</div>
+			<div class="col-md-4 job">
+				<h3>
+					<span class="company">Betabrand</span>&nbsp;|&nbsp;<span class="title">Software Engineer</span>
+				</h3>
+                <ul class="list-unstyled job-details">
+					<li class="location">San Francisco, CA</li>
+					<li class="dates">January 2012 - September 2012</li>
+					<li class="url"><a href="http://www.betabrand.com" target="_blank">www.betabrand.com <i class="fa fa-external-link"></i></a></li>
+                </ul>
+                <p class="job-description">
+                	Betabrand is a forward-thinking, California-infused fashion company, built from the ground up with technology at its core.  I was hired, following a major round of venture capital funding, to help build a crowd-funding platform, which was conceived to evolve the company into its next phase of growth.
+                </p>
+                <ul class="job-roles">
+                    <li>Build robust, perforance-minded user-interfaces</li>
+                    <li>Optimize code for e-commerce goals</li>
+                    <li>Design and instrument analytics campaigns, and optimize interfaces against gathered data</li>
+                    <li>Integrate with existing Magento platform</li>
+                </ul>
+			</div>
+			<div class="col-md-4 job">
+				<h3>
+					<span class="company">Watchwith</span>&nbsp;|&nbsp;<span class="title">Web-Applications Engineer</span>
+				</h3>
+                <ul class="list-unstyled job-details">
+					<li class="location">San Francisco, CA</li>
+					<li class="dates">September 2010 - January 2012</li>
+					<li class="url"><a href="http://www.watchwith.com" target="_blank">www.watchwith.com <i class="fa fa-external-link"></i></a></li>
+                </ul>
+                <p class="job-description">
+                    Watchwith is a platform built for the next generation of television media delivery.  The platform enables content owners and advertisers to capitalize on contextual opportunities in the consumption of media by their audiences through the use of time-based metadata. 
+                </p>
+                <ul class="job-roles">
+                    <li>Architect and execute product engineering, focusing on user-interface code</li>
+                    <li>Contribute to formation of product concepts</li>
+                    <li>Design and prototype product concepts</li>
+                    <li>Research delivery of web-applications to a wide array of platforms, from browsers, to mobile devices, smart TVs and set-top boxes.</li>
+                </ul>
+			</div>
+		</div>
+	</section>
+
+	<section id="ancient-history" class="jobs">
+		<h2>A long time ago, in a galaxy far, far away...</h2>
+
+		<div class="row">
+			<div class="col-md-3 job">
+				<h3>
+					<span class="company">VoxPop</span>&nbsp;|&nbsp;<span class="title">Lead Web Developer</span>
+				</h3>
+                <ul class="list-unstyled job-details">
+					<li class="location">San Francisco, CA</li>
+					<li class="dates">January 2010 - October 2010</li>
+					<li class="url">&nbsp;</li>
+                </ul>
+			</div>
+			<div class="col-md-3 job">
+				<h3>
+					<span class="company">Flowgram</span>&nbsp;|&nbsp;<span class="title">Software Developer</span>
+				</h3>
+                <ul class="list-unstyled job-details">
+					<li class="location">San Francisco, CA</li>
+					<li class="dates">October 2007 - January 2009</li>
+					<li class="url">&nbsp;</li>
+                </ul>
+			</div>
+			<div class="col-md-3 job">
+				<h3>
+					<span class="company">Exobi Interactive</span>&nbsp;|&nbsp;<span class="title">Co-Founder, Lead Designer</span>
+				</h3>
+                <ul class="list-unstyled job-details">
+					<li class="location">San Francisco, CA</li>
+					<li class="dates">January 2006 - January 2012</li>
+					<li class="url">&nbsp;</li>
+                </ul>
+			</div>
+			<div class="col-md-3 job">
+				<h3>
+					<span class="company">DHAP Digital</span>&nbsp;|&nbsp;<span class="title">Interactive Developer</span>
+				</h3>
+                <ul class="list-unstyled job-details">
+					<li class="location">San Francisco, CA</li>
+					<li class="dates">January 2004 - October 2007</li>
+					<li class="url"><a href="http://www.dhapdigital.com" target="_blank">www.dhapdigital.com <i class="fa fa-external-link"></i></a></li>
+                </ul>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3 job">
+				<h3>
+					<span class="company">Entercomm</span>&nbsp;|&nbsp;<span class="title">Web Production Artist</span>
+				</h3>
+                <ul class="list-unstyled job-details">
+					<li class="location">San Francisco, CA</li>
+					<li class="dates">October 2001 - September 2004</li>
+					<li class="url">&nbsp;</li>
+                </ul>
+			</div>
+			<div class="col-md-3 job">
+				<h3>
+					<span class="company">NOVO Interactive</span>&nbsp;|&nbsp;<span class="title">Production Engineer</span>
+				</h3>
+                <ul class="list-unstyled job-details">
+					<li class="location">New York, NY</li>
+					<li class="dates">September 2000 - March 2001</li>
+					<li class="url">&nbsp;</li>
+                </ul>
+			</div>
+		</div>
+	</section>
+
+	<section id="education">
+		<h2>Education</h2>
+        <ul class="list-unstyled">
+            <li>Oberlin College, Oberlin, OH.  BA Politics, May 1999.</li>
+        </ul>
+	</section>
+	
+</div>

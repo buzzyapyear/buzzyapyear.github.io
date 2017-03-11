@@ -1,0 +1,21 @@
+<h2>Contact</h2>
+
+<p id="errors"></p>
+
+<form name="exobiContact">
+	
+	
+	<label for="realname">Name</label>
+	<input id="realname" name="realname" type="text" />
+	
+	<label for="email">* E-Mail</label>
+	<input id="email" name="email" type="text" />
+	
+	<label for="comments">* Comments</label>
+	<textarea id="comments" name="comments" rows="10" cols="25"></textarea>
+	
+	
+</form>
+
+<p><a href="javascript: void(0);" class="contactSubmit" onclick="exobiValidate();">Submit</a></p>
+

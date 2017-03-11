@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>Chris Yap | Developer & Designer | The online portfolio of Chris Yap</title>
+		<link rel="stylesheet" href="/css/style.css" type="text/css" media="screen" />
+		<!--[if lte IE 7]>
+		<link rel="stylesheet" href="/css/styleIE.css" />
+		<![endif]-->
+		<style type="text/css">
+			div#wrapper {
+				background-color: #FFFFFF;
+			}
+		</style>
+		<meta name="robots" content="noindex,follow">
+		<link rel="icon" href="/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+	</head>
+	<body>
+		<div id="centeringWrapper">
+			<div id="siteWrapper">
+				<div id="topBar"></div>
+				
+				<div id="mainWrapper">
+
+					<div id="banner">
+						<div id="logo"></div>
+						<div id="tagline"><h1 class="line1">Chris Yap</h1><h1 class="line2">Developer & Designer</h1></div>
+						<div class="clearer"></div>
+					</div>
+					
+					<div id="contentWrapper">
+						<div id="content">
+							<h2>Site Directory for the online portfolio of Chris Yap</h2>
+							<ul>
+								<li><a href="/home">Home | Welcome to the homepage and online portfolio of Chris Yap, developer and designer</a></li>
+								<li><a href="/portfolio">Portfolio | The portfolio of Chris Yap, developer and designer</a></li>
+								<li><a href="/resume">Resum&#233; | The resum&#233; of Chris Yap, developer and designer</a></li>
+								<li><a href="/audio">Audio | DJ Sets recorded by Chris Yap, developer and designer</a></li>
+								<li><a href="/contact">Contact | Use this contact form to contact Chris Yap, developer and designer</a></li>
+							</ul>
+						</div>
+					</div>
+					
+					<div id="copyright"><h4>Copyright &#169; 2007 Chris Yap</h4></div>
+					
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

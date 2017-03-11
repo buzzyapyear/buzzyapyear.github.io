@@ -1,0 +1,185 @@
+<html>
+
+<head>
+
+<title>tenderloft</title>
+
+
+
+<script type="text/javascript" language="JavaScript">
+
+// OPEN IN A NEW SIZED WINDOW
+
+
+
+                function openWindow(url) {
+
+                popupWin = window.open(url, 'mainwindow',
+
+'scrollbars=yes,resizable=yes,toolbar=yes,width=400,height=400,left=10,top=10,screenX=10,screenY=10')
+
+                }
+
+
+
+
+
+
+
+// PRELOAD ROLLOVER IMAGES 
+
+var base = "../../images/";
+
+        if (document.images) {
+
+
+
+//  home nav links
+
+				home_on = new Image(); home_on.src = base + "home_on.gif";
+
+                home_off = new Image(); home_off.src = base + "home_off.gif";
+
+                
+
+                audio_on = new Image(); audio_on.src = base + "audio_on.gif";
+
+                audio_off = new Image(); audio_off.src = base + "audio_off.gif";
+
+                
+
+                visual_on = new Image(); visual_on.src = base + "visual_on.gif";
+
+                visual_off = new Image(); visual_off.src = base + "visual_off.gif";
+
+                
+
+                contact_on = new Image(); contact_on.src = base + "contact_on.gif";
+
+                contact_off = new Image(); contact_off.src = base + "contact_off.gif";
+
+
+
+}
+
+
+
+//  SHOWS CURRENT ROLLOVER
+
+function imgOn(imgName) {
+
+        if (document.images) {
+
+        document[imgName].src = eval(imgName + "_on.src");
+
+        }
+
+}
+
+
+
+// HIDES ROLLOVER
+
+function imgOff(imgName) {
+
+if (document.images) {
+
+        document[imgName].src = eval(imgName + "_off.src");
+
+        }
+
+}
+
+// NETSCAPE 4 CSS RESIZE BUG FIX
+function WM_netscapeCssFix() {
+  /*
+    Source: Webmonkey Code Library
+    (http://www.hotwired.com/webmonkey/javascript/code_library/)
+
+    Author: Taylor
+    Author Email: taylor@wired.com
+    Author URL: http://www.taylor.org/
+    */
+
+  // This part was inspired by Matthew_Baird@wayfarer.com
+  // It gets around another unfortunate bug whereby Netscape 
+  // fires a resize event when the scrollbars pop up. This 
+  // checks to make sure that the window's available size 
+  // has actually changed.
+  if (document.WM.WM_netscapeCssFix.initWindowWidth != window.innerWidth || document.WM.WM_netscapeCssFix.initWindowHeight != window.innerHeight) {
+    document.location = document.location;
+  }
+}
+
+function WM_netscapeCssFixCheckIn() {
+  // This function checks to make sure the version of Netscape 
+  // in use contains the bug; if so, it records the window's 
+  // width and height and sets all resize events to be handled 
+  // by the WM_netscapeCssFix() function.
+  if ((navigator.appName == 'Netscape') && (parseInt(navigator.appVersion) == 4)) {
+    if (typeof document.WM == 'undefined'){
+      document.WM = new Object;
+    }
+    if (typeof document.WM.WM_scaleFont == 'undefined') {
+      document.WM.WM_netscapeCssFix = new Object;
+      document.WM.WM_netscapeCssFix.initWindowWidth = window.innerWidth;
+      document.WM.WM_netscapeCssFix.initWindowHeight = window.innerHeight;
+    }
+    window.onresize = WM_netscapeCssFix;
+  }
+}
+
+WM_netscapeCssFixCheckIn()
+
+
+</script>
+
+<LINK REL="stylesheet" HREF="bp_style.css" TYPE="text/css" MEDIA="screen">
+
+
+
+</head>
+
+<body bgcolor="#666666" leftmargin="3" topmargin="3" marginwidth="0" marginheight="0">
+
+
+
+<p>
+
+Tenderloft presents<br><br>
+
+Saturday 02.16.02<br><br>
+
+"Lunarcy": Celebration of the Lunar New Year<br><br>
+
+audio by:<br>
+yap (tenderloft, freebeats, beatpusher nyc)<br>
+dj m (tenderloft, freebeats, signal)<br>
+j. hustle (tenderloft, freebeats)<br>
+dominatrix (freebeats, friends and family)<br>
+agent sunshine (freebeats)<br>
+dj koru (tenderloft)<br>
+emerson (freebeats)<br>
+janaka & michael cheng (dhamaal, to be confirmed)<br>
+w/ tablas by adheesh (tenderloft, dhamaal)<br><br>
+
+projections by michael paine<br><br>
+
+*fresh underground location*<br>
+$5, w/ free water chai & tarot<br>
+415 . 789 . 8360<br>
+call night of event for more info<br>
+<a class="newslink" href="mailto:lunarcy@tenderloft.org">lunarcy@tenderloft.org</a><br><br>
+
+</p>
+<img src="images/flyer/prototype1front.jpg" border="1"><br><br><img src="images/flyer/prototype1back.jpg" border="1">
+
+
+
+
+
+</body>
+
+
+
+</html>

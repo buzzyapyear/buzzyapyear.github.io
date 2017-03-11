@@ -1,0 +1,423 @@
+<html>
+
+<head>
+
+<title>tenderloft</title>
+
+<meta name="description" content="tenderloft, techno, jungle, drum n' bass, trip-hop, downtempo, DJ, electronic music">
+
+<script type="text/javascript" language="JavaScript">
+
+// OPEN IN A NEW SIZED WINDOW
+
+
+
+                function openWindow(url) {
+
+                popupWin = window.open(url, 'mainwindow',
+
+'scrollbars=yes,resizable=yes,toolbar=yes,width=400,height=400,left=10,top=10,screenX=10,screenY=10')
+
+                }
+
+
+
+
+
+
+
+// PRELOAD ROLLOVER IMAGES 
+
+var base = "images/";
+
+        if (document.images) {
+
+
+
+//  home nav links
+
+				home_on = new Image(); home_on.src = base + "home_on.gif";
+
+                home_off = new Image(); home_off.src = base + "home_off.gif";
+
+                
+
+                audio_on = new Image(); audio_on.src = base + "audio_on.gif";
+
+                audio_off = new Image(); audio_off.src = base + "audio_off.gif";
+
+                
+
+                visual_on = new Image(); visual_on.src = base + "visual_on.gif";
+
+                visual_off = new Image(); visual_off.src = base + "visual_off.gif";
+
+                
+
+                contact_on = new Image(); contact_on.src = base + "contact_on.gif";
+
+                contact_off = new Image(); contact_off.src = base + "contact_off.gif";
+
+
+
+}
+
+
+
+//  SHOWS CURRENT ROLLOVER
+
+function imgOn(imgName) {
+
+        if (document.images) {
+
+        document[imgName].src = eval(imgName + "_on.src");
+
+        }
+
+}
+
+
+
+// HIDES ROLLOVER
+
+function imgOff(imgName) {
+
+if (document.images) {
+
+        document[imgName].src = eval(imgName + "_off.src");
+
+        }
+
+}
+
+
+
+
+
+
+
+</script>
+
+<LINK REL="stylesheet" HREF="bp_style.css" TYPE="text/css" MEDIA="screen">
+
+
+
+</head>
+
+<body bgcolor="#000000" leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0" marginwidth="0" marginheight="0">
+
+
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+
+<!-- Start Header/Nav Row -->
+
+<tr>
+
+<td>
+
+	<table cellpadding="0" cellspacing="0" border="0">
+
+	<tr>
+
+	
+
+	<td width="47" height="103"><img src="images/spacer.gif" width="47" height="103"></td>
+
+	
+
+	<td width="7" height="103" bgcolor="#cccccc"><img src="images/spacer.gif" width="7" height="103"></td>
+
+	
+
+	<td width="431" height="103" bgcolor="#666666">
+
+		
+
+		<table cellpadding="0" cellspacing="0" border="0">
+
+		
+
+			<tr>
+
+			<td width="431" height="33"><img src="images/spacer.gif" width="431" height="33"></td>
+
+			</tr>
+
+			
+
+			<tr>
+
+			<td width="431" height="26"><img src="images/beatpusher_h.gif" width="431" height="26" border="0"></td>
+
+			</tr>
+
+			
+
+			<tr>
+
+			<td width="431" height="21">
+
+				
+
+				<table cellpadding="0" cellspacing="0" border="0">
+
+				<tr>
+
+				<td width="167" height="21"><img src="images/spacer.gif" width="167" height="21" border="0"></td>
+
+				<!-- begin top navigation -->
+
+				<td width="" height="21" align="left"><img src="images/spacer.gif" width="103" height="21" border="0"><a href="#"><img src="images/home_on.gif" name="home" width="51" height="21" border="0"></a><img src="images/nav_dash.gif" width="11" height="21"> <!-- <a href="audio/index.html" onMouseOver="imgOn('audio')" onMouseOut="imgOff('audio')"><img src="images/audio_off.gif" name="audio" width="45" height="21" border="0"></a><img src="images/nav_dash.gif" width="11" height="21"><a href="visual/index.html" onMouseOver="imgOn('visual')" onMouseOut="imgOff('visual')"><img src="images/visual_off.gif" name="visual" width="47" height="21" border="0"></a><img src="images/nav_dash.gif" width="11" height="21"> --><a href="contact/index.html" onMouseOver="imgOn('contact')" onMouseOut="imgOff('contact')"><img src="images/contact_off.gif" name="contact" width="62" height="21" border="0"></a></td>
+
+				<!-- end top navigation -->
+
+				</tr>
+
+				</table>
+
+				
+
+			</td>
+
+			</tr>
+
+			
+
+			<tr>
+
+			<td width="431" height="24"><img src="images/spacer.gif" width="431" height="24" border="0"></td>
+
+			</tr>
+
+		
+
+		</table>
+
+		
+
+	</td>
+
+	
+
+	<td width="235" height="103"><img src="images/carnation.gif" width="235" height="103" border="0"></td>
+
+	
+
+	</tr>
+
+	
+
+	
+
+	<tr>
+
+	<td width="47" height="52"><img src="images/spacer.gif" width="47" height="52" border="0"></td>
+
+	<td width="438" height="52" colspan="2"><img src="images/lines.gif" width="438" height="52" border="0"></td>
+
+	<td width="235" height="52"><img src="images/spacer.gif" width="235" height="52" border="0"></td>
+
+	</tr>
+
+	
+
+	</table>
+
+</td>
+
+</tr>
+
+<!-- End Header/Nav Row -->
+
+
+
+<!-- Start Main Body Row -->
+
+<tr>
+
+<td height="330" bgcolor="#006699">
+
+	<table cellpadding="0" cellspacing="0" border="0">
+
+
+
+	<tr>
+
+	<td width="8" height="330" bgcolor="#cccccc"><img src="images/spacer.gif" width="8" height="330"></td>
+
+	<td width="40" height="330" bgcolor="#006699"><img src="images/spacer.gif" width="40" height="330"></td>
+
+	<td width="715" height="330" bgcolor="#006699" align="left">
+
+		<table cellpadding="0" cellspacing="0" border="0">
+
+		<tr>
+
+		<td width="715" height="6" colspan="5"><img src="images/spacer.gif" width="715" height="6" border="0"></td>
+
+		</tr>
+
+		
+
+		<tr>
+
+		<td width="187" height="317"><img src="images/box_left_dj.gif" width="187" height="317" border="0"></td>
+
+		
+
+		<td width="5" height="317" bgcolor="#666666"><img src="images/spacer.gif" width="5" height="317"></td>
+
+		<!-- begin content window -->
+
+		<td width="331" height="317" bgcolor="#666666" valign="top">
+
+			<table cellpadding="0" cellspacing="0" border="0">
+
+			<tr>
+
+			<td width="331" height="5"><img src="images/spacer.gif" width="331" height="5"></td>
+
+			</tr>
+
+			<tr>
+
+			<td>
+
+			<p><span class="title">Upcoming Events :::</span><br><br>
+
+			<a class="newslink" href="javascript:openWindow('lunarcy.html')">02.16.02 : Tenderloft presents "Lunarcy" - Celebration of the Lunar New Year</a><br><br>
+
+			<a class="newslink" href="javascript:openWindow('trash.html')">03.01.02 : Trashamerica presents "Freedom"</a><br><br>
+
+			<a class="newslink" href="javascript:openWindow('dumbwaiter.html')">03.09.02 : Local Band Showcase</a><br><br>
+
+			<a class="newslink" href="javascript:openWindow('movie.html')">03.15.02 : Tenderloft Movie Night</a>
+
+			</p>
+
+			
+
+			</td>
+
+			</tr>	
+
+			</table>
+
+		</td>
+
+		<!-- end content window -->
+
+		<td width="5" height="317" bgcolor="#666666"><img src="images/spacer.gif" width="5" height="317"></td>
+
+		
+
+		<!-- begin 2ndary nav -->
+
+		<td width="187" height="317" valign="top">
+
+			<table cellpadding="0" cellspacing="0" border="0">
+
+			<tr>
+
+			<td width="7" height="317"><img src="images/box_right_dots.gif" width="7" height="317"></td>
+
+			<td width="180" height="317">
+
+				<table cellpadding="0" cellspacing="0" border="0">
+
+				<tr>
+
+				<td width="180" height="84"><img src="images/box_right_top.gif" width="180" height="84" border="0"></td>
+
+				</tr>
+
+				
+
+				<tr>
+
+				<td width="180" height="233" bgcolor="#cccccc" valign="top">
+
+					<table cellpadding="0" cellspacing="0" border="0">
+
+					<tr>
+
+					<td><p class="rightnav">&nbsp;</p></td>
+
+					</tr>
+
+					</table>
+
+				</td>
+
+				</tr>
+
+				</table>
+
+			</td>
+
+			</tr>
+
+			</table>
+
+		</td>
+
+		<!-- end 2ndary nav -->
+
+		</tr>
+
+		
+
+		<tr>
+
+		<td width="715" height="7" colspan="5"><img src="images/spacer.gif" width="715" height="7" border="0"></td>
+
+		</tr>
+
+		</table>
+
+	</td>
+
+	
+
+	
+
+	
+
+	</tr>
+
+	</table>
+
+</td>
+
+
+
+
+
+</tr>
+
+<!-- End Main Body Row -->
+
+
+
+<tr>
+
+<td width="1" height="10"><img src="images/spacer.gif" width="1" height="10" border="0"></td>
+
+</tr>
+
+<tr>
+
+<td><p>Site by <a href="mailto:yap@freebeats.org">Yap</a></p></td>
+
+</tr>
+
+</table>
+
+
+
+</body>
+
+
+
+</html>

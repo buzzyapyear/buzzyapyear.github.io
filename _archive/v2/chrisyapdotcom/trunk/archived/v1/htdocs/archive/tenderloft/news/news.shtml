@@ -1,0 +1,11 @@
+<!-- news section : home page : maximum 4 events -->
+
+<p><b>Latest News</b><br>
+<!-- event 1 -->
+<!--<p><a href="javascript:openWindow('news/news_chinesenewyear.html')">2.12.02 : San Francisco<br>Freebeats Chinese New Year Party / Warehousewarming</a></p>-->
+<!-- event 2 -->
+<p><a href="javascript:openWindow('news/news_halflife.html')">12.17.01 : San Francisco<br>Freebeats takeover of Halflife @ An Sibn</a></p>
+<!-- event 3 -->
+<p><a href="javascript:openWindow('news/news_natureboy.html')">12.10.01 : New York<br>Natureboy (formerly Electrokardiogram) posts to MP3.com</a></p>
+<!-- event 4 -->
+<!--<p><a href="javascript:openWindow('#')">event 4 date : event 4 location<br>event 4 title</a></p>-->

@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<title>Christopher S. Yap | Online Portfolio | {% block title %}{% endblock %}</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta name="description" content="The online portfolio of Chris Yap." />
+		<meta name="keywords" content="Website Design, Interactive Design, Interaction Design, web developer, web designer, html, css, javascript, xhtml, dhtml, ajax, django, python, rails, ruby, php, jsp, teamsite, DJ, techno, electronic music, Chris Yap, Christopher Yap, " />
+		<link rel="icon" href="{{ CY_MEDIA_URL }}cydotcom/images/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="{{ CY_MEDIA_URL }}cydotcom/images/favicon.ico" type="image/x-icon">
+		<!-- BEGIN STYLES -->
+		{% if not isMobile %}
+			<link rel="stylesheet" type="text/css"  media="screen, projection" href="{{ MEDIA_URL }}combined.css" />
+			{% ifequal active 'resume' %}
+				<link rel="stylesheet" type="text/css"  media="print" href="{{ MEDIA_URL }}style-print-resume.css" />
+			{% endifequal %}
+		{% else %}
+			<link rel="stylesheet" type="text/css"  media="screen, projection" href="{{ MEDIA_URL }}combinedMobile.css" />
+		{% endif %}
+		{% block styles %}{% endblock %}
+		<!-- END STYLES -->
+		<!-- BEGIN HEAD JS -->
+		<script src="http://www.google.com/jsapi"></script>
+		<script type="text/javascript" charset="utf-8">
+			google.load("jquery", "1.4.4");
+		</script>
+		<script type="text/javascript" src="http://use.typekit.com/ydi5fvr.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+		<!-- END HEAD JS -->
+		{% block extra-head %}{% endblock %}
+	</head>
+
+	<body{% block bodyClass %}{% endblock %}>
+		<div id="headerWrapper" class="blackBG">
+			<div id="header">
+				<div id="masthead">
+					<h1>Christopher S. Yap</h1>
+					<h2>Designer, Developer, Musician</h2>
+					<h3>VERSION 3.1</h3>
+				</div>		
+				<ul id="nav">
+					<li><a href="/"{% ifequal active 'home' %} class="selected"{% endifequal %}>Home</a></li>
+					<li><a href="/standalone/resume/"{% ifequal active 'resume' %} class="launch selected"{% else %} class="launch"{% endifequal %} target="_blank" title="Launch resume in new window">Resum&#233;</a></li>
+					<li><a href="/work"{% ifequal active 'work' %} class="selected"{% endifequal %}>Work</a></li>
+					<li><a href="/music"{% ifequal active 'music' %} class="selected"{% endifequal %}>Music</a></li>
+					<li><a href="/contact"{% ifequal active 'contact' %} class="selected"{% endifequal %}>Contact</a></li>
+				</ul>
+				<div style="clear: both;"></div>
+			</div>
+		</div>
+		<div id="content">
+			{% block content-header %}
+				{% if error %}<div class="error">{{ error }}</div>{% endif %}
+				{% if info %}<div class="info">{{ info }}</div>{% endif %}
+				{% if messages %}
+					{% for message in messages %}
+					 <div class="info">{{ message }}</div>
+					{% endfor %}
+				{% endif %}
+			{% endblock %}
+			{% block content %}{% endblock %}
+			<div style="clear: both;"></div>
+		</div>
+		
+		<div id="footer">
+			<div id="poweredBy">
+				<h1>Powered by</h1>
+				<ul>
+					<li><a href="http://www.djangoproject.com" target="_blank"><img src="{{ CY_MEDIA_URL }}cydotcom/images/logoDjango.png" alt="Django" border="0" /></a></li>
+					<li><a href="http://code.google.com/appengine/" target="_blank"><img src="{{ CY_MEDIA_URL }}cydotcom/images/logoGAE.png" alt="Google App Engine" border="0" /></a></li>
+					<!--<li><a href="http://www.prototypejs.org" target="_blank"><img src="{{ CY_MEDIA_URL }}cydotcom/images/logoPrototypeJS.png" alt="Prototype.js" border="0" /></a></li>-->
+					<li><a href="http://www.jquery.com" target="_blank"><img src="{{ CY_MEDIA_URL }}cydotcom/images/logojQuery.png" alt="jQuery" border="0" /></a></li>
+				</ul>
+				<div style="clear: both;"></div>
+			</div>
+			<div id="copyright">Copyright &copy; 2001 - {{ year }} Chris Yap, All Rights Reserved</div>
+		</div>
+		
+		<!-- BEGIN FOOTER JS -->
+		<script type="text/javascript" charset="utf-8">
+			var cy = {
+				'appVars': {
+					'mediaUrl': '{{ MEDIA_URL}}'
+				}
+			};
+		</script>
+		<script type="text/javascript" src="{{ MEDIA_URL }}combined.js"></script>
+		{% block jsSRC %}{% endblock %}
+		<script type="text/javascript" charset="utf-8">
+			var cyc = new cy.CYController();
+			{% if isMobile %}
+				cy.appVars.isMobile = true;
+			{% else %}
+				cy.appVars.isMobile = false;
+			{% endif %}
+			
+			$(document).ready(function() {
+		        {% block js %}{% endblock %}
+		        Shadowbox.init({
+                    'overlayOpacity': 0.8
+    			});
+			});
+			
+		</script>
+		<!-- END FOOTER JS -->
+		
+		<!-- BEGIN GOOGLE ANALYTICS -->
+		<script type="text/javascript">
+			var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+			document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+		<script type="text/javascript">
+			try {
+				var pageTracker = _gat._getTracker("UA-11792387-1");
+				pageTracker._setDomainName(".chrisyap.com");
+				pageTracker._trackPageview();
+			} catch(err) {}
+		</script>
+		<!-- END GOOGLE ANALYTICS -->
+	</body>
+</html>

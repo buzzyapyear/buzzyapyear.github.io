@@ -1,0 +1,36 @@
+/* LAYOUT */
+
+div#siteWrapper {
+	margin-left: 0px;
+}
+
+div#initLoadingDiv {
+	margin-left: 8px;
+}
+
+div#tagline {
+	top: 15px;
+}
+
+ul#nav {
+	top: 65px;
+}
+
+ul#nav li {
+	cursor: hand;
+}
+
+
+/* FONT STYLES */
+
+h1.line2 {
+	margin: -15px 0 0 2px;
+}
+
+div#contentPortfolio li a {
+	text-decoration: none !important;
+}
+
+a.contactSubmit {
+	padding: 5px 8px 14px 5px !important;
+}

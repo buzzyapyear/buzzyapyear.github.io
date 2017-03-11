@@ -1,0 +1,181 @@
+/* begin reset */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+:focus {
+	outline: 0;
+}
+body {
+	/*line-height: 1.4em;*/
+}
+ol, ul {
+	list-style: none;
+}
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+caption, th, td {
+	text-align: left;
+	font-weight: normal;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: "";
+}
+blockquote, q {
+	quotes: "" "";
+}
+
+body,ul,li,div,p { 
+	font-family: Arial, Helvetica, Sans-Serif; 
+}
+
+/* end reset */
+
+/* begin main */
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1.2em;
+}
+
+div.clearer {
+	clear: both;
+}
+
+#wrapper {
+	/*width:70em;
+		margin:auto;*/
+	text-align:left;
+	/*padding: 1.4em;*/
+}
+
+a {
+	color: #000000;
+}
+
+a:link, a:visited {
+	text-decoration: none;
+}
+
+a:hover, a:active {
+	text-decoration: underline;
+}
+
+a:active {
+	color: #000000;
+}
+
+h1 {
+	font-size: 1.4em;
+	font-weight: bold;
+}
+
+h2 {
+	font-size: 1em;
+}	
+
+div.module {
+	margin-top: 1.4em;
+	font-size: .7em;
+	line-height: 1.4em;
+}
+
+h3 {
+	margin: 1em 0em;
+	padding: .2em 0em;
+	border-bottom: 1px solid #000000;
+	letter-spacing: .2em;
+	font-weight: bold;
+}
+
+h4 {
+	font-weight: bold;
+}
+
+img#headerLogo {
+	/*float: left;
+		margin-top: .4em;
+		margin-right: .6em;*/
+	display: none;
+}
+
+div#headerInfo {
+	/*float: left;*/
+}
+
+div#headerPrint {
+	/*float: right;
+		text-align: center;
+		font-size: .7em;
+		margin-top: 1.2em;*/
+	display: none;
+}
+
+div#contactInfo {
+	font-size: .7em;
+}
+
+div#contactInfo a {
+	text-decoration: underline;
+}
+
+ul.bullets {
+	list-style: disc;
+	padding-left: 2em;
+	float: none;
+	/*width: 90% !important;*/
+}
+
+div#skills li {
+	/*float: left;
+		width: 30%;
+		padding-right: 1.4em;*/
+	margin-bottom: 1em;
+}
+
+div#experience ul {
+	margin-bottom: 1em;
+	/*float: left;
+		width: 30%;
+		padding-right: 1.4em;*/
+}
+
+div#experience li.title {
+	font-weight: bold;
+}
+
+div#experience li.url,
+div#experience span.url
+{
+	text-decoration: underline;
+}
+
+div#experience li.description {
+	margin-top: .7em;
+}
+
+div#footer {
+	display: none;
+}
+
+/* end main */
+
+

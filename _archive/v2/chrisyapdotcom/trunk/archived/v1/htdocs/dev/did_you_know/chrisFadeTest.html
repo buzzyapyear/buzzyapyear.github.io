@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+	<title>content swap test</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript">
+
+if(window.screen.Width<900)
+{
+document.write('<td height="270" align="center" valign="top">');
+}
+else
+{
+document.write('<td height="270" align="center" valign="top">');
+}
+</script> <script language="JavaScript1.2">
+
+
+
+//function to change content
+
+// colorfade() partially by Marcio Galli for Netscape Communications.  ////////////
+// Modified by Dynamicdrive.com
+
+frame=20;
+hex=255  // Initial color value.
+
+function colorfade() {	         	
+	// 20 frames fading process
+	if(frame>0) {	
+		hex-=12; // increase color value
+		document.getElementById("fscroller").style.color="rgb("+hex+","+hex+","+hex+")"; // Set color value.
+		frame--;
+		setTimeout("colorfade()",20);	
+	}
+	else{
+		document.getElementById("fscroller").style.color="rgb(0,0,0)";
+		frame=20;
+		hex=255
+	}   
+}
+
+
+
+window.onload=colorfade
+</script> 
+
+<br>
+
+<div id="fscroller">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nunc in nisi sit amet odio facilisis convallis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec rhoncus magna sed metus. Praesent pharetra justo at augue. Suspendisse tincidunt rutrum libero. Sed porttitor nisi sed lectus. Vestibulum elementum, arcu et rhoncus fringilla, metus turpis varius neque, ut viverra erat eros ut enim. Aliquam erat volutpat. Pellentesque condimentum auctor felis. Nam lacus. Aliquam augue. Aliquam erat volutpat.</div>
+
+</body>
+</html>

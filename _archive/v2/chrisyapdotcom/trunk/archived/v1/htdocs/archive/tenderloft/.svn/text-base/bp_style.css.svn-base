@@ -1,0 +1,185 @@
+P {
+
+   font-family: Tahoma, sans-serif; 
+
+   color:#cccccc; 
+
+   FONT-SIZE:12px; 
+
+   LETTER-SPACING:0px; 
+
+   text-decoration:none;
+
+   }
+
+.title {
+
+   font-family: Tahoma, sans-serif; 
+
+   color:#cccccc; 
+
+   FONT-SIZE:12px;
+   
+   FONT-WEIGHT:bold; 
+
+   LETTER-SPACING:0px; 
+
+   text-decoration:none;
+
+   }
+
+.news {
+
+   font-family: Tahoma, sans-serif; 
+
+   color:#66cc00; 
+
+   FONT-SIZE:12px; 
+
+   LETTER-SPACING:0px; 
+
+   line-height:12px; 
+
+   text-decoration:none;
+
+   }
+
+   
+
+.rightnav {
+
+   font-family: Tahoma, sans-serif; 
+
+   color:#333333; 
+
+   FONT-SIZE:11px; 
+
+   LETTER-SPACING:0px; 
+
+   line-height:11px; 
+
+   text-decoration:none;
+
+   }
+
+
+
+.rightnavselect {
+
+   font-family: Tahoma, sans-serif; 
+
+   color:#66cc00; 
+
+   FONT-SIZE:11px; 
+
+   LETTER-SPACING:0px; 
+
+   line-height:11px; 
+
+   text-decoration: underline;
+
+   }
+
+   
+
+a {
+
+   font-family: Tahoma, sans-serif; 
+
+   color:#6699ff; 
+
+   FONT-SIZE:12px; 
+
+   LETTER-SPACING:0px; 
+
+   text-decoration:none;
+
+   }
+
+
+
+   
+
+a:hover {
+
+   font-family: Tahoma, sans-serif; 
+
+   color:#ffcc33; 
+
+   FONT-SIZE:12px; 
+
+   LETTER-SPACING:0px; 
+
+   text-decoration: underline;
+
+   }
+
+   
+
+.rightnavlink {
+
+   font-family: Tahoma, sans-serif; 
+
+   color:#003366; 
+
+   FONT-SIZE:11px; 
+
+   LETTER-SPACING:0px; 
+
+   line-height:11px; 
+
+   text-decoration:none;
+
+   }
+
+
+
+.rightnavlink:hover {
+
+   font-family: Tahoma, sans-serif; 
+
+   color:#66cc00; 
+
+   FONT-SIZE:11px; 
+
+   LETTER-SPACING:0px; 
+
+   line-height:11px; 
+
+   text-decoration: underline;
+
+   }
+
+
+
+.newslink {
+
+   font-family: Tahoma, sans-serif; 
+
+   color:#99ccff; 
+
+   FONT-SIZE:12px; 
+
+   LETTER-SPACING:0px; 
+
+   text-decoration:none;
+
+   }
+
+
+
+   
+
+.newslink:hover {
+
+   font-family: Tahoma, sans-serif; 
+
+   color:#ffcc33; 
+
+   FONT-SIZE:12px; 
+
+   LETTER-SPACING:0px; 
+
+   text-decoration: underline;
+
+   }

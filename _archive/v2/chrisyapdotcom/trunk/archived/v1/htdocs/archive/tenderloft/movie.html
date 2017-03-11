@@ -1,0 +1,127 @@
+<html>
+
+<head>
+
+<title>tenderloft</title>
+
+
+
+<script type="text/javascript" language="JavaScript">
+
+// OPEN IN A NEW SIZED WINDOW
+
+
+
+                function openWindow(url) {
+
+                popupWin = window.open(url, 'mainwindow',
+
+'scrollbars=yes,resizable=yes,toolbar=yes,width=400,height=400,left=10,top=10,screenX=10,screenY=10')
+
+                }
+
+
+
+
+
+
+
+// PRELOAD ROLLOVER IMAGES 
+
+var base = "../../images/";
+
+        if (document.images) {
+
+
+
+//  home nav links
+
+				home_on = new Image(); home_on.src = base + "home_on.gif";
+
+                home_off = new Image(); home_off.src = base + "home_off.gif";
+
+                
+
+                audio_on = new Image(); audio_on.src = base + "audio_on.gif";
+
+                audio_off = new Image(); audio_off.src = base + "audio_off.gif";
+
+                
+
+                visual_on = new Image(); visual_on.src = base + "visual_on.gif";
+
+                visual_off = new Image(); visual_off.src = base + "visual_off.gif";
+
+                
+
+                contact_on = new Image(); contact_on.src = base + "contact_on.gif";
+
+                contact_off = new Image(); contact_off.src = base + "contact_off.gif";
+
+
+
+}
+
+
+
+//  SHOWS CURRENT ROLLOVER
+
+function imgOn(imgName) {
+
+        if (document.images) {
+
+        document[imgName].src = eval(imgName + "_on.src");
+
+        }
+
+}
+
+
+
+// HIDES ROLLOVER
+
+function imgOff(imgName) {
+
+if (document.images) {
+
+        document[imgName].src = eval(imgName + "_off.src");
+
+        }
+
+}
+
+
+
+
+</script>
+
+<LINK REL="stylesheet" HREF="bp_style.css" TYPE="text/css" MEDIA="screen">
+
+
+
+</head>
+
+<body bgcolor="#666666" leftmargin="3" topmargin="3" marginwidth="0" marginheight="0">
+
+
+
+<p>
+
+What: "The Graduate" + mystery bonus<br><br>
+
+When: 03.15.02 : DJ's 7pm-8:30pm : Movie 8:30pm-10:30pm<br><br>
+
+email <a href="mailto:info@tenderloft.org">info@tenderloft.org</a> for more information
+</p>
+
+<!--<img src="images/flyer/3.15.02.gif" border="1">-->
+
+
+
+
+
+</body>
+
+
+
+</html>

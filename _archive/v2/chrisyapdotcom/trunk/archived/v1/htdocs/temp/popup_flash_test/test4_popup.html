@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>test popup</title>
+<script type="text/javascript">
+	function resize() {
+	var currentWidth;
+	var currentHeight;
+	var desiredWidth = 350;
+	var desiredHeight = 350;
+	if (parseInt(navigator.appVersion)>3) {
+		if (navigator.appName=="Netscape") {
+			currentWidth = window.innerWidth-16;
+			currentHeight = window.innerHeight-16;
+		}
+		if (navigator.appName.indexOf("Microsoft")!=-1) {
+			currentWidth = document.body.offsetWidth-20;
+			currentHeight = document.body.offsetHeight-20;
+		}
+	}
+	this.resizeTo(desiredWidth,desiredHeight);
+	this.moveTo(0,0);
+}
+
+</script>
+</head>
+<body bgcolor="#ffffff" onload="resize();">
+
+<p>This is the popup</p>
+<p>jkdsf;kdfklj;sdaf fasdjkl;sadfjasdfkjladsf fadsjkl;adsfjsadfl;jlksad jlkdsajkdfsklsdfaj;kadsf jkladsfjfd;asjdfas jkladsfjkadfs;kljsadf 
+jkfdas;jkfda;sj;dasf dfjk;lasdfjkl;sad fdsjkl;fdsaj dfsajklfd;djfkdasjkl;fdsa afsdjkl;adfsjkl;dafs asdfjkl;dfjkldfsa; adsfjkl;dfjadsf
+dafsjk;fdjfdsl;adsaf fdjkl;fdsajkl;fsa dfasjkl;asdfjdsfa.</p>
+
+</body>
+</html>

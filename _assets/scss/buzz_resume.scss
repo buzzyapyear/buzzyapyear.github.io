@@ -1,34 +1,19 @@
 
 /* begin main */
 
-body {
+body.resume {
 	font-family: 'Source Sans Pro', 'Arial', 'Helvetica', sans-serif;
 	padding-bottom: 40px;
 
 	header {
 		border-bottom: 1px dotted #ccc;
 		padding-bottom: 20px;
-		.masthead {
+		h1 {
 			background: url('/img/logo/logo.png') top left no-repeat;
-			background-size: 64px 64px;
-			height: 64px;
-			padding: 0px 0px 0px 84px;
-			h1 {
-				margin-bottom: 0px;
-			}
-			.contact {
-				li {
-					display: inline-block;
-					margin-left: 10px;
-					&:nth-child(1) {
-						margin-left: 5px;
-					}
-					i.fa {
-						margin-right: 5px;
-					}
-				}
-			}
-			
+			background-size: 50px 50px;
+			height: 50px;
+			padding: 5px 0px 0px 70px;
+			margin-bottom: 0px;
 		}
 	}
 
@@ -36,16 +21,18 @@ body {
 		border-bottom: 1px dotted #ccc;
 		padding-bottom: .5em;
 		text-transform: uppercase;
-		font-size: 1.6em;		
+		font-size: 1.6em;
+		margin-top: 30px;		
 	}
 
 	h3 {
 		font-size: 1.3em;
 		font-weight: bold;
+		margin-top: 10px;
 	}
 
 	section {
-		margin-top: 30px;
+		margin-top: 20px;
 
 		&.jobs {
 			.job {
@@ -73,9 +60,36 @@ body {
 			}
 		}
 
+		&#contact {
+			h2 {
+				margin-bottom: 20px;
+			}
+			ul {
+				li {
+					display: inline-block;
+					margin-left: 10px;
+					&:nth-child(1) {
+						margin-left: 5px;
+					}
+					i.fa {
+						margin-right: 5px;
+					}
+				}
+			}
+		}
+
 		&#education {
 			h2 {
-				margin-bottom: 30px;
+				margin-bottom: 20px;
+			}
+		}
+
+		&#profile {
+			h2 {
+				margin-bottom: 20px;
+			}
+			.progress {
+				margin-bottom: 5px;
 			}
 		}
 	}

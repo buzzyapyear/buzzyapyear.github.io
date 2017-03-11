@@ -1,0 +1,993 @@
+<html>
+
+
+
+<head>
+
+
+
+<title>tenderloft</title>
+
+
+
+<SCRIPT LANGUAGE="javascript1.2" src="formcheck.js"></script>
+
+
+
+<script type="text/javascript" language="JavaScript">
+
+
+
+// OPEN IN A NEW SIZED WINDOW
+
+
+
+
+
+
+
+                function openWindow(url) {
+
+
+
+                popupWin = window.open(url, 'mainwindow',
+
+
+
+'scrollbars=yes,resizable=yes,toolbar=yes,width=400,height=400,left=10,top=10,screenX=10,screenY=10')
+
+
+
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// PRELOAD ROLLOVER IMAGES 
+
+
+
+var base = "../images/";
+
+
+
+        if (document.images) {
+
+
+
+
+
+
+
+//  home nav links
+
+
+
+				home_on = new Image(); home_on.src = base + "home_on.gif";
+
+
+
+                home_off = new Image(); home_off.src = base + "home_off.gif";
+
+
+
+                
+
+
+
+                audio_on = new Image(); audio_on.src = base + "audio_on.gif";
+
+
+
+                audio_off = new Image(); audio_off.src = base + "audio_off.gif";
+
+
+
+                
+
+
+
+                visual_on = new Image(); visual_on.src = base + "visual_on.gif";
+
+
+
+                visual_off = new Image(); visual_off.src = base + "visual_off.gif";
+
+
+
+                
+
+
+
+                contact_on = new Image(); contact_on.src = base + "contact_on.gif";
+
+
+
+                contact_off = new Image(); contact_off.src = base + "contact_off.gif";
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+//  SHOWS CURRENT ROLLOVER
+
+
+
+function imgOn(imgName) {
+
+
+
+        if (document.images) {
+
+
+
+        document[imgName].src = eval(imgName + "_on.src");
+
+
+
+        }
+
+
+
+}
+
+
+
+
+
+
+
+// HIDES ROLLOVER
+
+
+
+function imgOff(imgName) {
+
+
+
+if (document.images) {
+
+
+
+        document[imgName].src = eval(imgName + "_off.src");
+
+
+
+        }
+
+
+
+}
+
+
+// NETSCAPE 4 CSS RESIZE BUG FIX
+function WM_netscapeCssFix() {
+  /*
+    Source: Webmonkey Code Library
+    (http://www.hotwired.com/webmonkey/javascript/code_library/)
+
+    Author: Taylor
+    Author Email: taylor@wired.com
+    Author URL: http://www.taylor.org/
+    */
+
+  // This part was inspired by Matthew_Baird@wayfarer.com
+  // It gets around another unfortunate bug whereby Netscape 
+  // fires a resize event when the scrollbars pop up. This 
+  // checks to make sure that the window's available size 
+  // has actually changed.
+  if (document.WM.WM_netscapeCssFix.initWindowWidth != window.innerWidth || document.WM.WM_netscapeCssFix.initWindowHeight != window.innerHeight) {
+    document.location = document.location;
+  }
+}
+
+function WM_netscapeCssFixCheckIn() {
+  // This function checks to make sure the version of Netscape 
+  // in use contains the bug; if so, it records the window's 
+  // width and height and sets all resize events to be handled 
+  // by the WM_netscapeCssFix() function.
+  if ((navigator.appName == 'Netscape') && (parseInt(navigator.appVersion) == 4)) {
+    if (typeof document.WM == 'undefined'){
+      document.WM = new Object;
+    }
+    if (typeof document.WM.WM_scaleFont == 'undefined') {
+      document.WM.WM_netscapeCssFix = new Object;
+      document.WM.WM_netscapeCssFix.initWindowWidth = window.innerWidth;
+      document.WM.WM_netscapeCssFix.initWindowHeight = window.innerHeight;
+    }
+    window.onresize = WM_netscapeCssFix;
+  }
+}
+
+WM_netscapeCssFixCheckIn()
+
+
+
+
+
+</script>
+
+
+
+<LINK REL="stylesheet" HREF="../bp_style.css" TYPE="text/css" MEDIA="screen">
+
+
+
+
+
+
+
+</head>
+
+
+
+<body bgcolor="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+
+
+
+
+
+
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+
+
+
+<!-- Start Header/Nav Row -->
+
+
+
+<tr>
+
+
+
+<td>
+
+
+
+	<table cellpadding="0" cellspacing="0" border="0">
+
+
+
+	<tr>
+
+
+
+	
+
+
+
+	<td width="47" height="103"><img src="../images/spacer.gif" width="47" height="103"></td>
+
+
+
+	
+
+
+
+	<td width="7" height="103" bgcolor="#cccccc"><img src="../images/spacer.gif" width="7" height="103"></td>
+
+
+
+	
+
+
+
+	<td width="431" height="103" bgcolor="#666666">
+
+
+
+		
+
+
+
+		<table cellpadding="0" cellspacing="0" border="0">
+
+
+
+		
+
+
+
+			<tr>
+
+
+
+			<td width="431" height="33"><img src="../images/spacer.gif" width="431" height="33"></td>
+
+
+
+			</tr>
+
+
+
+			
+
+
+
+			<tr>
+
+
+
+			<td width="431" height="26"><img src="../images/beatpusher_h.gif" width="431" height="26" border="0"></td>
+
+
+
+			</tr>
+
+
+
+			
+
+
+
+			<tr>
+
+
+
+			<td width="431" height="21">
+
+
+
+				
+
+
+
+				<table cellpadding="0" cellspacing="0" border="0">
+
+
+
+				<tr>
+
+
+
+				<td width="167" height="21"><img src="../images/spacer.gif" width="167" height="21" border="0"></td>
+
+
+
+				<!-- begin top navigation -->
+
+
+
+				<td width="" height="21" align="left"><img src="../images/spacer.gif" width="103" height="21" border="0"><a href="../index.shtml" onMouseOver="imgOn('home')" onMouseOut="imgOff('home')"><img src="../images/home_off.gif" name="home" width="51" height="21" border="0"></a><img src="../images/nav_dash.gif" width="11" height="21"> <!-- <a href="../audio/index.html" onMouseOver="imgOn('audio')" onMouseOut="imgOff('audio')"><img src="../images/audio_off.gif" name="audio" width="45" height="21" border="0"></a><img src="../images/nav_dash.gif" width="11" height="21"><a href="../visual/index.html" onMouseOver="imgOn('visual')" onMouseOut="imgOff('visual')"><img src="../images/visual_off.gif" name="visual" width="47" height="21" border="0"></a><img src="../images/nav_dash.gif" width="11" height="21"> --> <a href="index.html"><img src="../images/contact_on.gif" name="contact" width="62" height="21" border="0"></a></td>
+
+
+
+				<!-- end top navigation -->
+
+
+
+				</tr>
+
+
+
+				</table>
+
+
+
+				
+
+
+
+			</td>
+
+
+
+			</tr>
+
+
+
+			
+
+
+
+			<tr>
+
+
+
+			<td width="431" height="24"><img src="../images/spacer.gif" width="431" height="24" border="0"></td>
+
+
+
+			</tr>
+
+
+
+		
+
+
+
+		</table>
+
+
+
+		
+
+
+
+	</td>
+
+
+
+	
+
+
+
+	<td width="235" height="103"><img src="../images/carnation.gif" width="235" height="103" border="0"></td>
+
+
+
+	
+
+
+
+	</tr>
+
+
+
+	
+
+
+
+	
+
+
+
+	<tr>
+
+
+
+	<td width="47" height="52"><img src="../images/spacer.gif" width="47" height="52" border="0"></td>
+
+
+
+	<td width="438" height="52" colspan="2"><img src="../images/lines.gif" width="438" height="52" border="0"></td>
+
+
+
+	<td width="235" height="52"><img src="../images/spacer.gif" width="235" height="52" border="0"></td>
+
+
+
+	</tr>
+
+
+
+	
+
+
+
+	</table>
+
+
+
+</td>
+
+
+
+</tr>
+
+
+
+<!-- End Header/Nav Row -->
+
+
+
+
+
+
+
+<!-- Start Main Body Row -->
+
+
+
+<tr>
+
+
+
+<td height="330" bgcolor="#006699">
+
+
+
+	<table cellpadding="0" cellspacing="0" border="0">
+
+
+
+
+
+
+
+	<tr>
+
+
+
+	<td width="8" height="330" bgcolor="#cccccc"><img src="../images/spacer.gif" width="8" height="330"></td>
+
+
+
+	<td width="40" height="330" bgcolor="#006699"><img src="../images/spacer.gif" width="40" height="330"></td>
+
+
+
+	<td width="715" height="330" bgcolor="#006699" align="left">
+
+
+
+		<table cellpadding="0" cellspacing="0" border="0">
+
+
+
+		<tr>
+
+
+
+		<td width="715" height="6" colspan="5"><img src="../images/spacer.gif" width="715" height="6" border="0"></td>
+
+
+
+		</tr>
+
+
+
+		
+
+
+
+		<tr>
+
+
+
+		<td width="187" height="317"><img src="../images/box_left_dj.gif" width="187" height="317" border="0"></td>
+
+
+
+		
+
+
+
+		<td width="5" height="317" bgcolor="#666666"><img src="../images/spacer.gif" width="5" height="317"></td>
+
+
+
+		<!-- begin content window -->
+
+
+
+		<td width="331" height="317" bgcolor="#666666" valign="top">
+
+
+
+			<table cellpadding="0" cellspacing="0" border="0">
+
+
+
+			<tr>
+
+
+
+			<td width="331" height="5"><img src="../images/spacer.gif" width="331" height="5"></td>
+
+
+
+			</tr>
+
+
+
+			<tr>
+
+
+
+			<td>
+
+
+
+	
+
+
+
+	<table border="0" cellpadding="4" cellspacing="0" width="331">
+
+
+
+	
+
+
+
+	<tr>
+
+
+
+	<form method="post" action="http://www.entercomm.com/cgi-bin/entercomm/webmail.cgi" OnSubmit="return checkForInfo(this,'name,email,recipient')">
+
+
+
+	<input type="hidden" name="subject" value="Tenderloft Contact Form">
+
+
+
+	<input type=hidden name="redirect" value="http://www.tenderloft.org/contact/thanks.html">
+
+
+
+	<input type=hidden name="recipient" value="contact@tenderloft.org">
+
+
+
+	<td class="text" align="right">&nbsp;</td>
+
+
+
+	<td class="text" colspan="3"><p>&nbsp;</p></td>
+
+
+
+	</tr>
+
+
+
+
+
+
+
+	<tr>
+
+
+
+	<td class="text" align="right"><p>who dat?</p></td>
+
+
+
+	<td colspan="3"><input TYPE="text" size="35" name="name"></td>
+
+
+
+	</tr>
+
+
+
+
+
+
+
+	<tr>
+
+
+
+	<td class="text" align="right"><p>e-mail</p></td>
+
+
+
+	<td colspan="3"><input  type="text" size="35" name="email"></td>
+
+
+
+	</tr>
+
+
+
+
+
+
+
+	<tr>
+
+
+
+	<td class="text" valign="top" align="right"><p>que pasa?</p></td>
+
+
+
+	<td colspan="3"><textarea rows="6" cols="30" name="comments"></textarea></td>
+
+
+
+	</tr>
+
+
+
+
+
+
+
+	<tr>
+
+
+
+	<td colspan="4" align="right"><input type="submit" name="Submit" value="Send">&nbsp;&nbsp;</td>
+
+
+
+	</form>
+
+
+
+	</tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+			</td>
+
+
+
+			</tr>	
+
+
+
+			</table>
+
+
+
+		</td>
+
+
+
+		<!-- end content window -->
+
+
+
+		<td width="5" height="317" bgcolor="#666666"><img src="../images/spacer.gif" width="5" height="317"></td>
+
+
+
+		
+
+
+
+		<!-- begin 2ndary nav -->
+
+
+
+		<td width="187" height="317" valign="top">
+
+
+
+			<table cellpadding="0" cellspacing="0" border="0">
+
+
+
+			<tr>
+
+
+
+			<td width="7" height="317"><img src="../images/box_right_dots.gif" width="7" height="317"></td>
+
+
+
+			<td width="180" height="317">
+
+
+
+				<table cellpadding="0" cellspacing="0" border="0">
+
+
+
+				<tr>
+
+
+
+				<td width="180" height="84"><img src="../images/box_right_top.gif" width="180" height="84" border="0"></td>
+
+
+
+				</tr>
+
+
+
+				
+
+
+
+				<tr>
+
+
+
+				<td width="180" height="233" bgcolor="#cccccc" valign="top">
+
+
+
+					<table cellpadding="0" cellspacing="0" border="0">
+
+
+
+					<tr>
+
+
+
+					<td>
+
+
+
+					<p class="rightnav">&nbsp;
+
+
+
+					</p>
+
+
+
+					</td>
+
+
+
+					</tr>
+
+
+
+					</table>
+
+
+
+				</td>
+
+
+
+				</tr>
+
+
+
+				</table>
+
+
+
+			</td>
+
+
+
+			</tr>
+
+
+
+			</table>
+
+
+
+		</td>
+
+
+
+		<!-- end 2ndary nav -->
+
+
+
+		</tr>
+
+
+
+		
+
+
+
+		<tr>
+
+
+
+		<td width="715" height="7" colspan="5"><img src="../images/spacer.gif" width="715" height="7" border="0"></td>
+
+
+
+		</tr>
+
+
+
+		</table>
+
+
+
+	</td>
+
+
+
+	
+
+
+
+	
+
+
+
+	
+
+
+
+	</tr>
+
+
+
+	</table>
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+
+
+</tr>
+
+
+
+<!-- End Main Body Row -->
+
+
+
+
+
+
+
+<tr>
+
+
+
+<td width="1" height="10"><img src="images/spacer.gif" width="1" height="10" border="0"></td>
+
+
+
+</tr>
+
+
+
+<tr>
+
+
+
+<td><p>Site by <a href="mailto:yap@freebeats.org">Yap</a></p></td>
+
+
+
+</tr>
+
+
+
+</table>
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+</html>

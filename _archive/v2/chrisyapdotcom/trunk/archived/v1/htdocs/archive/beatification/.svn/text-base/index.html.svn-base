@@ -1,0 +1,88 @@
+<html>
+
+<head>
+
+<title>The Beatification of the Beat</title>
+
+<style>
+body
+{
+	background-color : #000000;
+	font-family: 'Verdana, Arial',sans-serif;
+	font-size: 11px;
+	color: #2AFF00;
+	font-weight: bold;
+	line-height: 14px;
+}
+
+p
+{
+	font-family: 'Verdana, Arial',sans-serif;
+	font-size: 11px;
+	color: #2AFF00;
+	font-weight: bold;
+	line-height: 14px;
+}
+
+a:link
+{
+	font-family: 'Verdana, Arial',sans-serif;
+	font-size: 11px;
+	color: #87BBFF;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a:visited
+{
+	font-family: 'Verdana, Arial',sans-serif;
+	font-size: 11px;
+	color: #87BBFF;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a:active
+{
+	font-family: 'Verdana, Arial',sans-serif;
+	font-size: 11px;
+	color: #B8D8FF;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+a:hover
+{
+	font-family: 'Verdana, Arial',sans-serif;
+	font-size: 11px;
+	color: #B8D8FF;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+
+</style>
+
+ 	<SCRIPT language="JavaScript">
+
+      <!--
+
+                function openWindow(url) {
+
+                popupWin = window.open('', 'mainwindow', 'scrollbars=no,resizable=no,toolbar=no,width=800,height=585,left=10,top=10,screenX=10,screenY=10');
+
+	 popupWin.location=url;                }
+
+                // -->
+
+    </SCRIPT>
+
+</head>
+
+<body bgcolor="#333333" onLoad="javascript:openWindow('unit.html');" leftmargin="20" topmargin="20" marginwidth="20" marginheight="20">
+
+<p>This site launches in a popup window.  If you have popup blocking enabled, <a href="javascript:openWindow('unit.html');"> click here to view the event info</a>.
+
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>Christopher S. Yap | Online Portfolio | {% block title %}{% endblock %}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="description" content="The online portfolio of Chris Yap." />
+	<meta name="keywords" content="Website Design, Interactive Design, Interaction Design, web developer, web designer, html, css, javascript, xhtml, dhtml, ajax, django, python, rails, ruby, php, jsp, teamsite, DJ, techno, electronic music, Chris Yap, Christopher Yap, " />
+	<link rel="icon" href="{{ CY_MEDIA_URL }}cydotcom/images/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="{{ CY_MEDIA_URL }}cydotcom/images/favicon.ico" type="image/x-icon">
+	<!-- BEGIN STYLES -->
+	<link rel="stylesheet" type="text/css"  media="screen, projection" href="{{ MEDIA_URL }}combinedMobile.cy2.0.css" />
+	{% block styles %}{% endblock %}
+	<!-- END STYLES -->
+	<!-- BEGIN HEAD JS -->
+	<script src="http://www.google.com/jsapi"></script>
+	<script type="text/javascript" charset="utf-8">
+		google.load("jquery", "1.4.4");
+	</script>
+	<script src="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.js"></script>
+	<!-- END HEAD JS -->
+</head> 
+<body{% if isMobile %} class="{{ mobileType }}"{% endif %}> 
+	
+	<div data-role="page" data-theme="a">
+
+		{% block header %}{% endblock %}
+
+		<div data-role="content">
+			{% block content %}
+				
+			{% endblock %}
+		</div>
+
+		<div id="footer">
+			{% block footerNav %}{% endblock %}
+			<div id="poweredBy">
+				<h1>Powered by</h1>
+				<ul>
+					<li><a href="http://www.djangoproject.com" target="_blank"><img src="{{ CY_MEDIA_URL }}cydotcom/images/logoDjango.png" alt="Django" border="0" /></a></li>
+					<li><a href="http://code.google.com/appengine/" target="_blank"><img src="{{ CY_MEDIA_URL }}cydotcom/images/logoGAE.png" alt="Google App Engine" border="0" /></a></li>
+					<!--<li><a href="http://www.prototypejs.org" target="_blank"><img src="{{ CY_MEDIA_URL }}cydotcom/images/logoPrototypeJS.png" alt="Prototype.js" border="0" /></a></li>-->
+					<li><a href="http://www.jquery.com" target="_blank"><img src="{{ CY_MEDIA_URL }}cydotcom/images/logojQuery.png" alt="jQuery" border="0" /></a></li>
+				</ul>
+				<div style="clear: both;"></div>
+			</div>
+			<div id="copyright">Copyright &copy; 2001 - {{ year }} Chris Yap, All Rights Reserved</div>
+		</div>
+	</div>
+	
+	<!-- BEGIN FOOTER JS -->
+	<script type="text/javascript" charset="utf-8">
+		var cy = {
+			'appVars': {
+				'mediaUrl': '{{ MEDIA_URL}}',
+				'isMobile': true
+			}
+		};
+	</script>
+	<script type="text/javascript" src="{{ MEDIA_URL }}combined.js"></script>
+	{% block jsSRC %}{% endblock %}
+	<script type="text/javascript" charset="utf-8">
+		var cyc = new cy.CYController();
+		$(document).ready(function() {
+	        {% block js %}{% endblock %}
+		});
+	</script>
+	<!-- END FOOTER JS -->
+	
+</body>
+</html>

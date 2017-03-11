@@ -1,0 +1,7 @@
+RewriteEngine on
+#RewriteOptions MaxRedirects=3
+RewriteRule ^home /index.html
+RewriteRule ^portfolio /index.html
+RewriteRule ^resume /index.html
+RewriteRule ^audio /index.html
+RewriteRule ^contact /index.html

@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title>4sale</title>
+	<style type="text/css">
+		body { background-color: #333333; text-align: center; font-family: 'Lucida Grande', Verdana, Arial, sans-serif; font-size: 12px; margin-top: 20px; margin-bottom: 20px; line-height: 18px; }
+		h2 { font-size: 14px; font-weight: bold; }
+		div#container { margin: 0 auto; width: 700px; border: 15px solid #999999; padding: 20px; text-align: left; background-color: #FFFFFF; color: #333333; }
+		div.saleItem { padding: 10px 20px 10px 20px; margin-top: 10px; margin-bottom: 10px; background-color: #e7e7e7;}
+		div.saleItem img { margin-right: 10px; }
+		a:link, a:visited { font-size: 12px; color: #333333; text-decoration: underline; }
+		a:hover, a:active { font-size: 12px; color: #33ccff; text-decoration: underline; }
+	</style>
+	<link rel="stylesheet" href="/css/lightbox.css" type="text/css" media="screen" />
+	<script type="text/javascript" src="/js/prototype.js"></script>
+	<script type="text/javascript" src="/js/scriptaculous.js?load=effects"></script>
+	<script type="text/javascript" src="/js/lightbox.js"></script>
+</head>
+
+<body>
+	<div id="container">
+
+		<h2>Thanks for looking!  We have the following items for sale.<br /><br />Click on any of the images for larger view.<br /><br />Email dj_yap@hotmail.com if interested.</h2>
+
+		<div class="saleItem">
+			<p><a href="xbox.jpg" rel="lightbox"><img src="xbox_thumb.jpg" width="100" height="75" alt="" align="left" /></a><strong>XBOX 1st gen | SOLD</strong><br />Lightly used, great condition, been kept safely in one place since buying new, and only used by adults, no kids. Will include 2 controllers, but have others in perfect condition that I can throw in for $5 a piece. I will also include Halo 2, and have a bunch of other games, which are negotiable. </p>
+		</div>
+		
+		<div class="saleItem">
+			<p><a href="dvdplayer.jpg" rel="lightbox"><img src="dvdplayer_thumb.jpg" width="100" height="75" alt="" align="left" /></a><strong>Sony DVP S300 DVD Player | $25</strong><br />Several years old but it's playing great still.  In addition to the standard composite and RCA outs, it does Dolby 5.1 surround with a coaxial digital output or optical, and has S-Video out.<br /><br /></p>
+		</div>
+
+		<div class="saleItem">
+			<p><a href="tv.jpg" rel="lightbox"><img src="tv_thumb.jpg" width="100" height="75" alt="" align="left" /></a><strong>27" Sharp TV | SOLD</strong><br />Several years old, lightly used, great condition, with remote, all plug-ins working great.  Accepts S-Video in and has ports in the front and back.<br /><br /></p>
+		</div>
+		
+		<div class="saleItem">
+			<p><strong>Da-lite Model B w/ CSR Projector Screen | $125</strong><br />Dimensions are 67"x50" (4:3 NTSC aspect ratio) High Contrast Matte White.  Great for a home theater!  Like new, excellent condition.  Product info is here: <a href="http://www.dalite.com/products/product.php?cID=9&pID=228" target="_blank">http://www.dalite.com/products/product.php?cID=9&pID=228</a><br /><a href="screen1.jpg" rel="lightbox"><img src="screen1_thumb.jpg" width="100" height="75" alt="" /></a><a href="screen2.jpg" rel="lightbox"><img src="screen2_thumb.jpg" width="100" height="75" alt="" /></a></p>
+		</div>
+	
+	
+	</div>
+</body>
+</html>

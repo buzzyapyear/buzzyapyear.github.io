@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block styles %}{% endblock %}
+{% block content %}
+<ul>
+	<li class="module hero">
+		<h1>Hello.</h1>
+		<p>I am a San Francisco-based <a href="/work/">designer and developer</a>, working primarily in web technologies.  I've been at it since 1999 and have loved almost every minute of it.</p>
+		<p>I am also a lifelong musician, and have worked with a variety of mediums.  I have experience in classical music, having studied the violin for 20 years and the piano for 12 years.  Since 1996 I've also been a <a href="/music/">DJ</a> working with electronic music.  I have also worked on a variety of <a href="/music/">original productions and projects</a>.
+	</li>
+</ul>
+
+<span id="flickrContainer">
+	<ul></ul>
+	{% if isMobile %}
+		<div style="clear: both;"></div>
+	{% endif %}
+</span>
+<span id="tumblrContainer">
+	<ul></ul>
+</span>
+
+{% endblock %}
+{% block jsSRC %}{% endblock %}
+{% block js %}
+	var flickrOptions = {
+		{% if isMobile %}
+			'itemsToShow': 4
+		{% endif %}
+	};
+       cyc.embedFlickr(flickrOptions);
+       cyc.embedTumblr();
+{% endblock %}

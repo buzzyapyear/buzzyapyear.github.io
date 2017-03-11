@@ -1,0 +1,116 @@
+/* 
+   Styles for scrolling layers Specify width and height in hold and wn, and in clip for wn 
+*/
+div#hold	{ 
+	position:relative; overflow:hidden;
+	width:238px; height:105px; 
+  z-index:100; 
+	}
+div#wn	{ 
+	position:absolute; 
+	left:0px; top:0px; 
+	width:238px; height:105px; 
+	clip:rect(0px, 238px, 105px, 0px); 
+	overflow:hidden;	
+	z-index:1; 
+	}
+div.content { 
+	position:absolute; visibility:hidden;
+	left:0px; top:0px; 
+	z-index:1; 
+	}
+
+/* Set small font-size or size/position of div's will be off in some browsers  */
+div#scrollbar { 
+  position:relative; left:0; top:0;
+  width:8px; height:105px; 
+  font-size:1px; z-index:1;
+  }
+div#track { 
+  position:absolute; left:1px; top:8px;
+  width:8px; height:90px;
+  /*background: url("images/track.gif") #336 repeat;*/
+  z-index:1;
+  }
+div#dragBar {
+  position:absolute; left:5px; top:1px;
+  width:5px; height:20px;
+  background-color:#757575;
+  z-index:1;
+  }  
+div#up { position:absolute; left:0; top:0; z-index:2 }  
+div#down { position:absolute; left:0; bottom:0; z-index:3 }  
+
+/* for second scroller */
+
+div#hold2 { 
+	position:relative; overflow:hidden;
+	width:463px; height:278px; 
+  z-index:200; 
+	}
+div#wn2	{ 
+	position:absolute; 
+	left:0px; top:0px; 
+	width:463px; height:278px; 
+	clip:rect(11px, 463px, 267px, 0px); 
+	overflow:hidden;	
+	z-index:1; 
+	}
+
+div#scrollbar2 { 
+  position:relative; left:0; top:0;
+  width:8px; height:256px; 
+  font-size:1px; z-index:1;
+  }
+div#track2 { 
+  position:absolute; left:1px; top:8px;
+  width:8px; height:241px;
+  z-index:1;
+  }
+div#dragBar2 {
+  position:absolute; left:5px; top:1px;
+  width:5px; height:20px;
+  background-color:#757575;
+  z-index:1;
+  }  
+div#up2 { position:absolute; left:0; top:0; z-index:2 }  
+div#down2 { position:absolute; left:0; bottom:0; z-index:3 }  
+
+
+/* for third scroller */
+
+div#hold3 { 
+	position:relative; overflow:hidden;
+	width:705px; height:265px; 
+  	z-index:300; 
+}
+div#wn3	{ 
+	position:absolute; 
+	left:0px; top:0px; 
+	width:705px; height:265px; 
+	clip:rect(11px, 705px, 255px, 0px); 
+	overflow:hidden;	
+	z-index:1; 
+}
+
+div#scrollbar3 { 
+  position:relative; left:0; top:0;
+  width:8px; height:256px; 
+  font-size:1px; z-index:1;
+  }
+div#track3 { 
+  position:absolute; left:1px; top:8px;
+  width:8px; height:241px;
+  z-index:1;
+  }
+div#dragBar3 {
+  position:absolute; left:5px; top:1px;
+  width:5px; height:20px;
+  background-color:#757575;
+  z-index:1;
+  }  
+div#up3 { position:absolute; left:0; top:0; z-index:2 }  
+div#down3 { position:absolute; left:0; bottom:0; z-index:3 }  
+
+
+a img { border:none }
