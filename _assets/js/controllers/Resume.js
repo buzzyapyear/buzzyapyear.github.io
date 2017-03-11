@@ -13,8 +13,6 @@ buzz.buzzApp.controller('ResumeCtrl', ['$scope', '$timeout', function($scope, $t
 
     $scope.initProfileChart = function() {
 
-        console.log('chart');
-
         var ctx = $('#profile-chart');
         var options = {
             animation:{
@@ -45,8 +43,8 @@ buzz.buzzApp.controller('ResumeCtrl', ['$scope', '$timeout', function($scope, $t
                     backgroundColor: [
                         '#3498DB',
                         '#E74C3C',
-                        '#33ccff',
-                        '#2C3E50'
+                        '#2C3E50',
+                        '#EB7F00'
                     ],
                     hoverBackgroundColor: [
                         '#666666',
