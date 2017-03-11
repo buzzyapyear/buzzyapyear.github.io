@@ -11,6 +11,9 @@ $brand-2: #3498DB;
 $brand-1: #2980B9;
 
 /* Basic Elements */
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+}
 a {
     color: $brand-1;
     text-decoration: none;
