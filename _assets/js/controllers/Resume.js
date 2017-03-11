@@ -34,8 +34,8 @@ buzz.buzzApp.controller('ResumeCtrl', ['$scope', '$timeout', function($scope, $t
             labels: [
                 'UI Engineer',
                 'UX Designer',
-                'Magician',
-                'Ninja'
+                'Ninja',
+                'Magician'
             ],
             datasets: [
                 {
