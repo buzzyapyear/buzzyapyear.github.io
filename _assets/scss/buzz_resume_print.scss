@@ -1,0 +1,33 @@
+html {
+    height: 100%;
+}
+body.resume {
+    padding-top: 0px;
+    background: none;
+    background-color: #fff;
+    height: 100%;
+
+    header {
+        position: relative;
+        .btn-print {
+            display: none;
+        }
+    }
+    section {
+        &#profile {
+            canvas {
+                display: none !important;
+            }
+            .profile-text {
+                display: block !important;
+            }
+        }
+    }
+    i.fa {
+        display: none;
+    }
+    .list-unstyled {
+        list-style: none;
+        padding-left: 0px;   
+    }
+}

@@ -2,6 +2,7 @@
 /* begin main */
 
 html {
+
 }
 body.resume {
     color: #222;
@@ -26,13 +27,23 @@ body.resume {
 		width: 100%;
 		z-index: 2;
 		background-color: #fff;
-		h1 {
-			background: url('/img/logo/logo.png') top left no-repeat;
-			background-size: 50px 50px;
-			min-height: 50px;
-			padding: 5px 0px 0px 70px;
-			margin-bottom: 0px;
+		.container {
+			position: relative;
+			h1 {
+				background: url('/img/logo/logo.png') top left no-repeat;
+				background-size: 50px 50px;
+				min-height: 50px;
+				padding: 5px 0px 0px 70px;
+				margin-bottom: 0px;
+			}
+			.btn-print {
+				position: absolute;
+				right: 0px;
+				bottom: 5px;
+				text-decoration: none;
+			}
 		}
+		
 	}
 
 	h2 {
@@ -106,8 +117,8 @@ body.resume {
 			h2 {
 				margin-bottom: 20px;
 			}
-			.progress {
-				margin-bottom: 5px;
+			.profile-text {
+				display: none;
 			}
 		}
 	}
