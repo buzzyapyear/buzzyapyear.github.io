@@ -24,7 +24,10 @@ gulp.task('watch', () => {
 });
 
 gulp.task('jekyll', () => {
-    const jekyll = child.spawn('jekyll', ['serve',
+    const jekyll = child.spawn('bundle', [
+        'exec',
+        'jekyll',
+        'serve',
         '--watch',
         '--incremental',
         '--drafts'
