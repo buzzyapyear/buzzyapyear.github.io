@@ -10,7 +10,7 @@ body.resume {
     padding-bottom: 40px;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    
+
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+20,ecf0f1+50 */
 	background: rgba(236,240,241,1); /* Old browsers */
 	background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(255,255,255,1) 10%, rgba(236,240,241,1) 850%); /* FF3.6-15 */
@@ -43,7 +43,7 @@ body.resume {
 				text-decoration: none;
 			}
 		}
-		
+
 	}
 
 	h2 {
@@ -51,7 +51,7 @@ body.resume {
 		padding-bottom: .5em;
 		text-transform: uppercase;
 		font-size: 1.6em;
-		margin-top: 30px;		
+		margin-top: 30px;
 	}
 
 	h3 {
@@ -61,7 +61,7 @@ body.resume {
 	}
 
 	section {
-		margin-top: 20px;
+		margin-top: 30px;
 
 		&.jobs {
 			.job {
@@ -71,23 +71,30 @@ body.resume {
 						color: #666;
 					}
 				}
-				
+
 				.url {
 					i.fa {
 						margin-left: .25em;
 					}
 				}
 			}
-
-			&#ancient-history {
-				.job {
-					font-size: .85em;
-					h3 {
-						font-size: 1.1em;
-					}
-				}
-			}
 		}
+
+        &#ice-breakers {
+            margin-top: 50px;
+            p {
+                font-size: 1.3em;
+            }
+        }
+
+        &#ancient-history {
+            .job {
+                font-size: .85em;
+                h3 {
+                    font-size: 1.1em;
+                }
+            }
+        }
 
 		&#contact {
 			h2 {
@@ -97,6 +104,7 @@ body.resume {
 				li {
 					display: inline-block;
 					margin-left: 10px;
+                    font-size: 1.3em;
 					&:nth-child(1) {
 						margin-left: 5px;
 					}
