@@ -1,19 +1,19 @@
 {
-  "name": "nvns2017",
+  "name": "chrisyap.com",
   "version": "1.0.0",
-  "description": "Website for the Noe Valley Nursery School",
+  "description": "The personal website of Chris Yap",
   "main": "index.html",
   "repository": {
     "type": "git",
-    "url": "git@buzz.github.com:buzzyapyear/nvns2017.git"
+    "url": "git@github.com:buzzyapyear/buzzyapyear.github.io.git"
   },
   "author": "Christopher Yap",
   "license": "MIT",
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-concat": "^2.6.1",
-    "gulp-sourcemaps": "^2.4.1",
-    "gulp-uglify": "^2.0.1",
-    "gulp-util": "^3.0.8"
+    "gulp": "~3.9.1",
+    "gulp-concat": "~2.6.1",
+    "gulp-sourcemaps": "~2.4.1",
+    "gulp-uglify": "~2.0.1",
+    "gulp-util": "~3.0.8"
   }
 }
