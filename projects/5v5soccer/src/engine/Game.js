@@ -409,17 +409,25 @@ export class Game {
 
     // No carrier — check who picks up the loose ball
     const pickupOnCooldown = now < (this._pickupCooldownUntil || 0);
+    if (!pickupOnCooldown) this._lastReleaser = null;
 
     for (const player of this.players) {
       const dist = distance(player, this.ball);
       if (dist < player.radius + this.ball.radius + 4 && this.ball.isOnGround()) {
-        // Pickup cooldown only blocks the AI opponent (team 1), not the human team
-        if (pickupOnCooldown && player.team === 1) continue;
+        // Pickup cooldown blocks AI opponent and the player who just released the ball
+        if (pickupOnCooldown && (player.team === 1 || player === this._lastReleaser)) continue;
         // Respect tackle lock
         if (possessionLocked && player.team !== this.possession) continue;
 
         this.ballCarrier = player;
         this.possession = player.team;
+
+        // Auto-switch control to the teammate who receives the ball
+        // (but not during a cross — let AI finish that)
+        if (player.team === 0 && !player.isActive && !this.crossInFlight) {
+          this.players.forEach(p => p.isActive = false);
+          player.isActive = true;
+        }
         this.ball.vx = 0;
         this.ball.vy = 0;
         this._snapBallToCarrier();
@@ -439,6 +447,7 @@ export class Game {
   }
 
   _releaseBall() {
+    this._lastReleaser = this.ballCarrier; // remember who kicked it
     this.ballCarrier = null;
     // Cooldown before AI can pick up the loose ball — scales with difficulty
     const cooldown = this.difficulty.aiPickupCooldownMs || 150;
