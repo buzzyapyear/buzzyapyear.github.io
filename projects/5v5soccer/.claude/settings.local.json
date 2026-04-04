@@ -11,7 +11,8 @@
       "WebFetch(domain:unsplash.com)",
       "WebFetch(domain:www.pexels.com)",
       "WebFetch(domain:images.pexels.com)",
-      "Bash(npx vite:*)"
+      "Bash(npx vite:*)",
+      "Bash(claude auth:*)"
     ]
   }
 }
