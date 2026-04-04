@@ -6,7 +6,12 @@
       "Bash(npm install:*)",
       "mcp__Claude_Preview__preview_start",
       "Bash(open http://localhost:5173)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "WebSearch",
+      "WebFetch(domain:unsplash.com)",
+      "WebFetch(domain:www.pexels.com)",
+      "WebFetch(domain:images.pexels.com)",
+      "Bash(npx vite:*)"
     ]
   }
 }
